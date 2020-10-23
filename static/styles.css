@@ -25,6 +25,14 @@ a {
     text-decoration: none;
 }
 
+h1 {
+    font-size: 2.2rem;
+}
+
+main {
+    margin-top: 3rem;
+}
+
 /*navigation bar styles*/
 .mobile-nav {
     display: none;
@@ -51,6 +59,31 @@ a {
     font-weight: 700;
 }
 
+/*search bar styles*/
+.search-bar {
+    position: relative;
+    display: inline-block;
+}
+
+#search {
+    height: 2.5rem;
+    width: 22rem;
+    border: 1px solid;
+    border-radius: 5px;
+    background-color: transparent;
+    padding: 1rem;
+}
+
+#search + ion-icon {
+    font-size: 1.5rem;
+    position: absolute;
+    text-align: center;
+    right: 1rem;
+    top: 20%;
+    cursor: pointer;
+}
+
+/*footer styles*/
 footer > a {
     font-size: .6rem;
     text-decoration: none;
@@ -70,8 +103,10 @@ footer {
 
     body {
         padding: 0;
+        margin: 1rem;
     }
 
+/*mobile nav styles*/
   .mobile-nav {
     background-color: #CE2F35;
     width: 100vw;
@@ -91,6 +126,16 @@ footer {
     font-size: 2em;
   }
 
+/*mobile search bar styles*/
+#search {
+    width: 100%;
+}
+
+.search-bar {
+    display: block;
+}
+
+/*mobile footer styles*/
   footer > a {
       display: none;
   }
