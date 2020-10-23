@@ -25,10 +25,6 @@ a {
     text-decoration: none;
 }
 
-h1 {
-    font-size: 2.2rem;
-}
-
 main {
     margin-top: 3rem;
 }
@@ -60,14 +56,25 @@ main {
 }
 
 /*search bar styles*/
+.search-hero {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: 1fr;
+}
+
 .search-bar {
     position: relative;
     display: inline-block;
 }
 
+.search-area {
+    grid-row: 1/2;
+    align-self: center;
+}
+
 #search {
     height: 2.5rem;
-    width: 22rem;
+    width: 18rem;
     border: 1px solid;
     border-radius: 5px;
     background-color: transparent;
@@ -81,6 +88,12 @@ main {
     right: 1rem;
     top: 20%;
     cursor: pointer;
+}
+
+.hero {
+    width: 80%;
+    grid-column: 2/3;
+    justify-self: center;
 }
 
 /*footer styles*/
@@ -139,8 +152,18 @@ footer {
       display: block;
   }
 
+  .search-hero {
+        display: block;
+    }
+
+  .hero {
+      margin: 0 auto;
+  } 
+
 /*mobile footer styles*/
   footer > a {
       display: none;
   }
 }
+
+

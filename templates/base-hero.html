@@ -1,9 +1,12 @@
 {% extends "layout.html" %}
 
-{% block main%}
+{% block main %}
 <section class="search-hero">
+    <div class="hero">
+        <img src="../static/assets/hero.svg" alt="drawing of queer people in a meeting">
+    </div>
     <div class="search-area">
-        <h1>{% block title %}Find Events{% endblock %}</h1>
+        <h1>{{ title }}</h1>
         <div class="search-bar">
             <input id="search" type="text">
             <ion-icon name="search-outline"></ion-icon>
