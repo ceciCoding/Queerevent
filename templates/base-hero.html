@@ -1,0 +1,13 @@
+{% extends "layout.html" %}
+
+{% block main%}
+<section class="search-hero">
+    <div class="search-area">
+        <h1>{% block title %}Find Events{% endblock %}</h1>
+        <div class="search-bar">
+            <input id="search" type="text">
+            <ion-icon name="search-outline"></ion-icon>
+        </div>
+    </div>
+</section>
+{% endblock %}
