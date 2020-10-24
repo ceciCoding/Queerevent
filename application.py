@@ -6,6 +6,15 @@ TEMPLATES_AUTO_RELOAD=True
 @app.route("/")
 def home():
     return render_template("home.html", title="Find Events")
+
+@app.route("/favorites.html")
+def favorites():
+    return render_template("favorites.html", title="Favorite Events")
+
+
+@app.route("/calendar.html")
+def calendar():
+    return render_template("calendar.html")
     
 if __name__ == "__main__":
     app.run(debug=True)
