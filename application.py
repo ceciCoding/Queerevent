@@ -11,6 +11,10 @@ def home():
 def favorites():
     return render_template("favorites.html", title="Favorite Events")
 
+@app.route("/my-events.html")
+def my_events():
+    return render_template("my-events.html", title="My Events") 
+
 
 @app.route("/calendar.html")
 def calendar():

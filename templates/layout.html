@@ -4,26 +4,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
      <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,400;0,700;0,900;1,400;1,700&display=swap" rel="stylesheet"> 
-    <link rel="stylesheet" href="static/styles.css?v=1.17.7325">
+    <link rel="stylesheet" href="static/styles.css?v=1.23.3335">
     <title>Queerevent</title>
 </head>
 <body>
     <nav class="mobile-nav">
-        <div class="mobile-menu-item">
-            <a href="/"><ion-icon name="home-outline"></ion-icon></a>
-        </div>
-        <div class="mobile-menu-item">
-            <a href="/my-events.html"><ion-icon name="person-outline"></ion-icon></a>
-        </div>
-        <div class="mobile-menu-item">
-            <a href="/calendar.html"><ion-icon name="calendar-outline"></ion-icon></a>
-        </div>
-        <div class="mobile-menu-item">
-            <a href="/favorites.html"><ion-icon style="font-size: 2.2rem;" name="heart-outline"></ion-icon></a>
-        </div>
-        <div class="mobile-menu-item">
-            <a href="/new.html"><ion-icon style="font-size: 2.2rem;" name="add-circle-outline"></ion-icon></a>
-        </div>
+        <ul>
+            <li class="mobile-menu-item">
+                <a href="/"><ion-icon name="home-outline"></ion-icon></a>
+            </li>
+            <li class="mobile-menu-item">
+                <a href="/my-events.html"><ion-icon name="person-outline"></ion-icon></a>
+            </li>
+            <li class="mobile-menu-item">
+                <a href="/calendar.html"><ion-icon name="calendar-outline"></ion-icon></a>
+            </li>
+            <li class="mobile-menu-item">
+                <a href="/favorites.html"><ion-icon style="font-size: 2.2rem;" name="heart-outline"></ion-icon></a>
+            </li>
+            <li class="mobile-menu-item">
+                <a href="/new.html"><ion-icon style="font-size: 2.2rem;" name="add-circle-outline"></ion-icon></a>
+            </li>
+        </ul>
     </nav>
     <nav class="desktop-nav">
         <div class="logo">
@@ -42,8 +44,8 @@
         {% block main %}
         {% endblock %}
     </main>
-    <footer>
+    <!-- <footer>
         <a href="">Privacy Policy</a>
-    </footer>
+    </footer> -->
     <script src="https://unpkg.com/ionicons@5.2.3/dist/ionicons.js"></script>
 </body>

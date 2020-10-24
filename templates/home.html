@@ -9,15 +9,27 @@
         <div class="info-container">
             <div class="card-text">
                 <h3>Event Name</h3>
-                <h5>Tuesday 16 November 2020</h5>
+                <h5>16 November 2020</h5>
                 <h5>From 4pm to 8pm</h5>
             </div>
             <div class="card-buttons">
-                <ion-icon name="share-social"></ion-icon>
-                <ion-icon name="heart-outline" style="font-size: 2.2rem;"></ion-icon>
+                <ion-icon name="arrow-redo" class="share-arrow" data-modal-target="#modal"></ion-icon>
+                <ion-icon name="heart-outline"></ion-icon>
             </div>
         </div>
     </div>
 </a>
 {% endfor %}
+<div id="modal" class="modal">
+    <button class="close-button" data-close-button>&times;</button>
+    <h2>Share this event</h2>
+    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Harum dolor, iusto voluptatum consequatur distinctio quo facilis laboriosam totam officia eum nesciunt eos exercitationem cupiditate recusandae quae eligendi voluptatibus quam fugit?
+    Doloremque repellendus asperiores eligendi, tempore tenetur esse. Et totam ipsa aliquid! Enim, voluptas. Iusto vero dignissimos quibusdam dolores at, nobis autem molestiae officia eius ea aliquid. Illum, quis dolorum. Ea.
+    Qui modi deserunt quidem eligendi provident ulobcaecati repudiandae fugit omnis laborum, quia sint ducimus? Sint odio quos ipsa exercitationem perspiciatis.</p>
+    <button class="btn" data-close-button>Copy Link</button>
+</div>
+<div id="overlay">
+
+</div>
+<script src="../static/modal.js"></script>
 {% endblock %}

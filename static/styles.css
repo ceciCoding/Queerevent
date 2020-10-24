@@ -19,6 +19,7 @@ body {
   --app-white: #F4F4F4;
   background-color: var(--app-white);
   padding: 0 8rem;
+  padding-bottom: 5rem;
 }
 
 a {
@@ -95,7 +96,7 @@ h1 {
 }
 
 .hero {
-    width: 50%;
+    width: 60%;
     grid-column: 2/3;
     justify-self: center;
     font-size: 1.2rem;
@@ -109,6 +110,7 @@ h1 {
 /*event card and container styles*/
 #events {
     margin-top: 3rem;
+    margin-bottom: 6rem;
     display: grid;
     gap: 3.33%;
     grid-template-columns: repeat(4, 1fr);
@@ -159,6 +161,48 @@ h1 {
     background-size: cover;
 }
 
+/*modal window styles*/
+#modal {
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    background-color: #fff;
+    border: 1px solid;
+    z-index: 80;
+    transition: 200ms ease-in-out;
+}
+
+#modal.active {
+    transform: translate(-50%, -50%) scale(1);
+}
+
+#overlay {
+    position: fixed;
+    opacity: 0;
+    background-color: #292828;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    pointer-events: none;
+} 
+
+#overlay.active {
+    pointer-events: all;
+    opacity: 50%;
+}
+
+.close-button {
+    cursor: pointer;
+    border: none;
+    background: none;
+    outline: none;
+    font-size: 2rem;
+    position: absolute;
+    right: 1rem;
+}
+
 /*footer styles*/
 footer > a {
     font-size: .6rem;
@@ -168,7 +212,13 @@ footer > a {
 footer {
     position: fixed;
     bottom: 0;
-    height: 40px;
+    height: 60px;
+    width: 100vw;
+    background-color: var(--app-white);
+    z-index: 30;
+    display: flex;
+    align-items: center;
+    margin-top: 6rem;
 }
 
 /****** MOBILE STYLES *********/
@@ -207,12 +257,20 @@ footer {
     box-shadow: -1px -1px 4px -1px rgba(135,125,135,1);
   }
 
+  .mobile-nav > ul {
+    list-style: none;
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+
+  }
+
   .mobile-nav ion-icon {
     color: #F4F4F4;
     font-size: 2em;
   }
 
-/*mobile search bar styles*/
+/*mobile search bar and hero styles*/
   #search {
       width: 100%;
   }
@@ -240,7 +298,7 @@ footer {
       display: block;
   }
 
-  /*event cards styles*/
+  /*mobile event cards styles*/
   #events {
       display: block;
   }
@@ -251,14 +309,21 @@ footer {
       margin-bottom: 2.5rem;
   }
 
+  .active {
+    border-radius: 35px;
+    background: linear-gradient(45deg, #4da7db, #5bc6ff);
+    box-shadow:  5px -5px 10px #4face2, 
+             -5px 5px 10px #5bc6ff;
+  }
+
 /*mobile footer styles*/
   footer > a {
       display: none;
   }
 }
 
-
-@media screen and (max-width: 1450px) {
+/*events grid for smaller desktops*/
+@media screen and (max-width: 1300px) {
     #events {
         grid-template-columns: repeat(3, 1fr);
     }
