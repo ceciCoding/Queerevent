@@ -2,14 +2,22 @@
 
 {% block events %}
 {% for n in range(12) %}
-<div class="event-container">
-    <!-- Donde this way to enable CSS properties fo background images -->
-    <div class="img-container" style="background-image: url(../static/assets/pride.jpg);"></div>
-    <div class="info-container">
-        <h3>Event Name</h3>
-        <h5>Tuesday 16 November 2020</h5>
-        <h5>From 4pm to 8pm</h5>
+<a href="">
+    <div class="event-container">
+        <!-- Donde this way to enable CSS properties fo background images -->
+        <div class="img-container" style="background-image: url(../static/assets/pride.jpg);"></div>
+        <div class="info-container">
+            <div class="card-text">
+                <h3>Event Name</h3>
+                <h5>Tuesday 16 November 2020</h5>
+                <h5>From 4pm to 8pm</h5>
+            </div>
+            <div class="card-buttons">
+                <ion-icon name="share-social"></ion-icon>
+                <ion-icon name="heart-outline" style="font-size: 2.2rem;"></ion-icon>
+            </div>
+        </div>
     </div>
-</div>
+</a>
 {% endfor %}
 {% endblock %}
