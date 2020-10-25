@@ -189,7 +189,7 @@ h1 {
 #modal img {
     height: 300px;
     position: absolute;
-    bottom: 4rem;
+    bottom: 2rem;
     left: 4rem;
 }
 
@@ -198,17 +198,12 @@ h1 {
 }
 
 .modal-info {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
     width: auto;
     text-align: center;
     position: absolute;
     top: 15%;
     right: 20%;
 }
-
 
 #overlay {
     position: fixed;
@@ -235,6 +230,12 @@ h1 {
     font-size: 2rem;
     position: absolute;
     right: 1rem;
+}
+
+.modal-link {
+    padding: .4rem;
+    border: 1px solid;
+    border-radius: 5px;
 }
 
 /*button styles*/
@@ -370,7 +371,7 @@ footer {
   }
 
   #modal img {
-      height: 180px;
+      height: 170px;
   }
 }
 

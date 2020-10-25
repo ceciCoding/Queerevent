@@ -1,7 +1,7 @@
-{% macro popup(text, button, img, link)%}
+{% macro popup(text, button, img, link, class)%}
 <div id="modal" class="modal">
     <button class="close-btn close-button">&times;</button>
-    <div class="modal-info">
+    <div class="{{ class }} modal-info">
         <div>
             <h2>{{ text }}</h2>
         </div>

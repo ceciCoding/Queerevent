@@ -1,6 +1,13 @@
 const overlay = document.querySelector('#overlay');
 const events = document.querySelector('#events');
-const modal = document.querySelector('#modal')
+const modal = document.querySelector('#modal');
+const modalLink = modal.querySelector('p');
+
+if (modalLink.innerHTML === '') {
+    modalLink.style.display = 'none';
+} else {
+    modalLink.classList.add('modal-link')
+}
 
 events.addEventListener('click', (e) => {
     console.log(e.target);
