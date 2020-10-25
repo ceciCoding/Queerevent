@@ -249,6 +249,80 @@ h1 {
     cursor: pointer;
 }
 
+/*calendar styles*/
+.top-calendar {
+    display: grid;
+    grid-template-columns: 40% 60%;
+}
+
+#calendar {
+    border: 1px solid red;
+    grid-column: 1/2;
+    width: 100%;
+    height: auto;
+    font-size: 85%;
+    background-color: #fff;
+    box-shadow: 2px 3px 6px rgba(0, 0, 0, 0.5)  ; 
+	-webkit-box-shadow: 2px 3px 6px rgba(0, 0, 0, 0.5)  ; 
+	-moz-box-shadow: 02px3px 6px rgba(0, 0, 0, 0.4)  ; 
+}
+
+.month {
+    background-color: var(--app-red);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 2rem;
+}
+
+.month ion-icon {
+    cursor: pointer;
+    font-size: 1.6rem;
+}
+
+.month > * {
+    color: var(--app-white);
+}
+
+.date > * {
+    color: var(--app-white);
+}
+
+.weekdays {
+    width: 100%;
+    height: 2.5rem;
+    padding: 0 .4rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center; 
+    background-color: #EBEBEB;
+}
+
+.weekdays div {
+    font-size: 1.1rem;
+    font-weight: 300;
+    width: calc(100% / 7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.days {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+}
+
+.days div {
+    width: 100%;   
+    text-align: center;
+    height: 2rem;
+    border: 1px solid;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 /*footer styles*/
 footer > a {
     font-size: .6rem;
@@ -373,6 +447,15 @@ footer {
 
   #modal img {
       height: 170px;
+  }
+
+  /*mobile styles for calendar*/
+  .top-calendar {
+      display: block;
+  }
+
+  #calendar {
+      width: 100%;
   }
 }
 
