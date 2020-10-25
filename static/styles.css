@@ -256,15 +256,14 @@ h1 {
 }
 
 #calendar {
-    border: 1px solid red;
     grid-column: 1/2;
     width: 100%;
     height: auto;
     font-size: 85%;
     background-color: #fff;
-    box-shadow: 2px 3px 6px rgba(0, 0, 0, 0.5)  ; 
-	-webkit-box-shadow: 2px 3px 6px rgba(0, 0, 0, 0.5)  ; 
-	-moz-box-shadow: 02px3px 6px rgba(0, 0, 0, 0.4)  ; 
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5)  ; 
+	-webkit-box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5)  ; 
+	-moz-box-shadow: 02px 2px 4px rgba(0, 0, 0, 0.4)  ; 
 }
 
 .month {
@@ -291,17 +290,20 @@ h1 {
 .weekdays {
     width: 100%;
     height: 2.5rem;
-    padding: 0 .4rem;
-    display: flex;
+    /* padding: 0 .4rem; */
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
     justify-content: space-between;
+    /* display: flex;
+    justify-content: space-between; */
     align-items: center; 
     background-color: #EBEBEB;
 }
 
 .weekdays div {
-    font-size: 1.1rem;
     font-weight: 300;
-    width: calc(100% / 7);
+    /* width: calc(100% / 7); */
+    width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -317,10 +319,18 @@ h1 {
     width: 100%;   
     text-align: center;
     height: 2rem;
-    border: 1px solid;
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.prev-date,
+.next-date {
+    color: rgba(0, 0, 0, 0.5);
+}
+
+.today {
+    border: 1px solid;
 }
 
 /*footer styles*/
