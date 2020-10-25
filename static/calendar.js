@@ -47,8 +47,6 @@ const renderCalendar = () => {
 
 }
 
-
-
 //events listeners for arrows
 document.querySelector('.prev-month-arrow').addEventListener('click', () => {
     date.setMonth(date.getMonth() - 1);
