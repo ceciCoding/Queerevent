@@ -1,29 +1,28 @@
-    const openModalButtons = document.querySelectorAll('[data-modal-target]');
-    const closeModalButtons = document.querySelectorAll('[close-modal-button]');
-    const overlay = document.querySelector('#overlay');
-    const events = document.querySelector('#events')
+const overlay = document.querySelector('#overlay');
+const events = document.querySelector('#events');
+const modal = document.querySelector('#modal')
 
-    events.addEventListener('click', (e) => {
-        if (e.target.className === 'share-arrow') {
-            const modal = document.querySelector(e.target.dataset.modalTarget);
-            openModal(modal, overlay);
-            console.log("targeted")
-        }
-
-        if (e.target.dataset.closeButton) {
-            const modal = e.target.closest('modal');
-            closeModal(modal);
-        }
-    });
-
-    function openModal(modal, overlay) {
-        if (modal === null) return;
-        modal.classList.add('active');
-        overlay.classList.add('active');
+events.addEventListener('click', (e) => {
+    console.log(e.target);
+    e.preventDefault();
+    if (e.target.className === 'share-arrow md hydrated') {
+        openModal(modal, overlay);
     }
 
-    function closeModal(modal, overlay) {
-        if (modal === null) return;
-        modal.classList.remove('active');
-        modal.classList.remove('active');
+    if (e.target.className === 'close-btn close-button' || e.target.className === 'btn close-button') {
+        closeModal(modal, overlay);
     }
+ });
+
+function openModal(modal, overlay) {
+    if (modal === null) return;
+    modal.classList.add('active');
+    overlay.classList.add('active');
+    console.log("function");
+}
+
+function closeModal(modal, overlay) {
+    if (modal === null) return;
+    modal.classList.remove('active');
+    overlay.classList.remove('active');
+}

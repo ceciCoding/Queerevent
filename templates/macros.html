@@ -1,0 +1,13 @@
+{% macro popup(text, button, img)%}
+<div id="modal" class="modal">
+    <button class="close-btn close-button">&times;</button>
+    <h2>{{ text }}</h2>
+    <p>{{ link }}</p>
+    <img src="{{ img }}" alt="drawing of a person">
+    <button class="btn close-button">{{ button }}</button>
+</div>
+<div id="overlay">
+
+</div>
+<script src="../static/modal.js?v=1.0.0"></script>
+{% endmacro %}

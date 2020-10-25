@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
      <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,400;0,700;0,900;1,400;1,700&display=swap" rel="stylesheet"> 
-    <link rel="stylesheet" href="static/styles.css?v=1.23.3335">
+    <link rel="stylesheet" href="static/styles.css?v=1.24353993">
     <title>Queerevent</title>
 </head>
 <body>
@@ -28,17 +28,19 @@
         </ul>
     </nav>
     <nav class="desktop-nav">
-        <div class="logo">
-            <h2>queerevent</h2>
+        <div class="nav-container">
+            <div class="logo">
+                <h2>queerevent</h2>
+            </div>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/favorites.html">Favorites</a></li>
+                <li><a href="/my-events.html">My Events</a></li>
+                <li><a href="/calendar.html">Calendar</a></li>
+                <li><a href="/new.html">New Event</a></li>
+                <li></li>
+            </ul>
         </div>
-        <ul>
-            <li><a href="/">Home</a></li>
-            <li><a href="/favorites.html">Favorites</a></li>
-            <li><a href="/my-events.html">My Events</a></li>
-            <li><a href="/calendar.html">Calendar</a></li>
-            <li><a href="/new.html">New Event</a></li>
-            <li></li>
-        </ul>
     </nav>
     <main>
         {% block main %}

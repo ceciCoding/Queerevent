@@ -13,12 +13,12 @@
 }
 
 body {
-  margin: 0;
+  margin: 0 auto;
+  width: 80%;
   font-family: 'Nunito', sans-serif;
   --app-red: #C60910;
   --app-white: #F4F4F4;
   background-color: var(--app-white);
-  padding: 0 8rem;
   padding-bottom: 5rem;
 }
 
@@ -27,7 +27,7 @@ a {
 }
 
 main {
-    margin-top: 3rem;
+    margin-top: 6rem;
 }
 
 h1 {
@@ -45,6 +45,15 @@ h1 {
 }
 
 .desktop-nav {
+    position: fixed;
+    top: 0;
+    z-index: 30;
+    background-color: var(--app-white);   
+    width: 80%;
+    margin: 0 auto;
+}
+
+.nav-container {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -171,6 +180,12 @@ h1 {
     border: 1px solid;
     z-index: 80;
     transition: 200ms ease-in-out;
+    width: 40%;
+    height: 60%;
+}
+
+#modal img {
+    height: 300px;
 }
 
 #modal.active {
@@ -191,9 +206,10 @@ h1 {
 #overlay.active {
     pointer-events: all;
     opacity: 50%;
+    z-index: 50;
 }
 
-.close-button {
+.close-btn {
     cursor: pointer;
     border: none;
     background: none;
@@ -201,6 +217,16 @@ h1 {
     font-size: 2rem;
     position: absolute;
     right: 1rem;
+}
+
+/*button styles*/
+.btn {
+    background-color: var(--app-red);
+    color: var(--app-white);
+    padding: 1rem 1.3rem;
+    border-radius: 35px;
+    font-weight: bold;
+    font-size: 1.1rem;
 }
 
 /*footer styles*/
@@ -309,13 +335,6 @@ footer {
       margin-bottom: 2.5rem;
   }
 
-  .active {
-    border-radius: 35px;
-    background: linear-gradient(45deg, #4da7db, #5bc6ff);
-    box-shadow:  5px -5px 10px #4face2, 
-             -5px 5px 10px #5bc6ff;
-  }
-
 /*mobile footer styles*/
   footer > a {
       display: none;
@@ -323,8 +342,14 @@ footer {
 }
 
 /*events grid for smaller desktops*/
-@media screen and (max-width: 1300px) {
+@media screen and (max-width: 1500px) {
     #events {
         grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media screen and (max-width: 1200px) {
+    #events {
+        grid-template-columns: repeat(2, 1fr);
     }
 }
