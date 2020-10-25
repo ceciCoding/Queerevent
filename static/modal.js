@@ -12,7 +12,7 @@ if (modalLink.innerHTML === '') {
 events.addEventListener('click', (e) => {
     console.log(e.target);
     e.preventDefault();
-    if (e.target.className === 'share-arrow md hydrated') {
+    if (e.target.className.includes('share-arrow')) {
         openModal(modal, overlay);
     }
 
