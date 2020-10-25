@@ -19,7 +19,12 @@ events.addEventListener('click', (e) => {
     if (e.target.className === 'close-btn close-button' || e.target.className === 'btn close-button') {
         closeModal(modal, overlay);
     }
- });
+});
+ 
+overlay.addEventListener('click', () => {
+    const modal = document.querySelector('.modal.active');
+    closeModal(modal, overlay);
+})
 
 function openModal(modal, overlay) {
     if (modal === null) return;
