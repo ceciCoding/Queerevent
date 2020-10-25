@@ -16,7 +16,7 @@ events.addEventListener('click', (e) => {
         openModal(modal, overlay);
     }
 
-    if (e.target.className === 'close-btn close-button' || e.target.className === 'btn close-button') {
+    if (e.target.className.includes('close-button')) {
         closeModal(modal, overlay);
     }
 });
