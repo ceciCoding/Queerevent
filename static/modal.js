@@ -1,3 +1,5 @@
+'use strict';
+
 const overlay = document.querySelector('#overlay');
 const events = document.querySelector('#events');
 const modal = document.querySelector('#modal');
@@ -15,7 +17,6 @@ events.addEventListener('click', (e) => {
     if (e.target.className.includes('share-arrow')) {
         openModal(modal, overlay);
     }
-
     if (e.target.className.includes('close-button')) {
         closeModal(modal, overlay);
     }

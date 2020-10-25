@@ -1,3 +1,24 @@
 {% extends 'layout.html' %}
 
-Calendar
+{% block main %}
+<section id="calendar">
+    <h1>My Calendar of Events</h1>
+    <div class="month">
+        <ion-icon class="month-arrow" name="chevron-back-outline"></ion-icon>
+        <div class="date">
+            <h3>May</h3>
+            <p>Friday May 29, 2020</p>
+        </div>
+        <ion-icon name="chevron-forward-outline"></ion-icon>
+    </div>
+    <div class="weekdays">
+        <div>Sun</div>
+        <div>Mon</div>
+        <div>Tue</div>
+        <div>Wed</div>
+        <div>Thu</div>
+        <div>Fri</div>
+        <div>Sat</div>
+    </div>
+</section>
+{% endblock %}
