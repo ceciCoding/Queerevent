@@ -177,20 +177,38 @@ h1 {
     top: 50%;
     transform: translate(-50%, -50%) scale(0);
     background-color: #fff;
-    border: 1px solid;
     z-index: 80;
     transition: 200ms ease-in-out;
     width: 40%;
     height: 60%;
+    box-shadow: 2px 3px 6px rgba(0, 0, 0, 0.5)  ; 
+	-webkit-box-shadow: 2px 3px 6px rgba(0, 0, 0, 0.5)  ; 
+	-moz-box-shadow: 02px3px 6px rgba(0, 0, 0, 0.4)  ; 
 }
 
 #modal img {
     height: 300px;
+    position: absolute;
+    bottom: 4rem;
+    left: 4rem;
 }
 
 #modal.active {
     transform: translate(-50%, -50%) scale(1);
 }
+
+.modal-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: auto;
+    text-align: center;
+    position: absolute;
+    top: 15%;
+    right: 20%;
+}
+
 
 #overlay {
     position: fixed;
@@ -224,9 +242,9 @@ h1 {
     background-color: var(--app-red);
     color: var(--app-white);
     padding: 1rem 1.3rem;
-    border-radius: 35px;
+    border-radius: 40px;
     font-weight: bold;
-    font-size: 1.1rem;
+    font-size: .9rem;
 }
 
 /*footer styles*/
@@ -256,6 +274,7 @@ footer {
 
     body {
         padding: 0;
+        width: 100%;
     }
 
     main {
@@ -338,6 +357,20 @@ footer {
 /*mobile footer styles*/
   footer > a {
       display: none;
+  }
+
+  /*mobile modal styles*/
+  #modal {
+    width: 90%;
+    height: 70%;
+  }
+
+  .modal-info {
+    right: 10%;
+  }
+
+  #modal img {
+      height: 180px;
   }
 }
 
