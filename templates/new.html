@@ -4,7 +4,7 @@
 <h1>New Event</h1>
 <section class="new-event-grid">
     <form action="" class="new-event-form">
-        <div class="form-control">
+        <div>
             <label for="file">Upload event image</label>
             <input type="file" name="file">
         </div>
@@ -13,12 +13,49 @@
             <input type="text" name="name">
         </div>
         <div class="form-control">
-            <label for="type">Type of Event/label>
+            <label for="type">Type of Event</label>
             <select name="type" id="">
                 <option value="Online">Online</option>
                 <option value="Physical">Physical</option>
             </select>
         </div>
+        <div class="form-control location">
+            <label for="location">Where will it be?</label>
+            <input type="text" name="location">
+        </div>
+        <div class="form-control">
+            <label for="date">Date</label>
+            <input type="date" name="date">
+        </div>
+        <div class="form-control">
+            <label for="time">Starting Time (eg. 02:20 PM)</label>
+            <input type="time">
+        </div>
+        <div class="form-control">
+            <label for="time">Ending Time</label>
+            <input type="time">
+        </div>
+        <div class="form-control">
+            <label for="organizer">Organizer</label>
+            <input type="text" name="organizer">
+        </div>
+        <div class="form-control">
+            <label for="link">Link to the event</label>
+            <input type="text" name="link">
+        </div>
+        <div class="form-control">
+            <label for="description">Description</label>
+            <textarea name="description" rows="10"></textarea>
+        </div>
+        <div class="new-btn">
+            <button class="btn">Publish</button>
+        </div>
     </form>
+    <div class="preview-container">
+        <h3>Preview</h3>
+        <div id="event-preview" class="base-card">
+    
+        </div>
+    </div>
 </section>
 {% endblock %}

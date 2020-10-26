@@ -20,6 +20,7 @@ body {
   --app-white: #F4F4F4;
   background-color: var(--app-white);
   padding-bottom: 5rem;
+  margin-bottom: 5rem;
 }
 
 a {
@@ -27,7 +28,7 @@ a {
 }
 
 main {
-    margin-top: 6rem;
+    margin-top: 9rem;
 }
 
 h1 {
@@ -114,6 +115,14 @@ h1 {
 
 .hero > .logo {
     display: none;
+}
+
+/***********BASE CARD STYLES*************/
+.base-card {
+    background-color: #fff;
+    box-shadow: 2px 3px 6px rgba(0, 0, 0, 0.5)  ; 
+	-webkit-box-shadow: 2px 3px 6px rgba(0, 0, 0, 0.5)  ; 
+	-moz-box-shadow: 02px3px 6px rgba(0, 0, 0, 0.4)  ; 
 }
 
 /***********EVENT CARD AND CONTAINER STYLES*************/
@@ -257,9 +266,9 @@ h1 {
 .btn {
     background-color: var(--app-red);
     color: var(--app-white);
-    padding: 1rem 1.3rem;
+    padding: .7rem 2.2rem;
     border-radius: 40px;
-    font-weight: bold;
+    font-weight: 700;
     font-size: .9rem;
     cursor: pointer;
 }
@@ -373,10 +382,11 @@ label {
     flex-flow: column nowrap;
 }
 
-.form-control [type="text"],
-.form-control select {
+.form-control input, 
+.form-control select,
+.form-control textarea {
     background-color: var(--app-white);
-    padding: .7rem;
+    padding: .5rem;
     border: 1px solid;
     border-radius: 5px;
     font-size: 1rem;
@@ -386,12 +396,28 @@ label {
 .new-event-grid {
     display: grid;
     grid-template-columns: 30% 70%;
-    gap: 2rem;
+    gap: 4rem;
 }
 
 .new-event-form {
     width: 100%;
     grid-column: 1/2;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+}
+
+.new-btn {
+    align-self: center;
+    margin-top: 2rem;
+    margin-bottom: 3rem;
+}
+
+#event-preview {
+    grid-column: 2/3;
+    width: 100%;
+    height: 600px;
+    max-height: auto;
 }
 
 /***********FOOTER STYLES*************/
@@ -543,6 +569,11 @@ footer {
 
   .calendar-girl {
       display: none;
+  }
+
+/***********MOBILE NEW EVENT STYLES*************/
+  .new-event-grid {
+      display: block;
   }
 }
 
