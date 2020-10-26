@@ -25,23 +25,27 @@
         </div>
         <div class="form-control">
             <label for="date">Date</label>
-            <input type="date" name="date" data-bind="value: date">
+            <input type="date" id="date-input" name="date" data-bind="value: date">
         </div>
         <div class="form-control">
             <label for="time">Starting time</label>
-            <input type="time" data-bind="text: startingHour">
+            <input type="time" data-bind="value: startingHour">
         </div>
         <div class="form-control">
             <label for="time">Ending Time</label>
-            <input type="time" data-bind="text: endingHour">
+            <input type="time" data-bind="value: endingHour">
+        </div>
+        <div class="form-control">
+            <label for="link">Link to the event</label>
+            <input type="text" name="link" data-bind="value: link">
         </div>
         <div class="form-control">
             <label for="organizer">Organizer</label>
             <input type="text" name="organizer" data-bind="value: organizer">
         </div>
         <div class="form-control">
-            <label for="link">Link to the event</label>
-            <input type="text" name="link" data-bind="value: link">
+            <label for="organizer">Organizer's website</label>
+            <input type="text" name="organizer" data-bind="value: organizer">
         </div>
         <div class="form-control">
             <label for="description">Description</label>
@@ -58,9 +62,9 @@
             <div class="preview-info">
                 <div>
                     <ul>
-                        <li data-bind="text: date"></li>
+                        <li class="date" data-bind="text: date"></li>
                         <li>From <span data-bind="text: startingHour"></span> to <span data-bind="text: endingHour"></span></li>
-                        <li data-bind="text: place"></li>
+                        <li data-bind="text: place" class="place"></li>
                         <li data-bind="text: link"></li>
                     </ul>
                 </div>

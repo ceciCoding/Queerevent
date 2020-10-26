@@ -390,6 +390,7 @@ label {
     border: 1px solid;
     border-radius: 5px;
     font-size: 1rem;
+    font-family: inherit;
 }
 
 /***********NEW EVENT STYLES*************/
@@ -405,10 +406,6 @@ label {
     display: flex;
     flex-flow: column nowrap;
     justify-content: center;
-}
-
-.new-event-form textarea {
-    font-family: inherit;
 }
 
 .new-btn {

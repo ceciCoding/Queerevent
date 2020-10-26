@@ -1,5 +1,4 @@
-//TODO: solve infinite scroll happening on the page
-
+//taken from this tutorial: https://bit.ly/34vC9AT for binding data in JS
 class Binding {
     constructor(prop, handler, el) {
         this.prop = prop;
@@ -95,15 +94,17 @@ Binder.handlers = {
     text: new TextBindingHandler()
 }
 
+const dateString = new Date().toString();
+
 Binder.setScope({
     name: 'Event Name',
     place: 'Somewhere',
-    date: '31 December 2020',
+    date: dateString.slice(0, 16),
     startingHour: '4:00 PM',
     endingHour: '8:00 PM',
     organizer: 'Organizer',
     link: 'Link',
-    description: 'Awesome event taking place somewhere today with amazing hosts.'
+    description: 'Awesome event taking place somewhere today with amazing hosts. Come with your finest outfit.'
 
 });
 Binder.redefine();
@@ -116,6 +117,7 @@ els.forEach(el => {
     const binding = new Binding(scopeKey, bindingHandler, el);
     binding.bind();
 });
+
 
 //img upload preview
 function readURL(input) {
@@ -134,14 +136,30 @@ $("#img-upload").change(function() {
   readURL(this);
 });
 
+
 //handling showing or not the location input
 const typeOfEvent = document.querySelector('select');
 const locationInput = document.querySelector('.location');
+const placePreview = document.querySelector('.place');
 
 typeOfEvent.addEventListener('change', () => {
     if (typeOfEvent.value === 'Online') {
         locationInput.style.display = 'none';
+        placePreview.style.display = 'none';
     } else {
         locationInput.style.display = 'flex';
+        placePreview.style.display = 'block';
     }   
 })
+
+
+//preview date correctly
+const datePreview = document.querySelector('.date');
+const dateInput = document.querySelector('#date-input');
+
+dateInput.addEventListener('change', () => {
+    const newDate = new Date(dateInput.value);
+    const newDateStr = newDate.toString();
+    datePreview.innerHTML = newDateStr.slice(0, 16);
+})
+
