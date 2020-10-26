@@ -15,10 +15,14 @@ def favorites():
 def my_events():
     return render_template("my-events.html", title="My Events") 
 
-
 @app.route("/calendar.html")
 def calendar():
     return render_template("calendar.html")
+
+@app.route("/new.html")
+def new_event():
+    return render_template("new.html")
+    
     
 if __name__ == "__main__":
     app.run(debug=True)
