@@ -407,6 +407,10 @@ label {
     justify-content: center;
 }
 
+.new-event-form textarea {
+    font-family: inherit;
+}
+
 .new-btn {
     align-self: center;
     margin-top: 2rem;
@@ -414,18 +418,35 @@ label {
 }
 
 #event-preview {
-    grid-column: 2/3;
     width: 100%;
     height: auto;
     padding: 1.5rem;
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: 60% 40%;
+    grid-template-rows: 1fr;
+    gap: 1rem;
 }
 
+.preview-container {
+    grid-column: 2/3;
+}
+
+.preview-info {
+    grid-column: 1/2;
+}
 
 .preview-info ul {
     margin-left: 1rem;
     font-weight: bold;
+    grid-column: 1/2;
+}
+
+.preview-img {
+    grid-column: 2/3;
+    width: 95%;
+    height: 50%;
+    max-height: 60%;
+    background-size: cover;
 }
 
 /***********FOOTER STYLES*************/
@@ -445,6 +466,8 @@ footer {
     align-items: center;
     margin-top: 6rem;
 }
+
+
 
 /****** MOBILE STYLES *********/
 
@@ -583,6 +606,15 @@ footer {
   .new-event-grid {
       display: block;
   }
+
+  #event-preview {
+      display: block;
+  }
+
+  .preview-img {
+      height: 250px;
+  }
+
 }
 
 /*events grid for smaller desktops*/

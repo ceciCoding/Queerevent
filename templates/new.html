@@ -10,42 +10,42 @@
         </div>
         <div class="form-control">
             <label for="name">Event Name</label>
-            <input type="text" name="name">
+            <input type="text" name="name" data-bind="value: name">
         </div>
         <div class="form-control">
             <label for="type">Type of Event</label>
-            <select name="type" id="">
+            <select name="type">
                 <option value="Online">Online</option>
                 <option value="Physical">Physical</option>
             </select>
         </div>
         <div class="form-control location">
             <label for="location">Where will it be?</label>
-            <input type="text" name="location">
+            <input type="text" name="location" data-bind="value: place">
         </div>
         <div class="form-control">
             <label for="date">Date</label>
-            <input type="date" name="date">
+            <input type="date" name="date" data-bind="value: date">
         </div>
         <div class="form-control">
-            <label for="time">Starting Time (eg. 02:20 PM)</label>
-            <input type="time">
+            <label for="time"></label>
+            <input type="time" data-bind="text: startingHour">
         </div>
         <div class="form-control">
-            <label for="time">Ending Time</label>
-            <input type="time">
+            <label for="time"></label>
+            <input type="time" data-bind="text: endingHour">
         </div>
         <div class="form-control">
             <label for="organizer">Organizer</label>
-            <input type="text" name="organizer">
+            <input type="text" name="organizer" data-bind="value: organizer">
         </div>
         <div class="form-control">
             <label for="link">Link to the event</label>
-            <input type="text" name="link">
+            <input type="text" name="link" data-bind="value: link">
         </div>
         <div class="form-control">
             <label for="description">Description</label>
-            <textarea name="description" rows="10"></textarea>
+            <textarea name="description" rows="10" data-bind="value: description"></textarea>
         </div>
         <div class="new-btn">
             <button class="btn">Publish</button>
@@ -54,33 +54,27 @@
     <div class="preview-container">
         <h3>Preview</h3>
         <div id="event-preview" class="base-card">
+            <h2 data-bind="text: name"></h2>
             <div class="preview-info">
-                <h2>Event Name</h2>
                 <div>
                     <ul>
-                        <li>Tuesday 13 October 2020</li>
-                        <li>From 4:00 PM to 8:00 PM</li>
-                        <li>At someplace</li>
-                        <li>Link</li>
+                        <li data-bind="text: date"></li>
+                        <li>From <span data-bind="text: startingHour"></span> to <span data-bind="text: endingHour"></span></li>
+                        <li data-bind="text: place"></li>
+                        <li data-bind="text: link"></li>
                     </ul>
                 </div>
                 <div>
-                    <p>
-                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Beatae numquam necessitatibus est at veritatis 
-                        distinctio, unde optio commodi esse sit ea repudiandae eius, quis delectus quos atque alias. Similique, 
-                        tempore!Ab minima quo laborum saepe qui quia maiores, expedita tempore natus, perspiciatis architecto 
-                        dolores nostrum ipsam, at dolor laboriosam nobis sapiente illo! At enim fuga fugiat ratione neque illum.
-                    </p>
+                    <p data-bind="text: description"></p>
                 </div>
                 <br>
                 <h3>Organized By</h3>
-                <h5>Organizer</h5>
+                <h5 data-bind="text: organizer"></h5>
                 <h5>Website</h5>
             </div>
-            <div class="preview-img">
-
-            </div>
+            <div class="preview-img" style="background-image: url('../static/assets/pride.jpg');" aria-describedby="event preview image"></div>
         </div>
     </div>
 </section>
+<script src="../static/data-binding.js"></script>
 {% endblock %}
