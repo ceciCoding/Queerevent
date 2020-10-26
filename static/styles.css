@@ -457,7 +457,7 @@ label {
 
 .triangle::before {
     content: "▼ ";
-}
+} 
 
 /***********FOOTER STYLES*************/
 footer > a {
