@@ -133,3 +133,15 @@ function readURL(input) {
 $("#img-upload").change(function() {
   readURL(this);
 });
+
+//handling showing or not the location input
+const typeOfEvent = document.querySelector('select');
+const locationInput = document.querySelector('.location');
+
+typeOfEvent.addEventListener('change', () => {
+    if (typeOfEvent.value === 'Online') {
+        locationInput.style.display = 'none';
+    } else {
+        locationInput.style.display = 'flex';
+    }   
+})
