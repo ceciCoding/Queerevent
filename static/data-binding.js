@@ -1,3 +1,5 @@
+//TODO: solve infinite scroll happening on the page
+
 class Binding {
     constructor(prop, handler, el) {
         this.prop = prop;
@@ -93,7 +95,6 @@ Binder.handlers = {
     text: new TextBindingHandler()
 }
 
-
 Binder.setScope({
     name: 'Event Name',
     place: 'Somewhere',
@@ -116,4 +117,19 @@ els.forEach(el => {
     binding.bind();
 });
 
+//img upload preview
+function readURL(input) {
+  if (input.files && input.files[0]) {
+    var reader = new FileReader();
+    
+    reader.onload = function(e) {
+      $('#prv-img').attr('src', e.target.result);
+    }
+    
+    reader.readAsDataURL(input.files[0]); // convert to base64 string
+  }
+}
 
+$("#img-upload").change(function() {
+  readURL(this);
+});

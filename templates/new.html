@@ -6,7 +6,7 @@
     <form action="" class="new-event-form">
         <div>
             <label for="file">Upload event image</label>
-            <input type="file" name="file">
+            <input type="file" name="file" id="img-upload"> 
         </div>
         <div class="form-control">
             <label for="name">Event Name</label>
@@ -72,9 +72,12 @@
                 <h5 data-bind="text: organizer"></h5>
                 <h5>Website</h5>
             </div>
-            <div class="preview-img" style="background-image: url('../static/assets/pride.jpg');" aria-describedby="event preview image"></div>
+            <div class="preview-img">
+                <img src="#" id="prv-img">
+            </div>
         </div>
     </div>
 </section>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 <script src="../static/data-binding.js"></script>
 {% endblock %}
