@@ -179,7 +179,7 @@ periodicityOption.addEventListener('change', () => {
 
 //preview date correctly
 dateInput.addEventListener('change', () => {
-    const newDate = new Date(dateInput.value);
+    const newDate = new Date(dateInput.querySelector('input').value);
     const newDateStr = newDate.toString();
     datePreview.innerHTML = newDateStr.slice(0, 16);
 })
