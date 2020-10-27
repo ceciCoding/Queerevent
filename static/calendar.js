@@ -10,7 +10,7 @@ const renderCalendar = () => {
     const prevLastDay = new Date(date.getFullYear(), date.getMonth(), 0).getDate();
     const firstDayIndex = date.getDay();
     const lastDayIndex = new Date(date.getFullYear(), date.getMonth() + 1, 0).getDay();
-    const nextDays = 7 - lastDayIndex + 2;
+    const nextDays = 7 - lastDayIndex + 1;
 
     const months = [
         'January',

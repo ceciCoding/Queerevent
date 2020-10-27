@@ -14,7 +14,7 @@ if (modalLink.innerHTML === '') {
 events.addEventListener('click', (e) => {
     console.log(e.target);
     e.preventDefault();
-    if (e.target.className.includes('share-arrow')) {
+    if (e.target.className.includes('share-arrow') || e.target.className.includes('open-m')) {
         openModal(modal, overlay);
     }
     if (e.target.className.includes('close-button')) {

@@ -1,4 +1,5 @@
 {% extends 'layout.html' %}
+{% from "macros.html" import popup%}
 
 {% block main %}
 <h1>New Event</h1>
@@ -6,53 +7,64 @@
     <form action="" class="new-event-form">
         <div>
             <label for="file">Upload event image</label>
-            <input type="file" name="file" id="img-upload"> 
+            <input type="file"class="inpt" name="file" id="img-upload"> 
         </div>
         <div class="form-control">
             <label for="name">Event Name</label>
-            <input type="text" name="name" data-bind="value: name">
+            <input type="text" class="inpt" name="name" data-bind="value: name">
         </div>
         <div class="form-control option">
             <label for="type">Type of Event</label>
-            <select name="type">
+            <select name="type" class="inpt select-type">
                 <option value="Physical">Physical</option>
                 <option value="Online">Online</option>
             </select>
         </div>
-        <div class="form-control location">
-            <label for="location">Where will it be?</label>
-            <input type="text" name="location" data-bind="value: place">
+        <div class="form-control option">
+            <label for="type">Periodicity</label>
+            <select name="type" class="inpt select-period">
+                <option value="One time">One time</option>
+                <option value="Recurring">Recurring</option>
+            </select>
         </div>
-        <div class="form-control">
+        <div class="form-control period" style="display: none;">
+            <label for="period">When will it be?</label>
+            <input type="text" class="inpt" name="period" data-bind="value: periodicity">
+        </div>
+        <div class="form-control location">
+            <label for="location">Location</label>
+            <input type="text" class="inpt" name="location" data-bind="value: place">
+        </div>
+        <div class="form-control"  id="date-input">
             <label for="date">Date</label>
-            <input type="date" id="date-input" name="date" data-bind="value: date">
+            <input type="date" class="inpt" name="date" data-bind="value: date">
         </div>
         <div class="form-control">
             <label for="time">Starting time</label>
-            <input type="time" data-bind="value: startingHour">
+            <input type="time" class="inpt" data-bind="value: startingHour">
         </div>
         <div class="form-control">
             <label for="time">Ending Time</label>
-            <input type="time" data-bind="value: endingHour">
+            <input type="time" class="inpt" data-bind="value: endingHour">
         </div>
         <div class="form-control">
             <label for="link">Link to the event</label>
-            <input type="text" name="link" data-bind="value: link">
+            <input type="text" class="inpt" name="link" data-bind="value: link">
         </div>
         <div class="form-control">
             <label for="organizer">Organizer</label>
-            <input type="text" name="organizer" data-bind="value: organizer">
+            <input type="text" class="inpt" name="organizer" data-bind="value: organizer">
         </div>
         <div class="form-control">
             <label for="organizer">Organizer's website</label>
-            <input type="text" name="organizer" data-bind="value: organizer">
+            <input type="text" class="inpt" name="organizer" data-bind="value: website">
         </div>
         <div class="form-control">
             <label for="description">Description</label>
-            <textarea name="description" rows="10" data-bind="value: description"></textarea>
+            <textarea class="inpt" name="description" rows="10" data-bind="value: description"></textarea>
         </div>
         <div class="new-btn">
-            <button class="btn">Publish</button>
+            <button class="btn open-m">Publish</button>
         </div>
     </form>
     <div class="preview-container">
@@ -62,6 +74,7 @@
             <div class="preview-info">
                 <div>
                     <ul>
+                        <li class="triangle periodicity" data-bind="text: periodicity" style="display: none;"></li>
                         <li class="triangle date" data-bind="text: date"></li>
                         <li class="triangle">From <span data-bind="text: startingHour"></span> to <span data-bind="text: endingHour"></span></li>
                         <li class="triangle place" data-bind="text: place"></li>
@@ -74,7 +87,7 @@
                 <br>
                 <h3>Organized By</h3>
                 <h5 data-bind="text: organizer"></h5>
-                <h5>Website</h5>
+                <h5 data-bind="text: website"></h5>
             </div>
             <div class="preview-img">
                 <img src="#" id="prv-img">
@@ -84,4 +97,5 @@
 </section>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 <script src="../static/data-binding.js"></script>
+{{ popup('Your event is now published', 'See it', '../static/assets/standing-boy.svg') }}
 {% endblock %}

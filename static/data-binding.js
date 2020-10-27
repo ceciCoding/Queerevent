@@ -99,12 +99,14 @@ const dateString = new Date().toString();
 Binder.setScope({
     name: 'Event Name',
     place: 'Somewhere',
+    periodicity: 'Every Monday',
     date: dateString.slice(0, 16),
     startingHour: '4:00 PM',
     endingHour: '8:00 PM',
     organizer: 'Organizer',
+    website: 'https://organizer.com',
     link: 'Link',
-    description: 'Awesome event taking place somewhere today with amazing hosts. Come with your finest outfit.'
+    description: 'Awesome event taking place somewhere today organized by amazing people. Wear your finest outfit.'
 
 });
 Binder.redefine();
@@ -119,7 +121,7 @@ els.forEach(el => {
 });
 
 
-//img upload preview
+//img upload preview (taken from stackoverflow)
 function readURL(input) {
   if (input.files && input.files[0]) {
     var reader = new FileReader();
@@ -136,13 +138,19 @@ $("#img-upload").change(function() {
   readURL(this);
 });
 
-
-//handling showing or not the location input
-const typeOfEvent = document.querySelector('select');
+//const declarations and event listeners
+const typeOfEvent = document.querySelector('.select-type');
 const locationInput = document.querySelector('.location');
 const placePreview = document.querySelector('.place');
+const datePreview = document.querySelector('.date');
+const dateInput = document.querySelector('#date-input');
+const periodicityOption = document.querySelector('.select-period');
+const periodicityInput = document.querySelector('.period');
+const periodicityPreview = document.querySelector('.periodicity');
 
+//handling showing or not the location input
 typeOfEvent.addEventListener('change', () => {
+    typeOfEvent.style.color = 'black';
     if (typeOfEvent.value === 'Online') {
         locationInput.style.display = 'none';
         placePreview.style.display = 'none';
@@ -152,14 +160,33 @@ typeOfEvent.addEventListener('change', () => {
     }   
 })
 
+//handle showing or not periodicity
+periodicityOption.addEventListener('change', () => {
+    console.log("hey")
+    periodicityOption.style.color = 'black';
+    if (periodicityOption.value === 'Recurring') {
+        periodicityInput.style.display = 'flex';
+        periodicityPreview.style.display = 'block';
+        datePreview.style.display = 'none';
+        dateInput.style.display = 'none';
+    } else {
+        periodicityInput.style.display = 'none';
+        periodicityPreview.style.display = 'none';
+        datePreview.style.display = 'block';
+        dateInput.style.display = 'flex';
+    }
+})
 
 //preview date correctly
-const datePreview = document.querySelector('.date');
-const dateInput = document.querySelector('#date-input');
-
 dateInput.addEventListener('change', () => {
     const newDate = new Date(dateInput.value);
     const newDateStr = newDate.toString();
     datePreview.innerHTML = newDateStr.slice(0, 16);
 })
 
+//change font color for inputs when active (placeholder can't be passed with binding logic)
+document.querySelector('.new-event-form').addEventListener('click', (e) => {
+    if (e.target.className === 'inpt') {
+        e.target.style.color = 'black';       
+    }
+})
