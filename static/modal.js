@@ -1,7 +1,7 @@
 'use strict';
 
 const overlay = document.querySelector('#overlay');
-const events = document.querySelector('#events');
+const trigger = document.querySelector('#events') || document.querySelector('.open-m');
 const modal = document.querySelector('#modal');
 const modalLink = modal.querySelector('p');
 
@@ -11,7 +11,7 @@ if (modalLink.innerHTML === '') {
     modalLink.classList.add('modal-link')
 }
 
-events.addEventListener('click', (e) => {
+trigger.addEventListener('click', (e) => {
     console.log(e.target);
     e.preventDefault();
     if (e.target.className.includes('share-arrow') || e.target.className.includes('open-m')) {

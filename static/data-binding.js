@@ -185,7 +185,7 @@ dateInput.addEventListener('change', () => {
 
 //change font color for inputs when active (placeholder can't be passed with binding logic)
 document.querySelector('.new-event-form').addEventListener('click', (e) => {
-     if (e.target.type != 'file') {
+     if (e.target.type != 'file' || e.target.className.includes('btn')) {
          e.preventDefault();
     }
     if (e.target.className === 'inpt') {
