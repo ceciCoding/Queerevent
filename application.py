@@ -22,7 +22,10 @@ def calendar():
 @app.route("/new.html")
 def new_event():
     return render_template("new.html")
-    
+
+@app.route("/event.html")
+def event():
+    return render_template("event.html")
     
 if __name__ == "__main__":
     app.run(debug=True)
