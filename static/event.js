@@ -1,8 +1,8 @@
 'use strict';
 
 //dynamic height
-const map = document.querySelector('.map');
-map.style.height = `${map.offsetWidth * 0.6}px`;
+const mapContainer = document.querySelector('.map');
+mapContainer.style.height = `${mapContainer.offsetWidth * 0.6}px`;
 
 // Create the script tag, set the appropriate attributes
 var script = document.createElement('script');
@@ -12,10 +12,14 @@ script.defer = true;
 // Attach your callback function to the `window` object
 window.initMap = function() {
   // JS API is loaded and available
-    new google.maps.Map(map, {
-        center: {lat: -34.397, lng: 150.644},
-        zoom: 12
+    const map = new google.maps.Map(mapContainer, {
+        center: { lat: 37.946051, lng: -1.131742 },
+        zoom: 15
+    });
 
+    const marker = new google.maps.Marker({
+        position: { lat: 37.946051, lng: -1.131742 },
+        map: map
     })
 };
 
