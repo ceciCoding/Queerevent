@@ -15,6 +15,7 @@
 body {
   margin: 0 auto;
   width: 80%;
+  max-width: 1500px;
   font-family: 'Nunito', sans-serif;
   --app-red: #C60910;
   --app-white: #F4F4F4;
@@ -456,6 +457,7 @@ label {
 
 .triangle {
     list-style: none;
+    margin-bottom: .5rem;
 }
 
 .triangle::before {
@@ -463,6 +465,23 @@ label {
 } 
 
 /***********EVENT DETAIL STYLES*************/
+.four-grid {
+    display: grid;
+    grid-template-columns: 60% 40%;
+    grid-template-rows: repeat(2, 1fr);
+    gap: 2rem;
+}
+
+.four-grid .preview-info {
+    grid-column: 1/2;
+    grid-row: 1/2;
+}
+
+.four-grid .preview-img {
+    grid-column: 2/3;
+    grid-row: 1/2;
+    margin-top: 2rem;
+}
 
 
 /***********FOOTER STYLES*************/
@@ -630,6 +649,16 @@ footer {
   .preview-img {
       height: 250px;
   }
+
+  .preview-info {
+      width: 100%;
+  }
+
+/***********MOBILE EVENT DETAIL STYLES*************/
+  .four-grid {
+    display: block;
+  }
+
 
 }
 
