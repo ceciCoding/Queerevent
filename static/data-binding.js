@@ -162,7 +162,6 @@ typeOfEvent.addEventListener('change', () => {
 
 //handle showing or not periodicity
 periodicityOption.addEventListener('change', () => {
-    console.log("hey")
     periodicityOption.style.color = 'black';
     if (periodicityOption.value === 'Recurring') {
         periodicityInput.style.display = 'flex';
@@ -186,6 +185,9 @@ dateInput.addEventListener('change', () => {
 
 //change font color for inputs when active (placeholder can't be passed with binding logic)
 document.querySelector('.new-event-form').addEventListener('click', (e) => {
+     if (e.target.type != 'file') {
+         e.preventDefault();
+    }
     if (e.target.className === 'inpt') {
         e.target.style.color = 'black';       
     }
