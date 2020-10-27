@@ -28,8 +28,12 @@ a {
     text-decoration: none;
 }
 
+p {
+    line-height: 1.8rem; 
+}
+
 main {
-    margin-top: 9rem;
+    margin-top: 10rem;
 }
 
 h1 {
@@ -467,22 +471,44 @@ label {
 /***********EVENT DETAIL STYLES*************/
 .four-grid {
     display: grid;
-    grid-template-columns: 60% 40%;
-    grid-template-rows: repeat(2, 1fr);
-    gap: 2rem;
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: repeat(2, auto);
+    grid-row-gap: 4rem;
 }
 
 .four-grid .preview-info {
-    grid-column: 1/2;
+    grid-column: 1/7;
     grid-row: 1/2;
+}
+
+.four-grid .preview-info header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+.four-grid .preview-info header h2 {
+    margin: 0;
 }
 
 .four-grid .preview-img {
-    grid-column: 2/3;
+    grid-column: 7/13;
     grid-row: 1/2;
-    margin-top: 2rem;
+    width: 100%;
 }
 
+.four-grid > div:last-of-type {
+    grid-column: 10/13;
+    grid-row: 2/3;
+    align-self: center;
+    justify-self: center;
+}
+
+.map {
+    grid-column: 1/9;
+    grid-row: 2/3;
+    width: 100%;
+    border: 1px solid;
+}
 
 /***********FOOTER STYLES*************/
 footer > a {
@@ -518,6 +544,7 @@ footer {
 
     main {
         margin: 1.5rem;
+        margin-bottom: 6rem;
     }
 
    h1 {
@@ -648,6 +675,7 @@ footer {
 
   .preview-img {
       height: 250px;
+      width: 100%;
   }
 
   .preview-info {
@@ -659,7 +687,9 @@ footer {
     display: block;
   }
 
-
+  .four-grid > div:last-of-type {
+      display: none;
+  }
 }
 
 /*events grid for smaller desktops*/
