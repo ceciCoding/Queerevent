@@ -57,6 +57,7 @@ h1 {
     background-color: var(--app-white);   
     width: 80%;
     margin: 0 auto;
+    padding-top: 1rem;
 }
 
 .nav-container {
@@ -68,11 +69,25 @@ h1 {
 .desktop-nav ul {
     display: flex;
     list-style: none;
+    align-items: center;
 }
 
 .desktop-nav ul li {
     margin-left: 3.5rem;
     font-weight: 700;
+}
+
+.user-image {
+    width: 2rem;
+    height: 2rem;
+    clip-path: circle();
+}
+
+.user-image img {
+    max-width: 100%;
+    max-height: 100%;
+    display: block;
+    margin: 0 auto;
 }
 
 /***********SEARCH BAR STYLES*************/
