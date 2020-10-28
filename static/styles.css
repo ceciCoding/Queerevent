@@ -90,6 +90,10 @@ h1 {
     margin: 0 auto;
 }
 
+.mobile-user {
+    display: none;
+}
+
 /***********SEARCH BAR STYLES*************/
 .search-hero {
     display: grid;
@@ -635,6 +639,7 @@ footer {
     main {
         margin: 1.5rem;
         margin-bottom: 6rem;
+        margin-top: 4rem;
     }
 
    h1 {
@@ -642,6 +647,19 @@ footer {
    }
 
 /***********MOBILE NAVIGATION BAR STYLES*************/
+  .mobile-user {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: end;
+    width: 100%;
+    z-index: 80;
+    margin-bottom: 1rem;
+    padding: 1rem;
+    position: fixed;
+    top: 0;
+    background-color: var(--app-white);
+  }
+
   .mobile-nav {
     background-color: var(--app-red);
     width: 100vw;
