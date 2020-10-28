@@ -1,5 +1,4 @@
-from flask import Flask, render_template, request, session
-
+from flask import Flask, render_template, request, session, url_for
 app = Flask(__name__)
 TEMPLATES_AUTO_RELOAD=True
 
@@ -10,6 +9,10 @@ def home():
 @app.route("/landing.html")
 def landing():
     return render_template("landing.html")
+
+@app.route("/login.html")
+def login():
+    return render_template("login.html")
 
 @app.route("/favorites.html")
 def favorites():

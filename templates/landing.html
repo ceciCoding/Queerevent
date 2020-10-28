@@ -13,5 +13,25 @@
             <button class="btn">See events</button>
         </div>
     </div>
+    <div class="pointing-girl">
+        <img src="../static/assets/pointing-girl.svg" alt="drawing of a girl with a finger pointing to the text">
+    </div>
+    <div class="landing-info">
+        <h2>What is Queerevent?</h2>
+        <p>Queerevent is a hub for promoting and finding LGBT+ events.</p>
+        <p><strong>At Queerevent you can:</strong></p>
+        <ul>
+            <li class="triangle">Discover and promote online or physical events</li>
+            <li class="triangle">Post and find recurring events like podcasts, Youtube channels, etc. hosted 
+                by queer people
+            </li>
+            <li class="triangle">Find LGBT+ events in your city or the city you are visiting</li>
+            <li class="triangle">Add events to your calendar so you don't miss on anything</li>
+        </ul>
+        <div class="buttons">
+            <button class="btn">Join now</button>
+            <a href="{{ url_for('home')}}"><button class="btn">See events</button></a>
+        </div>
+    </div>
 </section>
 {% endblock %}

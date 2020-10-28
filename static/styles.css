@@ -278,6 +278,11 @@ h1 {
     cursor: pointer;
 }
 
+[type="submit"] {
+    width: 40%;
+    margin: 0 auto;
+}
+
 /***********CALENDAR STYLES*************/
 .top-calendar {
     display: grid;
@@ -406,7 +411,7 @@ label {
     gap: 4rem;
 }
 
-.new-event-form {
+.form {
     width: 100%;
     grid-column: 1/2;
     display: flex;
@@ -510,7 +515,7 @@ label {
     border: 1px solid;
 }
 
-/***********LANDING PAGE STYLES*************/
+/***********LANDING PAGE AND LOGIN STYLES*************/
 .big-hero {
     grid-column: 7/12;
     grid-row: 1/2;
@@ -533,14 +538,44 @@ label {
     font-size: 1.1rem;
 }
 
+.welcome .form p {
+    font-size: .8rem;
+    text-decoration: underline;
+}
+
+.welcome .form {
+    width: 70%;
+}
+
 .buttons {
     margin-top: 2rem;
     display: flex;
     justify-content: space-between;
 }
 
-.buttons:first-child {
+.buttons:first-child .btn {
     margin-right: 1rem;
+}
+
+.pointing-girl {
+    grid-column: 1/6;
+    grid-row: 2/3;
+    align-self: center;
+    justify-self: center;
+}
+
+.pointing-girl img {
+    height: 30vh;
+    transform: scaleX(-1);
+}
+
+.landing-info {
+    grid-column: 7/11;
+    grid-row: 2/3;
+}
+
+.landing-info .triangle {
+    margin-bottom: 1rem;
 }
 
 /***********FOOTER STYLES*************/
@@ -585,7 +620,7 @@ footer {
 
 /***********MOBILE NAVIGATION BAR STYLES*************/
   .mobile-nav {
-    background-color: #CE2F35;
+    background-color: var(--app-red);
     width: 100vw;
     height: 60px;
     display: flex;
@@ -723,9 +758,22 @@ footer {
       display: none;
   }
 
-/***********MOBILE LANDING PAGE STYLES*************/
+/***********MOBILE LANDING PAGE AND MOBILE LOGIN STYLES*************/
   .welcome {
+      margin-bottom: 4rem;
+  }
+
+  .welcome h1,
+  .welcome p {
       text-align: center;
+  }
+
+  .welcome .form {
+      width: 100%;
+  }
+
+  .pointing-girl {
+      display: none;
   }
 
 }
