@@ -37,8 +37,8 @@ main {
 }
 
 h1 {
-    font-size: 2.2rem;
-}
+    font-size: 1.8rem;
+} 
 
 /***********NAVIGATION BAR STYLES*************/
 .mobile-nav {
@@ -184,7 +184,7 @@ h1 {
     background-size: cover;
 }
 .events-menu {
-    width: 35%;
+    width: 400px;
 }
 
 .events-menu ul {
@@ -496,7 +496,7 @@ label {
     width: 100%;
 }
 
-.four-grid > div:last-of-type {
+.four-grid .cta {
     grid-column: 10/13;
     grid-row: 2/3;
     align-self: center;
@@ -508,6 +508,18 @@ label {
     grid-row: 2/3;
     width: 100%;
     border: 1px solid;
+}
+
+/***********LANDING PAGE STYLES*************/
+.big-hero {
+    grid-column: 7/12;
+    grid-row: 1/2;
+    width: 100%;
+}
+
+.big-hero img {
+    width: 100%;
+    height: auto;
 }
 
 /***********FOOTER STYLES*************/
@@ -527,7 +539,6 @@ footer {
     align-items: center;
     margin-top: 6rem;
 }
-
 
 
 /****** MOBILE STYLES *********/
@@ -687,7 +698,7 @@ footer {
     display: block;
   }
 
-  .four-grid > div:last-of-type {
+  .four-grid .cta {
       display: none;
   }
 }

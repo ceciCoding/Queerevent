@@ -2,13 +2,14 @@
 
 //dynamic height
 const mapContainer = document.querySelector('.map');
-mapContainer.style.height = `${mapContainer.offsetWidth * 0.6}px`;
+mapContainer.style.height = `${mapContainer.offsetWidth * 0.7}px`;
 
 // Create the script tag, set the appropriate attributes
 var script = document.createElement('script');
 script.src = 'https://maps.googleapis.com/maps/api/js?key=AIzaSyCb8eFJlYyBxSkuRVETVvzWEJqyy4kGeBI&callback=initMap';
 script.defer = true;
 
+const iconBase = 'https://developers.google.com/maps/documentation/javascript/examples/full/images/';
 // Attach your callback function to the `window` object
 window.initMap = function() {
   // JS API is loaded and available

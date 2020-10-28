@@ -7,6 +7,10 @@ TEMPLATES_AUTO_RELOAD=True
 def home():
     return render_template("home.html", title="Find Events")
 
+@app.route("/landing.html")
+def landing():
+    return render_template("landing.html")
+
 @app.route("/favorites.html")
 def favorites():
     return render_template("favorites.html", title="Favorite Events")
