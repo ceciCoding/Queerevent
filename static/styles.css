@@ -301,7 +301,7 @@ h1 {
 [type="submit"] {
     min-width: 40%;
     max-width: 75%;
-    margin: 0 auto;
+    /* margin: 0 auto; */
     margin-top: 2rem;
 }
 
@@ -607,9 +607,15 @@ label {
 }
 
 /***********ACCOUNT STYLES*************/
+#user-info {
+    display: grid;
+    grid-template-columns: 40% 60%;
+}
+
 #user-info .user-image {
     width: 150px;
     height: 150px;
+    grid-column: 1/2;
 }
 
 #user-info .user-image img {
@@ -618,6 +624,27 @@ label {
 
 .change-img {
     margin-top: 1rem;
+}
+
+#user-info .form {
+    width: 70%;
+    margin-top: 2rem;
+}
+
+#change-psw {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.btns {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#cancel {
+    margin-top: 2rem;
 }
 
 /***********FOOTER STYLES*************/
@@ -814,7 +841,7 @@ footer {
       display: none;
   }
 
-/***********MOBILE LANDING PAGE AND MOBILE LOGIN STYLES*************/
+/***********MOBILE LANDING PAGE AND LOGIN STYLES*************/
   .welcome {
       margin-bottom: 4rem;
   }
@@ -830,6 +857,15 @@ footer {
 
   .pointing-girl {
       display: none;
+  }
+
+  /***********MOBILE ACCOUNT STYLES*************/
+  #user-info {
+      display: block;
+  }
+
+  #user-info .form {
+      width: 100%;
   }
 
 }

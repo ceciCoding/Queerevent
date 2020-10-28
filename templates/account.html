@@ -3,13 +3,38 @@
 {% block main %}
 <div id="user-info">
     <div class="user-image">
-        <img src="../static/assets/hero-mobile.jpg" id="prv-img" alt="user's photo">
-        <div class="change-img">
+        <img src="../static/assets/hero-mobile.jpg" id="prv-img" alt="user photo">
+         <div class="change-img">
             <label for="change">Change image</label>
             <input type="file" name="change" id="img-upload">
-        </div>
+        </div> 
     </div>
+    <form class="form">
+        <div class="form-control">
+            <label for="name">Name</label>
+            <input type="text" name="name">
+            <span>User's name</span>
+        </div>
+        <div class="form-control">
+            <label for="email">Email</label>
+            <input type="text" name="email">
+            <span>example@gmail.com</span>
+        </div>
+        <div class="form-control" id="pswd">
+            <label for="password">Password</label>
+            <input type="text" name="password">
+            <span id="change-psw">Change password</span>
+        </div>
+        <div class="form-control" id="confirm">
+            <label for="email">Confirm Password</label>
+            <input type="text" name="email">
+        </div>
+        <div class="btns">
+            <button class="btn" id="cancel">Cancel</button>
+            <input class="btn" type="submit" value="Save">
+        </div>
+    </form>
 </div>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>s
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 <script src="../static/preview-img.js"></script>
 {% endblock %}
