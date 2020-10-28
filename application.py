@@ -18,6 +18,10 @@ def login():
 def create():
     return render_template("create-account.html")
 
+@app.route("/account.html")
+def account():
+    return render_template("account.html")
+
 @app.route("/favorites.html")
 def favorites():
     return render_template("favorites.html", title="Favorite Events")

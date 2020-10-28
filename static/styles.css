@@ -80,7 +80,7 @@ h1 {
 .user-image {
     width: 2rem;
     height: 2rem;
-    clip-path: circle();
+   
 }
 
 .user-image img {
@@ -88,6 +88,7 @@ h1 {
     max-height: 100%;
     display: block;
     margin: 0 auto;
+    clip-path: circle();
 }
 
 .mobile-user {
@@ -603,6 +604,20 @@ label {
 
 .landing-info .triangle {
     margin-bottom: 1rem;
+}
+
+/***********ACCOUNT STYLES*************/
+#user-info .user-image {
+    width: 150px;
+    height: 150px;
+}
+
+#user-info .user-image img {
+    margin: 0;
+}
+
+.change-img {
+    margin-top: 1rem;
 }
 
 /***********FOOTER STYLES*************/

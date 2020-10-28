@@ -1,1 +1,15 @@
 {% extends 'layout.html' %}
+
+{% block main %}
+<div id="user-info">
+    <div class="user-image">
+        <img src="../static/assets/hero-mobile.jpg" id="prv-img" alt="user's photo">
+        <div class="change-img">
+            <label for="change">Change image</label>
+            <input type="file" name="change" id="img-upload">
+        </div>
+    </div>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>s
+<script src="../static/preview-img.js"></script>
+{% endblock %}
