@@ -522,6 +522,27 @@ label {
     height: auto;
 }
 
+.welcome {
+    grid-column: 1/5;
+    grid-row: 1/2;
+    align-self: center;
+    width: auto;
+}
+
+.welcome p {
+    font-size: 1.1rem;
+}
+
+.buttons {
+    margin-top: 2rem;
+    display: flex;
+    justify-content: space-between;
+}
+
+.buttons:first-child {
+    margin-right: 1rem;
+}
+
 /***********FOOTER STYLES*************/
 footer > a {
     font-size: .6rem;
@@ -701,9 +722,15 @@ footer {
   .four-grid .cta {
       display: none;
   }
+
+/***********MOBILE LANDING PAGE STYLES*************/
+  .welcome {
+      text-align: center;
+  }
+
 }
 
-/*events grid for smaller desktops*/
+/*events grid for smaller desktops and special media queries in general*/
 @media screen and (max-width: 1500px) {
     #events {
         grid-template-columns: repeat(3, 1fr);
@@ -713,5 +740,11 @@ footer {
 @media screen and (max-width: 1200px) {
     #events {
         grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media screen and (min-width: 1350px) {
+    .welcome .buttons {
+        width: 80%;
     }
 }
