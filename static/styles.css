@@ -549,6 +549,12 @@ label {
     width: 21rem;
 }
 
+#alert {
+    display: none;
+    color: var(--app-red);
+    text-decoration: none;
+}
+
 .buttons {
     margin-top: 2rem;
     display: flex;
@@ -608,7 +614,7 @@ footer {
 
     body {
         padding: 0;
-        width: 100%;
+        width: 100vw;
     }
 
     main {
@@ -693,7 +699,7 @@ footer {
   .events-menu ul {
       margin-top: 2rem;
       margin-bottom: .5rem;
-      width: 100%;
+      width: 80%;
   }
 
   .events-menu li {

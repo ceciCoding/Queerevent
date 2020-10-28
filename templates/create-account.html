@@ -15,7 +15,8 @@
             </div>
             <div class="form-control">
                 <label for="email">Email</label>
-                <input type="text" name="email">
+                <input type="text" name="email" id="email" onchange="validateEmail()">
+                <p id="alert">Enter a valid email</p>
             </div>
             <div class="form-control">
                 <label for="password">Password</label>
@@ -29,4 +30,5 @@
         </form>       
     </div>
 </section>
+<script src="../static/validation.js"></script>
 {% endblock %}

@@ -104,10 +104,9 @@ Binder.setScope({
     startingHour: '4:00 PM',
     endingHour: '8:00 PM',
     organizer: 'Organizer',
-    website: 'https://organizer.com',
+    website: 'https://example.com',
     link: 'Link',
     description: 'Awesome event taking place somewhere today organized by amazing people. Wear your finest outfit.'
-
 });
 Binder.redefine();
 
@@ -184,8 +183,8 @@ dateInput.addEventListener('change', () => {
 })
 
 //change font color for inputs when active (placeholder can't be passed with binding logic)
-document.querySelector('.new-event-form').addEventListener('click', (e) => {
-      if (e.target.type === 'text') {
+document.querySelector('.form').addEventListener('click', (e) => {
+    if (e.target.type === 'text') {
           e.preventDefault();
      }
     if (e.target.className === 'inpt') {
