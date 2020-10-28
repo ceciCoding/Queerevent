@@ -279,8 +279,10 @@ h1 {
 }
 
 [type="submit"] {
-    width: 40%;
+    min-width: 40%;
+    max-width: 75%;
     margin: 0 auto;
+    margin-top: 2rem;
 }
 
 /***********CALENDAR STYLES*************/
@@ -544,7 +546,7 @@ label {
 }
 
 .welcome .form {
-    width: 70%;
+    width: 21rem;
 }
 
 .buttons {

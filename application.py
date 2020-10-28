@@ -14,6 +14,10 @@ def landing():
 def login():
     return render_template("login.html")
 
+@app.route("/create-account.html")
+def create():
+    return render_template("create-account.html")
+
 @app.route("/favorites.html")
 def favorites():
     return render_template("favorites.html", title="Favorite Events")
