@@ -5,7 +5,7 @@
 {% block events %}
 {% for n in range(12) %}
 <a href="{{ url_for('event') }}">
-    <div class="event-container">
+    <div class="event-container base-card">
         <!-- Done this way to enable CSS properties for background images -->
         <div class="img-container" style="background-image: url(../static/assets/pride.jpg);"></div>
         <div class="info-container">
