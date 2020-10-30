@@ -4,7 +4,7 @@
 <div id="user-info">
     <div class="user-image">
         <img src="../static/assets/hero-mobile.jpg" id="prv-img" alt="user photo">
-         <div class="change-img">
+         <div class="change-img edit">
             <label for="change">Change image</label>
             <input type="file" name="change" id="img-upload">
         </div> 
@@ -12,29 +12,31 @@
     <form class="form">
         <div class="form-control">
             <label for="name">Name</label>
-            <input type="text" name="name" style="display: none;">
+            <input type="text" name="name" class="edit">
             <span>User's name</span>
         </div>
         <div class="form-control">
             <label for="email">Email</label>
-            <input type="text" name="email">
+            <input type="text" name="email" class="edit">
             <span>example@gmail.com</span>
         </div>
-        <div class="form-control" id="pswd">
+        <div class="form-control edit">
             <label for="password">Password</label>
             <input type="password" name="password">
-            <span id="change-psw">Change password</span>
         </div>
-        <div class="form-control" id="confirm">
+        <p id="change-psw">Change password</p>
+        <div class="form-control edit">
             <label for="email">Confirm Password</label>
             <input type="password" name="email">
         </div>
-        <div class="btns">
+        <div class="btns edit">
             <button class="btn" id="cancel">Cancel</button>
             <input class="btn" type="submit" value="Save">
         </div>
     </form>
+    <span id="edit">Edit <ion-icon name="create-outline" style="color: #4146CB;"></ion-icon></span>
 </div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 <script src="../static/preview-img.js"></script>
+<script scr="../static/account.js"></script>
 {% endblock %}

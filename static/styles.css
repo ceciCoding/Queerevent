@@ -622,6 +622,7 @@ label {
 #change-psw {
     text-decoration: underline;
     cursor: pointer;
+    font-size: .8rem;
 }
 
 .btns {
@@ -633,6 +634,18 @@ label {
 
 #cancel {
     margin-top: 2rem;
+}
+
+#edit {
+    grid-column: 1/2;
+    margin-top: 2rem;
+    color: #4146CB;
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.edit {
+    display: none;
 }
 
 /***********FOOTER STYLES*************/
