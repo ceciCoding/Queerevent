@@ -610,6 +610,16 @@ label {
     margin: 0;
 }
 
+#user-info .right-img {
+    grid-column: 2/3;
+    align-self: center;
+    justify-self: center;
+}
+
+#user-info .right-img img{
+    height: 350px;
+}
+
 .change-img {
     margin-top: 1rem;
 }
@@ -630,6 +640,7 @@ label {
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
+    width: 100%;
 }
 
 #cancel {
@@ -644,9 +655,9 @@ label {
     text-decoration: underline;
 }
 
-.edit {
+/* .edit {
     display: none;
-}
+} */
 
 /***********FOOTER STYLES*************/
 footer > a {
@@ -867,6 +878,16 @@ footer {
 
   #user-info .form {
       width: 100%;
+  }
+
+  #user-info .right-img {
+      display: flex;
+      justify-content: center;
+  }
+
+  #user-info .right-img img {
+      height: 200px;
+      margin-top: 3rem;
   }
 
 }
