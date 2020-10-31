@@ -1,5 +1,45 @@
 {% extends 'layout.html' %}
 
 {% block main %}
-
+<div id="user-info">
+    <div class="user-image">
+        <img src="../static/assets/user.png" id="prv-img" alt="user photo">
+    </div>
+    <div class="change-img">
+       <label for="change">Change image (max. size 200 kb)</label>
+       <input type="file" name="change" id="img-upload">
+    </div> 
+    <form class="form">
+        <div class="form-control">
+            <label for="name">Name</label>
+            <input type="text" name="name" class="edit">
+        </div>
+        <div class="form-control">
+            <label for="email">Email</label>
+            <input type="text" name="email" class="edit">
+        </div>
+        <div class="form-control">
+            <label for="old-password">Old Password</label>
+            <input type="password" name="old-password">
+        </div>
+        <div class="form-control">
+            <label for="password">New Password</label>
+            <input type="password" name="password">
+        </div>
+        <div class="form-control">
+            <label for="confirm">Confirm New Password</label>
+            <input type="password" name="confirm ">
+        </div>
+        <div class="btns">
+            <button class="btn" id="cancel" onclick="window.history.back();">Cancel</button>
+            <input class="btn" type="submit" value="Save">
+        </div>
+    </form>
+    <div class="right-img">
+        <img src="../static/assets/sitting-human.svg" alt="drawing of a person sitting on their knees">
+    </div>
+</div>
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="../static/preview-img.js"></script>
+<script src="../static/validation.js"></script>
 {% endblock %}

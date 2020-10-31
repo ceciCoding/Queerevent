@@ -78,8 +78,8 @@ h1 {
 }
 
 .user-image {
-    width: 2rem;
-    height: 2rem;
+    width: 1.5rem;
+    height: 1.5rem;
    
 }
 
@@ -291,10 +291,10 @@ h1 {
 }
 
 [type="submit"] {
-    min-width: 40%;
-    max-width: 75%;
-    /* margin: 0 auto; */
+    /* min-width: 30%;
+    max-width: 75%; */
     margin-top: 2rem;
+    padding: .7rem 2.5rem;
 }
 
 /***********CALENDAR STYLES*************/
@@ -601,13 +601,19 @@ label {
 }
 
 #user-info .user-image {
+    grid-column: 1/2;
+    margin-bottom: 2rem;
     width: 150px;
     height: 150px;
+}
+
+#user-info .information {
     grid-column: 1/2;
 }
 
 #user-info .user-image img {
     margin: 0;
+   
 }
 
 #user-info .right-img {
@@ -617,11 +623,14 @@ label {
 }
 
 #user-info .right-img img{
-    height: 350px;
+    height: 300px;
 }
 
 .change-img {
     margin-top: 1rem;
+    width: 100%;
+    display: inline-block;
+    grid-column: 1/2;
 }
 
 #user-info .form {

@@ -11,7 +11,7 @@
         <form action="" class="form">
             <div class="form-control">
                 <label for="email">Email</label>
-                <input type="text" name="email">
+                <input type="text" name="email" id="email" onkeyup="validateEmail()">
             </div>
             <div class="form-control">
                 <label for="password">Password</label>
@@ -24,4 +24,5 @@
         </form>       
     </div>
 </section>
+<script src="../static/validation.js"></script>
 {% endblock %}

@@ -1,7 +1,7 @@
 'use strict';
+const form = document.querySelector('.form');
 
 function validateEmail() {
-    const form = document.querySelector('.form');
     const email = document.querySelector('#email').value;
     const alert = document.querySelector('#alert');
     const pattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
@@ -12,3 +12,4 @@ function validateEmail() {
         alert.style.display = 'none';
     }
 }
+

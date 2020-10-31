@@ -2,43 +2,24 @@
 
 {% block main %}
 <div id="user-info">
-    <div class="user-image">
-        <img src="../static/assets/hero-mobile.jpg" id="prv-img" alt="user photo">
-         <div class="change-img">
-            <label for="change">Change image</label>
-            <input type="file" name="change" id="img-upload">
-        </div> 
+    <div class="information">
+        <div class="user-image">
+            <img src="../static/assets/user.png" id="prv-img" alt="user photo">
+        </div>
+        <div>
+            <label for="">Name</label>
+            <p>User's name</p>
+        </div>
+        <br>
+        <div>
+            <label for="">Email</label>
+            <p>User's email</p>
+        </div>
+        <br>
+        <a href="{{ url_for('edit') }}"><span id="edit">Edit <ion-icon name="create-outline" style="color: inherit"></ion-icon></span></a>
     </div>
-    <form class="form">
-        <div class="form-control">
-            <label for="name">Name</label>
-            <input type="text" name="name" class="edit">
-        </div>
-        <div class="form-control">
-            <label for="email">Email</label>
-            <input type="text" name="email" class="edit">
-        </div>
-        <div class="form-control">
-            <label for="old-password">Old Password</label>
-            <input type="password" name="old-password">
-        </div>
-        <div class="form-control">
-            <label for="password">New Password</label>
-            <input type="password" name="password">
-        </div>
-        <div class="form-control">
-            <label for="confirm">Confirm New Password</label>
-            <input type="password" name="confirm">
-        </div>
-        <div class="btns">
-            <button class="btn" id="cancel">Cancel</button>
-            <input class="btn" type="submit" value="Save">
-        </div>
-    </form>
     <div class="right-img">
         <img src="../static/assets/sitting-human.svg" alt="drawing of a person sitting on their knees">
     </div>
 </div>
-<scrip src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></scrip>
-<scrip src="../static/preview-img.js"></scrip>
 {% endblock %}
