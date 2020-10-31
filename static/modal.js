@@ -1,7 +1,7 @@
 'use strict';
 
 const overlay = document.querySelector('#overlay');
-const trigger = document.querySelector('#events') || document.querySelector('.open-m');
+const trigger = document.querySelector('#events') || document.querySelector('main > section');
 const modal = document.querySelector('#modal');
 const modalLink = modal.querySelector('p');
 
