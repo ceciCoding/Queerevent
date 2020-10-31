@@ -649,7 +649,8 @@ label {
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
+    gap: 2rem;
     width: 100%;
 }
 
@@ -688,7 +689,7 @@ footer {
 }
 
 
-/****** MOBILE STYLES *********/
+/****** MOBILE AND TABLET STYLES *********/
 
 @media screen and (max-width: 1100px) {
     .desktop-nav {
@@ -702,7 +703,7 @@ footer {
 
     main {
         margin: 1.5rem;
-        margin-bottom: 6rem;
+        margin-bottom: 8rem;
         margin-top: 4rem;
     }
 
