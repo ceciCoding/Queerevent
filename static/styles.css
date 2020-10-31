@@ -689,7 +689,7 @@ footer {
 
 /****** MOBILE STYLES *********/
 
-@media screen and (max-width: 750px) {
+@media screen and (max-width: 1100px) {
     .desktop-nav {
         display: none;
     }
@@ -899,6 +899,23 @@ footer {
       margin-top: 3rem;
   }
 
+}
+
+/* width for tablets*/
+@media screen and (min-width: 800px) and (max-width: 1100px) {
+    main {
+        margin: 0 auto;
+        margin-top: 5rem;
+        width: 50%;
+    }
+}
+
+@media screen and (min-width: 500px) and (max-width: 800px) {
+    main {
+        margin: 0 auto;
+        margin-top: 5rem;
+        width: 70%;
+    }
 }
 
 /*events grid for smaller desktops and special media queries in general*/
