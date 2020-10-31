@@ -36,6 +36,14 @@ main {
     margin-top: 10rem;
 }
 
+/*define main grid*/
+main > section {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: repeat(2, auto);
+
+}
+
 h1 {
     font-size: 1.8rem;
 } 
@@ -86,7 +94,6 @@ h1 {
 .user-image img {
     max-width: 100%;
     max-height: 100%;
-    /* display: block;  */
     margin: 0 auto;
     clip-path: circle();
     object-fit: contain;
@@ -97,19 +104,13 @@ h1 {
 }
 
 /***********SEARCH BAR STYLES*************/
-.search-hero {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: 1fr;
-}
-
 .search-bar {
     position: relative;
     display: inline-block;
 }
 
 .search-area {
-    grid-row: 1/2;
+    grid-row: 1/5;
     align-self: center;
 }
 
@@ -133,7 +134,7 @@ h1 {
 
 .hero {
     width: 60%;
-    grid-column: 2/3;
+    grid-column: 6/13;
     justify-self: center;
     font-size: 1.2rem;
     text-align: center;
@@ -292,27 +293,19 @@ h1 {
 }
 
 [type="submit"] {
-    /* min-width: 30%;
-    max-width: 75%; */
     margin-top: 2rem;
     padding: .7rem 2.5rem;
     align-self: center;
 }
 
 /***********CALENDAR STYLES*************/
-.top-calendar {
-    display: grid;
-    grid-template-columns: 40% 60%;
-    grid-template-rows: 450px;
-}
-
 #calendar {
-    grid-column: 1/2;
+    grid-column: 1/4;
     width: 80%;
-    min-width: 400px;
+    min-width: 350px;
     max-width: 100%;
-    height: 80%;
-    max-height: 100%;
+    height: 100%;
+    /* max-height: 100%; */
     font-size: 85%;
 }
 
@@ -361,7 +354,7 @@ h1 {
 
 .days {
     width: 100%;
-    height: 80%;
+    height: auto; 
     display: grid;
     grid-template-columns: repeat(7, 1fr);
     padding-bottom: .3rem;
@@ -386,8 +379,8 @@ h1 {
 }
 
 .calendar-girl {
-    grid-column: 2/3;
-    width: 25%;
+    grid-column: 7/11;
+    width: 50%;
     justify-self: center;
     align-self: center;
 }
@@ -417,15 +410,9 @@ label {
 }
 
 /***********NEW EVENT STYLES*************/
-.new-event-grid {
-    display: grid;
-    grid-template-columns: 3fr 7fr;
-    gap: 4rem;
-}
-
 .form {
     width: 100%;
-    grid-column: 1/2;
+    grid-column: 1/4;
     display: flex;
     flex-flow: column nowrap;
     justify-content: center;
@@ -448,7 +435,7 @@ label {
 }
 
 .preview-container {
-    grid-column: 2/3;
+    grid-column: 5/13;
 }
 
 .preview-info {
@@ -471,7 +458,6 @@ label {
 
 .preview-img img {
     max-width: 100%;
-    max-height: 100%;
     display: block;
     margin: 0 auto;
 }
@@ -486,13 +472,6 @@ label {
 } 
 
 /***********EVENT DETAIL STYLES*************/
-.four-grid {
-    display: grid;
-    grid-template-columns: repeat(12, 1fr);
-    grid-template-rows: repeat(2, auto);
-    grid-row-gap: 4rem;
-}
-
 .four-grid .preview-info {
     grid-column: 1/7;
     grid-row: 1/2;
@@ -508,23 +487,24 @@ label {
 }
 
 .four-grid .preview-img {
-    grid-column: 7/13;
+    grid-column: 8/13;
     grid-row: 1/2;
     width: 100%;
 }
 
 .four-grid .cta {
-    grid-column: 10/13;
+    grid-column: 9/13;
     grid-row: 2/3;
     align-self: center;
     justify-self: center;
 }
 
 .map {
-    grid-column: 1/9;
+    grid-column: 1/8;
     grid-row: 2/3;
     width: 100%;
     border: 1px solid;
+    margin-top: 3rem;
 }
 
 /***********LANDING PAGE AND LOGIN STYLES*************/
@@ -587,20 +567,14 @@ label {
 }
 
 /***********ACCOUNT STYLES*************/
-#user-info {
-    display: grid;
-    grid-template-columns: 40% 60%;
-}
-
 #user-info .user-image {
-    grid-column: 1/2;
     margin-bottom: 2rem;
     width: 150px;
     height: 150px;
 }
 
 #user-info .information {
-    grid-column: 1/2;
+    grid-column: 1/4;
 }
 
 #user-info .user-image img {
@@ -609,7 +583,7 @@ label {
 }
 
 #user-info .right-img {
-    grid-column: 2/3;
+    grid-column: 8/11;
     align-self: center;
     justify-self: center;
 }
@@ -664,10 +638,6 @@ label {
     text-decoration: underline;
 }
 
-/* .edit {
-    display: none;
-} */
-
 /***********FOOTER STYLES*************/
 footer > a {
     font-size: .6rem;
@@ -703,6 +673,10 @@ footer {
         margin: 1.5rem;
         margin-bottom: 8rem;
         margin-top: 4rem;
+    }
+
+    main > section {
+        display: block;
     }
 
    h1 {
@@ -847,17 +821,15 @@ footer {
   .preview-img {
       height: 250px;
       width: 100%;
+      overflow: hidden;
   }
 
   .preview-info {
       width: 100%;
+      margin-top: 3rem;
   }
 
 /***********MOBILE EVENT DETAIL STYLES*************/
-  .four-grid {
-    display: block;
-  }
-
   .four-grid .cta {
       display: none;
   }
@@ -885,10 +857,6 @@ footer {
   }
 
   /***********MOBILE ACCOUNT STYLES*************/
-  #user-info {
-      display: block;
-  }
-
   #user-info .form {
       width: 100%;
   }
