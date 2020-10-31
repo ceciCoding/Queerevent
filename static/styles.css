@@ -296,6 +296,7 @@ h1 {
     max-width: 75%; */
     margin-top: 2rem;
     padding: .7rem 2.5rem;
+    align-self: center;
 }
 
 /***********CALENDAR STYLES*************/
@@ -564,16 +565,6 @@ label {
     text-decoration: none;
 }
 
-.buttons {
-    margin-top: 2rem;
-    display: flex;
-    justify-content: space-between;
-}
-
-.buttons:first-child .btn {
-    margin-right: 1rem;
-}
-
 .pointing-girl {
     grid-column: 1/6;
     grid-row: 2/3;
@@ -652,6 +643,13 @@ label {
     justify-content: center;
     gap: 2rem;
     width: 100%;
+    margin-top: 2rem;
+}
+
+.welcome .btns,
+.landing-info .btns {
+    justify-content: flex-start;
+
 }
 
 #cancel {
@@ -882,6 +880,10 @@ footer {
       display: none;
   }
 
+  .welcome .btns {
+      justify-content: center;
+  }
+
   /***********MOBILE ACCOUNT STYLES*************/
   #user-info {
       display: block;
@@ -909,6 +911,12 @@ footer {
         margin: 0 auto;
         margin-top: 5rem;
         width: 50%;
+    }
+
+    .form,
+    .welcome .form {
+        width: 80%;
+        margin: 0 auto;
     }
 }
 
