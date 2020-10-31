@@ -1,19 +1,23 @@
-{% macro popup(text, button, img, btnClass, link, class) %}
+{% macro popup(text, button, img, link) %}
 <!-- pass class copy to the button to make it copy the text in the p -->
 <div id="modal" class="modal base-card">
     <button class="close-btn close-button">&times;</button>
-    <div class="{{ class }} modal-info">
-        <div>
-            <h2>{{ text }}</h2>
+    <div class="modal-content">
+        <div class="modal-info">
+            <div>
+                <h2>{{ text }}</h2>
+            </div>
+            <div>
+                <p>{{ link }}</p>
+            </div>
+            <div>
+                <button class="btn close-button ">{{ button }}</button>
+            </div>
         </div>
-        <div>
-            <p>{{ link }}</p>
-        </div>
-        <div>
-            <button class="btn close-button {{btnClass}}">{{ button }}</button>
+        <div class="modal-img">
+            <img src="{{ img }}" alt="drawing of a person">
         </div>
     </div>
-    <img src="{{ img }}" alt="drawing of a person">
 </div>
 <div id="overlay">
 
