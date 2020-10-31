@@ -12,10 +12,10 @@ if (modalLink.innerHTML === '') {
 }
 
 trigger.addEventListener('click', (e) => {
-    console.log(e.target);
-    e.preventDefault();
+    if (e.target.type != 'file') {
+        e.preventDefault();
+    }
     if (e.target.className.includes('share-arrow') || e.target.className.includes('open-m')) {
-        console.log(e.target.className);
         openModal(modal, overlay);
     }
     if (e.target.className.includes('close-button')) {
