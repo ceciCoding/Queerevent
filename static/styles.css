@@ -1,15 +1,15 @@
 * {
   -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
   border: 0;
   padding: 0;
-  color: black;
+  color: #000;
 }
 
 *::before,
 *::after {
   -webkit-box-sizing: inherit;
-          box-sizing: inherit;
+  box-sizing: inherit;
 }
 
 body {
@@ -86,9 +86,10 @@ h1 {
 .user-image img {
     max-width: 100%;
     max-height: 100%;
-    display: block;
+    /* display: block;  */
     margin: 0 auto;
     clip-path: circle();
+    object-fit: contain;
 }
 
 .mobile-user {
@@ -417,7 +418,7 @@ label {
 /***********NEW EVENT STYLES*************/
 .new-event-grid {
     display: grid;
-    grid-template-columns: 30% 70%;
+    grid-template-columns: 3fr 7fr;
     gap: 4rem;
 }
 

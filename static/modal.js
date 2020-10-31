@@ -8,13 +8,14 @@ const modalLink = modal.querySelector('p');
 if (modalLink.innerHTML === '') {
     modalLink.style.display = 'none';
 } else {
-    modalLink.classList.add('modal-link')
+    modalLink.classList.add('modal-link');
 }
 
 trigger.addEventListener('click', (e) => {
     console.log(e.target);
     e.preventDefault();
     if (e.target.className.includes('share-arrow') || e.target.className.includes('open-m')) {
+        console.log(e.target.className);
         openModal(modal, overlay);
     }
     if (e.target.className.includes('close-button')) {
