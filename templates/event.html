@@ -1,4 +1,5 @@
 {% extends 'layout.html' %}
+{% from "macros.html" import popup %}
 
 {% block main%}
     <section class="four-grid">
@@ -34,8 +35,9 @@
         <div class="cta">
             <p><strong>Do you like this event?</strong></p>
             <p>Make sure you don't miss it!</p>
-            <button class="btn">Add to Calendar</button>
+            <button class="btn open-m">Add to Calendar</button>
         </div>
+        {{ popup('This event was added to your calendar', 'Ok!', '../static/assets/popup-person.svg') }}  
     </section>
     <script src="../static/event.js"></script>    
 {% endblock %}

@@ -36,7 +36,6 @@ main {
     margin-top: 10rem;
 }
 
-/*define main grid*/
 main > section {
     display: grid;
     grid-template-columns: repeat(12, 1fr);
@@ -307,6 +306,16 @@ h1 {
     align-self: center;
 }
 
+.btns {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    width: 100%;
+    margin-top: 2rem;
+}
+
 /***********CALENDAR STYLES*************/
 #calendar {
     grid-column: 1/4;
@@ -354,7 +363,6 @@ h1 {
 
 .weekdays div {
     font-weight: 300;
-    /* width: calc(100% / 7); */
     width: 100%;
     display: flex;
     justify-content: center;
@@ -506,6 +514,7 @@ label {
     grid-row: 2/3;
     align-self: center;
     justify-self: center;
+    text-align: center;
 }
 
 .map {
@@ -617,16 +626,6 @@ label {
     text-decoration: underline;
     cursor: pointer;
     font-size: .8rem;
-}
-
-.btns {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    gap: 2rem;
-    width: 100%;
-    margin-top: 2rem;
 }
 
 .welcome .btns,
@@ -901,6 +900,12 @@ footer {
         margin: 0 auto;
         margin-top: 5rem;
         width: 70%;
+    }
+} 
+
+@media screen and (max-width: 800px) {
+     .form-h1 {
+        margin-left: 0;
     }
 }
 
