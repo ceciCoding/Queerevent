@@ -902,7 +902,7 @@ footer {
 }
 
 /*events grid for smaller desktops and special media queries in general*/
-@media screen and (max-width: 1500px) {
+@media screen and (max-width: 1600px) {
     #events {
         grid-template-columns: repeat(3, 1fr);
     }
