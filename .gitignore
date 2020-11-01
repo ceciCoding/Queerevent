@@ -1,5 +1,5 @@
 design-stuff
-assets
+static/assets
 event.js
 *.db
 *.ico
