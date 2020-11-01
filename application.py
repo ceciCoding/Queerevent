@@ -1,12 +1,31 @@
 from flask import Flask, render_template, request, session, url_for, redirect
 from flask_session import Session
 from werkzeug.security import check_password_hash, generate_password_hash
+from flask_sqlalchemy import SQLAlchemy
+from datetime import datetime, timedelta
 from helpers import login_required
 
 app = Flask(__name__)
 
 # Ensure templates are auto-reloaded
 app.config["TEMPLATES_AUTO_RELOAD"] = True
+
+#configure SQLite database with SQLAlchemy
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///db.sqlite3'
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+db = SQLAlchemy(app)
+
+class User(db.Model):
+    pass
+
+class Event(db.Model):
+    pass
+
+class UserImage(bd.Model):
+    pass
+
+class EventImage(db.Model):
+    pass
 
 @app.route("/")
 def home():
