@@ -1,6 +1,12 @@
-from flask import Flask, render_template, request, session, url_for
+from flask import Flask, render_template, request, session, url_for, redirect
+from flask_session import Session
+from werkzeug.security import check_password_hash, generate_password_hash
+from helpers import login_required
+
 app = Flask(__name__)
-TEMPLATES_AUTO_RELOAD=True
+
+# Ensure templates are auto-reloaded
+app.config["TEMPLATES_AUTO_RELOAD"] = True
 
 @app.route("/")
 def home():
