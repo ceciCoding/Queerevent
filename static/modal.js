@@ -3,15 +3,14 @@
 const overlay = document.querySelector('#overlay');
 const trigger = document.querySelector('#events') || document.querySelector('main > section');
 const modal = document.querySelector('#modal');
-const modalLink = modal.querySelector('p');
+const modalLink = modal.querySelector('.link');
 
-if (modalLink.innerHTML === '') {
+if (modalLink.value === '') {
     modalLink.style.display = 'none';
-} else {
-    modalLink.classList.add('modal-link');
 }
 
 trigger.addEventListener('click', (e) => {
+    console.log(e)
     if (e.target.type != 'file') {
         e.preventDefault();
     }
@@ -21,6 +20,15 @@ trigger.addEventListener('click', (e) => {
     if (e.target.className.includes('close-button')) {
         closeModal(modal, overlay);
     }
+
+    //copy link text in share modal
+    if (e.target.id === 'copy') {
+        console.log(e.target);
+        modalLink.select();
+        modalLink.setSelectionRange(0, 99999);
+        document.execCommand('copy');
+    }
+
 });
  
 overlay.addEventListener('click', () => {

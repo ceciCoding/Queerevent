@@ -201,8 +201,9 @@ h1 {
     background-repeat: no-repeat;
     background-size: cover;
 }
-.events-menu {
-    width: 400px;
+
+#events-menu {
+    width: 80%;
 }
 
 .events-menu ul {
@@ -283,10 +284,12 @@ h1 {
     right: 1rem;
 }
 
-.modal-link {
-    padding: .4rem;
-    border: 1px solid;
+#modal .link {
+    padding: .6rem;
+    border: 1px solid black;
     border-radius: 5px;
+    width: 100%;
+    margin-bottom: 2rem;
 }
 
 /***********BUTTONS STYLES*************/
@@ -699,7 +702,7 @@ footer {
   .mobile-user {
     display: flex;
     flex-flow: row nowrap;
-    justify-content: end;
+    justify-content: flex-end;
     width: 100%;
     z-index: 80;
     margin-bottom: 1rem;
@@ -781,7 +784,7 @@ footer {
   .events-menu ul {
       margin-top: 2rem;
       margin-bottom: .5rem;
-      width: 80%;
+      width: 100%;
   }
 
   .events-menu li {

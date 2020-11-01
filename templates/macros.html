@@ -1,4 +1,4 @@
-{% macro popup(text, button, img, link) %}
+{% macro popup(text, button, img, link, button_id) %}
 <!-- pass class copy to the button to make it copy the text in the p -->
 <div id="modal" class="modal base-card">
     <button class="close-btn close-button">&times;</button>
@@ -8,10 +8,10 @@
                 <h2>{{ text }}</h2>
             </div>
             <div>
-                <p>{{ link }}</p>
+                <input type="text" class="link" value="{{ link }}">
             </div>
             <div>
-                <button class="btn close-button ">{{ button }}</button>
+                <button class="btn close-button" id="{{ button_id }}">{{ button }}</button>
             </div>
         </div>
         <div class="modal-img">
