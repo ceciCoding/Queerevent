@@ -24,6 +24,12 @@ class User(db.Model):
     img = db.Relationship('UserImage', backref='user', uselist=False)
     events = db.Relationship('Event', backref='user')
 
+#association table for favorite events
+user_favorites = db.Table('user_favorites',
+    db.Column('event_id', db.Integer, db.ForeignKey('event.id'), primary_key=True),
+    db.Column('user_id', db.Integer, db.ForeignKey('user.id'), primary_key=True)
+)
+
 
 class Event(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -43,7 +49,7 @@ class Event(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
     img = db.Relationship('EventImage', backref="Event", uselist=False)
     
-    
+
 class UserImage(bd.Model):
     id = db.Column(db.Integer, primary_key=True)
     img = db.Column(db.LargeBinary)
@@ -55,6 +61,7 @@ class EventImage(db.Model):
     img = db.Column(db.LargeBinary)
     event_id = db.Column(db.Integer, db.ForeignKey('event.id'))
 
+#routes
 @app.route("/")
 def home():
     return render_template("home.html", title="Find Events")
