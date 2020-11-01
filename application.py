@@ -11,7 +11,7 @@ app = Flask(__name__)
 app.config["TEMPLATES_AUTO_RELOAD"] = True
 
 #configure SQLite database with SQLAlchemy
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///db.sqlite3'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///queerevent.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 
@@ -20,6 +20,9 @@ class User(db.Model):
     name = db.Column(db.String(50), nullable=False)
     email = db.Column(db.String(50), nullable=False, unique=True)
     hash = db.Column(db.String(100), nullable=False)
+    
+    img = db.Relationship('UserImage', backref='user', uselist=False)
+    events = db.Relationship('Event', backref='user')
 
 
 class Event(db.Model):
@@ -36,14 +39,21 @@ class Event(db.Model):
     organizer_web = db.Column(db.String(150))
     link = db.Column(db.String(150))
     description = db.Column(db.Text, nullable=False)
+
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
+    img = db.Relationship('EventImage', backref="Event", uselist=False)
+    
     
 class UserImage(bd.Model):
     id = db.Column(db.Integer, primary_key=True)
     img = db.Column(db.LargeBinary)
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
+
 
 class EventImage(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     img = db.Column(db.LargeBinary)
+    event_id = db.Column(db.Integer, db.ForeignKey('event.id'))
 
 @app.route("/")
 def home():
