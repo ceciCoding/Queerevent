@@ -16,16 +16,34 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 
 class User(db.Model):
-    pass
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(50), nullable=False)
+    email = db.Column(db.String(50), nullable=False, unique=True)
+    hash = db.Column(db.String(100), nullable=False)
+
 
 class Event(db.Model):
-    pass
-
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(100), nullable=False)
+    event_type = db.Column(db.String(10), nullable=False)
+    recurrence = db.Column(db.String(10), nullable=False)
+    periodicity = db.Column(db.String(50))
+    date = db.Column(db.DateTime)
+    location = db.Column(db.String(150))
+    starting_time = db.Column(db.DateTime)
+    ending_time = db.Column(db.DateTime)
+    organizer = db.Column(db.Strig(50))
+    organizer_web = db.Column(db.String(150))
+    link = db.Column(db.String(150))
+    description = db.Column(db.Text, nullable=False)
+    
 class UserImage(bd.Model):
-    pass
+    id = db.Column(db.Integer, primary_key=True)
+    img = db.Column(db.LargeBinary)
 
 class EventImage(db.Model):
-    pass
+    id = db.Column(db.Integer, primary_key=True)
+    img = db.Column(db.LargeBinary)
 
 @app.route("/")
 def home():
