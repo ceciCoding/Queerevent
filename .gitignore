@@ -3,3 +3,8 @@ design-stuff
 event.js
 *.db
 *.ico
+__pycache__
+venv
+.vscode
+.flaskenv
+config.py

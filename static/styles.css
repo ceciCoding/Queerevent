@@ -202,8 +202,8 @@ h1 {
     background-size: cover;
 }
 
-#events-menu {
-    width: 80%;
+.events-menu {
+    width: 40%;
 }
 
 .events-menu ul {
@@ -780,6 +780,10 @@ footer {
       height: 300px;
       margin-bottom: 2.5rem;
   }
+
+  .events-menu {
+    width: 100%;
+   }
 
   .events-menu ul {
       margin-top: 2rem;

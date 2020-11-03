@@ -9,7 +9,7 @@ class Binding {
         let bindingHandler = Binder.handlers[this.handler];
         bindingHandler.bind(this);
         Binder.subscribe(this.prop, () => {
-            bindingHandler.react(this);
+            bindingHandler.react(this); 
         });
     }
     setValue(value) {
@@ -171,6 +171,7 @@ document.querySelector('.form').addEventListener('click', (e) => {
           e.preventDefault();
      }
     if (e.target.className === 'inpt') {
-        e.target.style.color = 'black';       
+        e.target.style.color = 'black';
+        e.target.value = '';
     }
 })

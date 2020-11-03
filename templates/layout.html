@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="../static/favicon.ico">
     <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,400;0,700;0,900;1,400;1,700&display=swap" rel="stylesheet"> 
-    <link rel="stylesheet" href="static/styles.css?v=9.3">
+    <link rel="stylesheet" href="static/styles.css?v=9.334">
     <title>Queerevent</title>
 </head>
 <body>
@@ -38,6 +38,7 @@
             <div class="logo">
                 <a href="{{ url_for('home') }}"><h2>queerevent</h2></a>
             </div>
+            {% if session.user_id %}
             <ul>
                 <li><a href="/">Home</a></li>
                 <li><a href="/favorites.html">Favorites</a></li>
@@ -46,6 +47,11 @@
                 <li><a href="/new.html">New Event</a></li>
                 <li class="user-image"><a href="{{ url_for('account') }}"><img src="../static/assets/user.png" alt="user's image"></a></li>
             </ul>
+            {% else %}
+            <ul>
+                <li><a href="{{ url_for('login') }}">Sign In</a></li>
+            </ul>
+            {% endif %}
         </div>
     </nav>
     <main>

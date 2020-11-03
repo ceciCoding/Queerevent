@@ -1,3 +1,4 @@
+//TODO: Dynamic height not working with the maps API
 'use strict';
 
 //dynamic height
