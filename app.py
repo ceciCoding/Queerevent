@@ -7,10 +7,12 @@ from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime, timedelta
 from helpers import login_required
 from config import Config
+#for future modifications of the db models
 from flask_migrate import Migrate
 from tempfile import mkdtemp
 
 app = Flask(__name__)
+Session(app)
 
 app.config.from_object(Config)
 # app.config.from_envvar('APP_SETTINGS')
@@ -22,7 +24,7 @@ app.config["MAIL_PASSWORD"] = os.getenv("MAIL_PASSWORD")
 app.config["MAIL_PORT"] = 587
 app.config["MAIL_SERVER"] = "smtp.gmail.com"
 app.config["MAIL_USE_TLS"] = True
-app.congif["MAIL_USERNAME"] = os.getenv("MAIL_USERNAME")
+app.config["MAIL_USERNAME"] = os.getenv("MAIL_USERNAME")
 mail = Mail(app)
 
 # Ensure templates are auto-reloaded
@@ -38,10 +40,16 @@ class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(50), nullable=False)
     email = db.Column(db.String(50), nullable=False, unique=True)
-    pswd_hash = db.Column(db.String(100), nullable=False)
+    pswd_hash = db.Column(db.String(300), nullable=False)
     
     img = db.relationship('UserImage', backref='user', uselist=False)
     events = db.relationship('Event', backref='user')
+
+    def set_password(self, password):
+        self.pswd_hash = generate_password_hash(password)
+
+    def check_password(self, password):
+        return check_password_hash(self.pswd_hash, password)
 
 #association table for favorite events
 user_favorites = db.Table('user_favorites',
@@ -87,29 +95,26 @@ def home():
 
 @app.route("/login.html",  methods=["GET", "POST"])
 def login():
-    # """Log user in"""
-    # # Forget any user_id
-    # session.clear()
+    # Forget any user_id
+    session.clear()
 
-    # # User reached route via POST (as by submitting a form via POST)
-    # if request.method == "POST":
+    # User reached route via POST (as by submitting a form via POST)
+    if request.method == "POST":
+        # Query database for username
+        rows = db.execute("SELECT * FROM users WHERE username = :username", username=request.form.get("username"))
 
-    #     # Query database for username
-    #     rows = db.execute("SELECT * FROM users WHERE username = :username",
-    #                       username=request.form.get("username"))
+    # #     # Ensure username exists and password is correct
+    # #     if len(rows) != 1 or not check_password_hash(rows[0]["hash"], request.form.get("password")):
+    # #         return apology("invalid username and/or password", 403)
 
-    #     # Ensure username exists and password is correct
-    #     if len(rows) != 1 or not check_password_hash(rows[0]["hash"], request.form.get("password")):
-    #         return apology("invalid username and/or password", 403)
+    # #     # Remember which user has logged in
+    # #     session["user_id"] = rows[0]["id"]
 
-    #     # Remember which user has logged in
-    #     session["user_id"] = rows[0]["id"]
+    # #     # Redirect user to home page
+    # #     return redirect("/")
 
-    #     # Redirect user to home page
-    #     return redirect("/")
-
-    # # User reached route via GET (as by clicking a link or via redirect)
-    # else:
+    # User reached route via GET (as by clicking a link or via redirect)
+    else:
         return render_template("login.html")
 
 @app.route("/create-account.html")
