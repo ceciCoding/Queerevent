@@ -13,3 +13,9 @@ function validateEmail() {
     }
 }
 
+form.addEventListener('click', (e) => {
+    // e.preventDefault();
+    if (e.target.type != "submit") {
+        e.target.style.color = 'black';
+    }
+})

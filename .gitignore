@@ -3,6 +3,7 @@ design-stuff
 event.js
 *.db
 *.ico
+*.pyc
 __pycache__
 venv
 .vscode

@@ -870,6 +870,10 @@ footer {
       justify-content: center;
   }
 
+  .warning {
+      color: var(--app-red);
+  }
+
   /***********MOBILE ACCOUNT STYLES*************/
   #user-info .form {
       width: 100%;
