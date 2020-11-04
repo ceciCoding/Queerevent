@@ -1,12 +1,13 @@
 import os
-from app import app
+from app import app, db
 from flask import Flask, render_template, request, session, url_for, redirect, flash, get_flashed_messages
 from flask_mail import Mail, Message
 from app.models import User, Event, UserImage, EventImage, user_favorites
 from tempfile import mkdtemp
-from flask_login import LoginManager, current_user, login_user, logout_user
+from flask_login import LoginManager, current_user, login_user, logout_user, login_required
 from flask_sqlalchemy import SQLAlchemy
-from app.forms import LoginForm
+from app.forms import LoginForm, RegistrationForm
+from werkzeug.urls import url_parse
 
 os.environ["APP_SETTINGS"] = "./config.cfg"
 
@@ -23,7 +24,7 @@ def home():
 @app.route("/login.html",  methods=["GET", "POST"])
 def login():
     if current_user.is_authenticated:
-        return redirect(url_for("home"))
+        return redirect(url_for('home'))
     form = LoginForm()
     if form.validate_on_submit():
         user = User.query.filter_by(email=form.email.data).first()
@@ -31,13 +32,25 @@ def login():
             flash('invalid user email or password')
             return redirect(url_for("login"), form=form)
         login_user(user, remember=form.remember_me.data)
-        return redirect(url_for("home"))
-    return render_template("login.html", form=form)
+        next_page = request.args.get('next')
+        if not next_page or url_parse(next_page).netloc != '':
+            next_page = url_for('home')
+        return render_template("login.html", form=form)
 
 
 @app.route("/create-account.html", methods=["GET", "POST"])
 def create():
-    return render_template("create-account.html")
+    if current_user.is_authenticated:
+        return redirect(url_for('home'))
+    form = RegistrationForm()
+    if form.validate_on_submit():
+        user = User(name=form.name.data, email=form.email.data)
+        user.set_password(form.password.data)
+        db.session.add(user)
+        db.session.commit()
+        flash('Your are now registered')
+        return redirect(url_for('login'))
+    return render_template("create-account.html", form=form)
 
 
 @app.route("/account.html")

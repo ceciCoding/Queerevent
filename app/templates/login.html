@@ -22,11 +22,11 @@
             </a>
             <input type="submit" class="btn" value="Sign In">
         </form>        -->
-        <form action="/home" method="post" novalidate>
+        <form action="/home" method="post" class="form" novalidate>
             {{ form.hidden_tag() }}
             <div class="form-control">
                 {{ form.email.label }}
-                {{ form.email(id_=email) }}
+                {{ form.email }}
                 {% for error in form.password.errors %}
                     <span style="color: red;">[{{ error }}]</span>
                 {% endfor %}
@@ -44,7 +44,7 @@
             <p>
                 {{ form.remember_me }} {{ form.remember_me.label }}
             </p>
-            {{ form.submit(class_="btn") }}
+            <p>{{ form.submit(class_="btn") }}</p>
         </form>
     </div>
 </section>

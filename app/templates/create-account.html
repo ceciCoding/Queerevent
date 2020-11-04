@@ -8,13 +8,7 @@
     <div class="welcome">
         <h1>Welcome to Queerevent</h1>
         <p>All your LGBTQIA+ events in one place</p>
-        {% if invalid_email %}
-            <span class="warning">This email is already in use</span>
-        {% endif %}
-        {% if invalid_pswd %}
-            <span class="warning">The passwords don't match</span>
-        {% endif %}
-        <form action="/" class="form" method="post">
+        <!-- <form action="/" class="form" method="post">
             <div class="form-control">
                 <label for="name">Name</label>
                 <input type="text" name="name" required> 
@@ -36,7 +30,42 @@
                 <p>Already have an account? Click to login</p>
             </a>
             <input type="submit" class="btn" value="Create Account">
-        </form>       
+        </form>        -->
+        <form action="/" class="form" method="post">
+            {{ form.hidden_tag() }}
+            <div class="form-control">
+                {{ form.name.label }}
+                {{ form.name }}
+                {% for error in form.name.errors %}
+                    <span style="color: red;">[{{ error }}]</span>
+                {% endfor %}
+            </div>
+            <div class="form-control">
+                {{ form.email.label }}
+                {{ form.email }}
+                {% for error in form.email.errors %}
+                    <span style="color: red;">[{{ error }}]</span>
+                {% endfor %}
+            </div>
+            <div class="form-control">
+                {{ form.password.label }}
+                {{ form.password }}
+                {% for error in form.password.errors %}
+                    <span style="color: red;">[{{ error }}]</span>
+                {% endfor %}
+            </div>
+            <div class="form-control">
+                {{ form.password2.label }}
+                {{ form.password2 }}
+                {% for error in form.password2.errors %}
+                    <span style="color: red;">[{{ error }}]</span>
+                {% endfor %}
+            </div>
+            <a href="{{ url_for('login') }}">
+                <p>Already have an account? Click to login</p>
+            </a>
+            <p>{{ form.submit(class_="btn") }}</p>
+        </form>
     </div>
 </section>
 <script src="../static/validation.js"></script>
