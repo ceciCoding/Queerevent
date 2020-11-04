@@ -8,29 +8,6 @@
     <div class="welcome">
         <h1>Welcome to Queerevent</h1>
         <p>All your LGBTQIA+ events in one place</p>
-        <!-- <form action="/" class="form" method="post">
-            <div class="form-control">
-                <label for="name">Name</label>
-                <input type="text" name="name" required> 
-            </div>
-            <div class="form-control">
-                <label for="email">Email</label>
-                <input type="text" name="email" id="email" onkeyup="validateEmail()" required>
-                <p id="alert">Enter a valid email</p>
-            </div>
-            <div class="form-control">
-                <label for="password">Password</label>
-                <input type="password" name="password" required autocomplete="off">
-            </div>
-             <div class="form-control">
-                <label for="password-confirm">Confirm Password</label>
-                <input type="password" name="password-confirm" required autocomplete="off">
-            </div>
-            <a href="{{ url_for('login') }}">
-                <p>Already have an account? Click to login</p>
-            </a>
-            <input type="submit" class="btn" value="Create Account">
-        </form>        -->
         <form action="/" class="form" method="post">
             {{ form.hidden_tag() }}
             <div class="form-control">
