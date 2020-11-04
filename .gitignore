@@ -4,6 +4,8 @@ event.js
 *.db
 *.ico
 *.pyc
+config.pyc
+config.cfg
 __pycache__
 venv
 .vscode
