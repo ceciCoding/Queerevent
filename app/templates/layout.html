@@ -38,7 +38,7 @@
             <div class="logo">
                 <a href="{{ url_for('home') }}"><h2>queerevent</h2></a>
             </div>
-            {% if session.user_id %}
+            {% if current_user.is_authenticated %}
             <ul>
                 <li><a href="/">Home</a></li>
                 <li><a href="/favorites.html">Favorites</a></li>

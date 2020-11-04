@@ -1,0 +1,52 @@
+{% extends 'layout.html' %}
+
+{% block main %}
+<section id="login" class="four-grid">
+    <div class="big-hero">
+        <img src="../static/assets/hero.svg" alt="drawing of a group of people chatting">
+    </div>
+    <div class="welcome">
+        <h1>Welcome to Queerevent</h1>
+        <p>All your LGBTQIA+ events in one place</p>
+        <!-- <form action="{{ url_for('home') }}" class="form" method="post">
+            <div class="form-control">
+                <label for="email">Email</label>
+                <input type="text" name="email" id="email" required onkeyup="validateEmail()"> try focusout event
+            </div>
+            <div class="form-control">
+                <label for="password">Password</label>
+                <input type="password" name="password" required>
+            </div>
+            <a href="{{ url_for('create') }}">
+                <p>Don't have an account? Click to create one</p>
+            </a>
+            <input type="submit" class="btn" value="Sign In">
+        </form>        -->
+        <form action="/home" method="post" novalidate>
+            {{ form.hidden_tag() }}
+            <div class="form-control">
+                {{ form.email.label }}
+                {{ form.email(id_=email) }}
+                {% for error in form.password.errors %}
+                    <span style="color: red;">[{{ error }}]</span>
+                {% endfor %}
+            </div>
+            <div class="form-control">
+                {{ form.password.label }}
+                {{ form.password }}
+                {% for error in form.password.errors %}
+                    <span style="color: red;">[{{ error }}]</span>
+                {% endfor %}
+            </div>
+            <a href="{{ url_for('create') }}">
+                <p>Don't have an account? Click to create one</p>
+            </a>
+            <p>
+                {{ form.remember_me }} {{ form.remember_me.label }}
+            </p>
+            {{ form.submit(class_="btn") }}
+        </form>
+    </div>
+</section>
+<script src="../static/validation.js"></script>
+{% endblock %}
