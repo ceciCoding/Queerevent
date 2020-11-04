@@ -12,8 +12,8 @@ class LoginForm(FlaskForm):
 class RegistrationForm(FlaskForm):
     name = StringField('Name', validators=[DataRequired(), Length(max=50)])
     email = StringField('Email', validators=[DataRequired(), Email(), Length(max=50)])
-    password = PasswordField('Password', validators=[DataRequired()])
-    password2 = PasswordField('Repeat Password', validators=[DataRequired(), EqualTo('password')])
+    password = PasswordField('Password', validators=[DataRequired(), Length(min=8)])
+    password2 = PasswordField('Repeat Password', validators=[DataRequired(), EqualTo('password'), Length(min=8)])
     submit = SubmitField('Create Account')
 
     def validate_email(self, email):

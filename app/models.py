@@ -1,10 +1,10 @@
-from app import app, db, login
+from app import app, db, login_manager
 from werkzeug.security import check_password_hash, generate_password_hash
 from flask_login import UserMixin
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime, timedelta
 
-class User(UserMixin, db.Model):
+class User(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(50), nullable=False)
     email = db.Column(db.String(50), nullable=False, unique=True)
@@ -58,6 +58,6 @@ class EventImage(db.Model):
     event_id = db.Column(db.Integer, db.ForeignKey('event.id'))
 
 
-@login.user_loader
+@login_manager.user_loader
 def load_user(id):
     return User.query.get(int(id))

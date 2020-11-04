@@ -4,14 +4,13 @@ from flask import Flask, render_template, request, session, url_for, redirect, f
 from flask_mail import Mail, Message
 from app.models import User, Event, UserImage, EventImage, user_favorites
 from tempfile import mkdtemp
-from flask_login import LoginManager, current_user, login_user, logout_user, login_required
+from flask_login import LoginManager, current_user, login_user, logout_user, login_required, UserMixin
 from flask_sqlalchemy import SQLAlchemy
 from app.forms import LoginForm, RegistrationForm
 from werkzeug.urls import url_parse
 
-os.environ["APP_SETTINGS"] = "./config.cfg"
-
-mail = Mail(app)
+# os.environ["APP_SETTINGS"] = "./config.cfg"
+# mail = Mail(app)
 
 #routes
 @app.route("/", methods=['GET', 'POST'])
@@ -22,35 +21,23 @@ def home():
 @app.route("/login",  methods=["GET", "POST"])
 def login():
     form = LoginForm()
-    if request.method == 'GET':
-        if current_user.is_authenticated:
-            return redirect(url_for('home'))
-        else:
-            return render_template("login.html", form=form)
-    else:
-        if form.validate_on_submit():
-            user = User.query.filter_by(email=form.email.data).first()
-            if user is None or not user.check_password(form.password.data):
-                flash('invalid user email or password')
-                return redirect(url_for("login"), form=form)
-            login_user(user, remember=form.remember_me.data)
-            # next_page = request.args.get('next')
-            # if not next_page or url_parse(next_page).netloc != '':
-            #     next_page = url_for('home')
-            # return
-            return '<h1>' + form.email.data + form.name.data + '</h1>'
-
+    if form.validate_on_submit():
+        user = User.query.filter_by(email=form.email.data).first()
+        if user:
+            if user.check_password(form.password.data):
+                login_user(user)
+                return redirect(url_for('home'))
+    return render_template('login.html', form=form)
+    
+        
 @app.route("/create-account", methods=["GET", "POST"])
 def create():
-    if current_user.is_authenticated:
-        return redirect(url_for('home'))
     form = RegistrationForm()
     if form.validate_on_submit():
-        user = User(name=form.name.data, email=form.email.data)
-        user.set_password(form.password.data)
-        db.session.add(user)
+        new_user = User(name=form.name.data, email=form.email.data)
+        new_user.set_password(form.password.data)
+        db.session.add(new_user)
         db.session.commit()
-        flash('Your are now registered')
         return redirect(url_for('login'))
     return render_template("create-account.html", form=form)
 
