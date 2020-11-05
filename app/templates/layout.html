@@ -5,13 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="../static/favicon.ico">
     <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,400;0,700;0,900;1,400;1,700&display=swap" rel="stylesheet"> 
-    <link rel="stylesheet" href="static/styles.css?v=9.35">
+    <link rel="stylesheet" href="static/styles.css?v=9.5324234">
     <title>Queerevent</title>
 </head>
 <body>
     <nav class="mobile-user">
-        <div class="user-image">
-            <a href="{{ url_for('account') }}"><img src="../static/assets/user.png" alt="user's photo"></a>
+        <div class="user-menu">
+            <img class="profile-img" src="../static/assets/user.png" alt="user's photo">
+            <div id="logout" class="logout">
+                <ul>
+                    <li><a href="{{ url_for('account') }}">Profile</a></li>
+                    <li><a href="{{ url_for('logout') }}">Logout</a></li>
+                </ul>
+            </div>
         </div>
     </nav>
     <nav class="mobile-nav">
@@ -36,7 +42,7 @@
     <nav class="desktop-nav">
         <div class="nav-container">
             <div class="logo">
-                <a href="{{ url_for('home') }}"><h2>queerevent</h2></a>
+                <a href="{{ url_for('index') }}"><h2>queerevent</h2></a>
             </div>
             {% if not current_user.is_anonymous %}
             <ul>
@@ -45,7 +51,15 @@
                 <li><a href="/my-events">My Events</a></li>
                 <li><a href="/calendar">Calendar</a></li>
                 <li><a href="/new">New Event</a></li>
-                <li class="user-image"><a href="{{ url_for('account') }}"><img src="../static/assets/user.png" alt="user's image"></a></li>
+                <li class="user-menu">
+                    <img class="profile-img" id="user-img" src="../static/assets/user.png" alt="user's image">
+                    <div id="logout" class="logout">
+                        <ul>
+                            <li><a href="{{ url_for('account') }}">Profile</a></li>
+                            <li><a href="{{ url_for('logout') }}">Logout</a></li>
+                        </ul>
+                    </div>
+                </li>
             </ul>
             {% else %}
             <ul>
@@ -62,5 +76,6 @@
         <a href="">Privacy Policy</a>
     </footer> -->
     <script src="https://unpkg.com/ionicons@5.2.3/dist/ionicons.js"></script>
+    <script src="../static/layout.js"></script>
 </body>
 </html>

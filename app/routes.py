@@ -56,6 +56,12 @@ def create():
     return render_template("create-account.html", form=form)
 
 
+@app.route("/logout")
+def logout():
+    logout_user();
+    return redirect(url_for('index'))
+
+
 @app.route("/account")
 def account():
     return render_template("account.html")
