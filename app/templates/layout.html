@@ -20,16 +20,16 @@
                 <a href="/"><ion-icon name="home-outline"></ion-icon></a>
             </li>
             <li class="mobile-menu-item">
-                <a href="/my-events.html"><ion-icon name="person-outline"></ion-icon></a>
+                <a href="/my-events"><ion-icon name="person-outline"></ion-icon></a>
             </li>
             <li class="mobile-menu-item">
-                <a href="/new.html"><ion-icon style="font-size: 2.2rem;" name="add-circle-outline"></ion-icon></a>
+                <a href="/new"><ion-icon style="font-size: 2.2rem;" name="add-circle-outline"></ion-icon></a>
             </li>
             <li class="mobile-menu-item">
-                <a href="/favorites.html"><ion-icon style="font-size: 2.2rem;" name="heart-outline"></ion-icon></a>
+                <a href="/favorites"><ion-icon style="font-size: 2.2rem;" name="heart-outline"></ion-icon></a>
             </li>
             <li class="mobile-menu-item">
-                <a href="/calendar.html"><ion-icon name="calendar-outline"></ion-icon></a>
+                <a href="/calendar"><ion-icon name="calendar-outline"></ion-icon></a>
             </li>
         </ul>
     </nav>
@@ -41,10 +41,10 @@
             {% if not current_user.is_anonymous %}
             <ul>
                 <li><a href="/">Home</a></li>
-                <li><a href="/favorites.html">Favorites</a></li>
-                <li><a href="/my-events.html">My Events</a></li>
-                <li><a href="/calendar.html">Calendar</a></li>
-                <li><a href="/new.html">New Event</a></li>
+                <li><a href="/favorites">Favorites</a></li>
+                <li><a href="/my-events">My Events</a></li>
+                <li><a href="/calendar">Calendar</a></li>
+                <li><a href="/new">New Event</a></li>
                 <li class="user-image"><a href="{{ url_for('account') }}"><img src="../static/assets/user.png" alt="user's image"></a></li>
             </ul>
             {% else %}

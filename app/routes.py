@@ -15,7 +15,7 @@ from werkzeug.urls import url_parse
 #routes
 @app.route("/", methods=['GET', 'POST'])
 def home():
-    return render_template("home.html")
+    return render_template("home.html", title="Find Events")
 
 
 @app.route("/login",  methods=["GET", "POST"])
@@ -25,8 +25,14 @@ def login():
         user = User.query.filter_by(email=form.email.data).first()
         if user:
             if user.check_password(form.password.data):
-                login_user(user)
+                login_user(user, remember=form.remember_me.data)
                 return redirect(url_for('home'))
+            else:
+                flash("Invalid password")
+                return render_template('login.html', form=form)
+        else:
+            flash("Invalid username")
+            return render_template('login.html', form=form)
     return render_template('login.html', form=form)
     
         
