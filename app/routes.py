@@ -15,14 +15,16 @@ from werkzeug.urls import url_parse
 #routes
 @app.route("/", methods=['GET', 'POST'])
 def home():
-    return render_template("home.html", title="Find Events")
+    if current_user.is_anonymous:
+        return render_template("landing.html")
+    else:
+        return render_template("home.html", title="Find Events")
 
 
 @app.route("/login",  methods=["GET", "POST"])
 def login():
     form = LoginForm()
     if form.validate_on_submit():
-        return redirect(url_for('home'))
         user = User.query.filter_by(email=form.email.data).first()
         if user:
             if user.check_password(form.password.data):
