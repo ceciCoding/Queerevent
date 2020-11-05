@@ -13,6 +13,11 @@ from werkzeug.urls import url_parse
 # mail = Mail(app)
 
 #routes
+@app.route("/index")
+def index():
+    return render_template("home.html", title="Find Events")
+
+
 @app.route("/", methods=['GET', 'POST'])
 def home():
     if current_user.is_anonymous:
