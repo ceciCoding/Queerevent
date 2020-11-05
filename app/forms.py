@@ -27,7 +27,7 @@ class RegistrationForm(FlaskForm):
         if user is not None:
             raise ValidationError('This email is already in use')
 
-
+#erase if not used
 class EventForm(FlaskForm):
     name = StringField('Event Name', validators=[DataRequired(), Length(max=100)])
     event_type = SelectField('Type of Event', validators=[DataRequired()], choices=[('Online', 'Online'), ('Physical', 'Physical')])

@@ -691,6 +691,7 @@ label {
 /***********ERROR STYLES*************/
 .error-info {
     grid-column: 3/6;
+    grid-row: 1/2;
 }
 
 .error-img {

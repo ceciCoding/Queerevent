@@ -62,6 +62,13 @@ def logout():
     return redirect(url_for('index'))
 
 
+@app.route("/new", methods=["GET", "POST"])
+def new_event():
+    if request.method == 'GET':
+        return render_template("new.html")
+    
+
+
 @app.route("/account")
 def account():
     return render_template("account.html")
@@ -82,9 +89,6 @@ def my_events():
 def calendar():
     return render_template("calendar.html")
 
-@app.route("/new")
-def new_event():
-    return render_template("new.html")
 
 @app.route("/event")
 def event():
