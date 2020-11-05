@@ -649,6 +649,23 @@ label {
     text-decoration: underline;
 }
 
+/***********ERROR STYLES*************/
+.error-info {
+    grid-column: 3/6;
+}
+
+.error-img {
+    grid-column: 8/10;
+}
+
+.error-img img{
+    height: 50vh;
+}
+
+.error-title {
+    font-size: 3.75rem;
+}
+
 /***********FOOTER STYLES*************/
 footer > a {
     font-size: .6rem;
@@ -889,6 +906,15 @@ footer {
       margin-top: 3rem;
   }
 
+  /***********MOBILE ERROR STYLES*************/
+  .error-img {
+      display: flex;
+      justify-content: center;
+  }
+
+  .error-title {
+      margin-bottom: 1rem;
+  }
 }
 
 /* width for tablets*/

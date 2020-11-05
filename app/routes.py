@@ -23,17 +23,17 @@ def login():
     form = LoginForm()
     if form.validate_on_submit():
         return redirect(url_for('home'))
-        # user = User.query.filter_by(email=form.email.data).first()
-        # if user:
-        #     if user.check_password(form.password.data):
-        #         login_user(user, remember=form.remember_me.data)
-        #         return redirect(url_for('home'))
-        #     else:
-        #         flash("Invalid password")
-        #         return render_template('login.html', form=form)
-        # else:
-        #     flash("Invalid username")
-        #     return render_template('login.html', form=form)
+        user = User.query.filter_by(email=form.email.data).first()
+        if user:
+            if user.check_password(form.password.data):
+                login_user(user, remember=form.remember_me.data)
+                return redirect(url_for('home'))
+            else:
+                flash("Invalid password")
+                return render_template('login.html', form=form)
+        else:
+            flash("Invalid username")
+            return render_template('login.html', form=form)
     return render_template('login.html', form=form)
     
         
@@ -76,6 +76,10 @@ def new_event():
 @app.route("/event")
 def event():
     return render_template("event.html")
+
+@app.errorhandler(404)
+def page_not_found(e):
+    return render_template("404.html"), 404
 
 
 if __name__ == "__main__":
