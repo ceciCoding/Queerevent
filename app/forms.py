@@ -9,6 +9,12 @@ class LoginForm(FlaskForm):
     remember_me = BooleanField('Remember Me')
     submit = SubmitField('Sign In')
 
+    def validate_email(self, email):
+        user = User.query.filter_by(email=email.data).first()
+        if user is None:
+            raise ValidationError('Invalid username')
+
+
 class RegistrationForm(FlaskForm):
     name = StringField('Name', validators=[DataRequired(), Length(max=50)])
     email = StringField('Email', validators=[DataRequired(), Email(), Length(max=50)])
