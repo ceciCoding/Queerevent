@@ -256,8 +256,12 @@ h1 {
     margin-bottom: 2rem;
 }
 
-.events-menu li {
+.events-menu-item {
     cursor: pointer;
+}
+
+.events-menu-item.active {
+    border-bottom: 2px solid #000;
 }
 
 /***********MODAL WINDOW STYLES*************/
