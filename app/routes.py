@@ -9,14 +9,16 @@ from flask_sqlalchemy import SQLAlchemy
 from app.forms import LoginForm, RegistrationForm
 from werkzeug.urls import url_parse
 from datetime import datetime
+import base64
 
 # os.environ["APP_SETTINGS"] = "./config.cfg"
 # mail = Mail(app)
 
 #routes
-@app.route("/index")
+@app.route("/index", methods=['GET', 'POST'])
 def index():
-    return render_template("home.html", title="Find Events")
+    events = Event.query.all()
+    return render_template("home.html", title="Find Events", events=events)
 
 
 @app.route("/", methods=['GET', 'POST'])
@@ -24,7 +26,10 @@ def home():
     if current_user.is_anonymous:
         return render_template("landing.html")
     else:
-        return render_template("home.html", title="Find Events")
+        events = Event.query.all()
+        for event in events:
+            event.img = base64.b64encode(event.img).decode('ascii')
+        return render_template("home.html", title="Find Events", events=events)
 
 
 @app.route("/login",  methods=["GET", "POST"])

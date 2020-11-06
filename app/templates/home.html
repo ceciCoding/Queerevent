@@ -3,16 +3,39 @@
 
 
 {% block events %}
-{% for n in range(12) %}
+<!-- {% for n in range(12) %}
 <a href="{{ url_for('event') }}">
     <div class="event-container base-card">
-        <!-- Done this way to enable CSS properties for background images -->
-        <div class="img-container" style="background-image: url(../static/assets/unnamed.jpg);"></div>
+         Done this way to enable CSS properties for background images 
+         <div class="img-container" style="background-image: url(../static/assets/unnamed.jpg);"></div>
         <div class="info-container">
             <div class="card-text">
                 <h3>Event Name</h3>
                 <h5>16 November 2020</h5>
                 <h5>From 4pm to 8pm</h5>
+            </div>
+            <div class="card-buttons">
+                <ion-icon name="arrow-redo" class="share-arrow" data-modal-target="#modal"></ion-icon>
+                <ion-icon name="heart-outline"></ion-icon>
+            </div>
+        </div>
+    </div>
+</a> -->
+<!-- {% endfor %} --> 
+{% for event in events %}
+<a href="{{ url_for('event') }}">
+    <div class="event-container base-card">
+        <!-- Done this way to enable CSS properties for background images -->
+        {% if event.img %}
+            <div class="img-container"><img src="data:;base64,{{ event.img }}" alt="event image"></div>
+        {% else %}
+            <div class="img-container" style="background-image: url(../static/assets/unnamed.jpg);"></div>
+        {% endif %}
+        <div class="info-container">
+            <div class="card-text">
+                <h3>{{ event.name }}</h3>
+                <h5>{{ event.date }}</h5>
+                <h5>From {{ event.starting_time }} to {{ event.ending_time }}</h5>
             </div>
             <div class="card-buttons">
                 <ion-icon name="arrow-redo" class="share-arrow" data-modal-target="#modal"></ion-icon>
