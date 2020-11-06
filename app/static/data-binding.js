@@ -102,7 +102,6 @@ Binder.setScope({
     periodicity: 'Every Monday',
     date: dateString.slice(0, 16),
     startingHour: '4:00 PM',
-    endingHour: '8:00 PM',
     organizer: 'Organizer',
     website: 'https://example.com',
     link: 'Link',

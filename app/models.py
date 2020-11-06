@@ -35,7 +35,6 @@ class Event(db.Model):
     date = db.Column(db.DateTime)
     location = db.Column(db.String(150))
     starting_time = db.Column(db.String(50))
-    ending_time = db.Column(db.String(50))
     organizer = db.Column(db.String(50))
     organizer_web = db.Column(db.String(150))
     link = db.Column(db.String(150))

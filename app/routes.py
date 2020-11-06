@@ -15,12 +15,6 @@ import base64
 # mail = Mail(app)
 
 #routes
-@app.route("/index", methods=['GET', 'POST'])
-def index():
-    events = Event.query.all()
-    return render_template("home.html", title="Find Events", events=events)
-
-
 @app.route("/", methods=['GET', 'POST'])
 def home():
     if current_user.is_anonymous:
@@ -30,6 +24,13 @@ def home():
         for event in events:
             event.img = base64.b64encode(event.img).decode('ascii')
         return render_template("home.html", title="Find Events", events=events)
+
+
+#this one is just to handle not falling into the landing page over and over
+@app.route("/index", methods=['GET', 'POST'])
+def index():
+    events = Event.query.all()
+    return render_template("home.html", title="Find Events", events=events)
 
 
 @app.route("/login",  methods=["GET", "POST"])
@@ -84,7 +85,7 @@ def new_event():
         location = r.get("location")
         date = r.get("date")
         starting_time = r.get("starting")
-        ending_time = r.get("ending")
+
         link = r.get("link")
         organizer = r.get("organizer")
         organizer_web = r.get("web")
@@ -98,7 +99,6 @@ def new_event():
             location=location,
             date=datetime.strptime(date, '%Y-%m-%d'),
             starting_time=starting_time,
-            ending_time=ending_time,
             link=link,
             organizer=organizer,
             organizer_web=organizer_web,
