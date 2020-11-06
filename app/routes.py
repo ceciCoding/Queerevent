@@ -90,6 +90,7 @@ def new_event():
             event_type=event_type,
             recurrence=periodicity,
             periodicity=period,
+            location=location,
             date=datetime.strptime(date, '%Y-%m-%d'),
             starting_time=starting_time,
             ending_time=ending_time,

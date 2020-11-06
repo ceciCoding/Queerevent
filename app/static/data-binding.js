@@ -135,6 +135,7 @@ typeOfEvent.addEventListener('change', () => {
     typeOfEvent.style.color = 'black';
     if (typeOfEvent.value === 'Online') {
         locationInput.style.display = 'none';
+        locationInput.value = null;
         placePreview.style.display = 'none';
     } else {
         locationInput.style.display = 'flex';
@@ -152,6 +153,7 @@ periodicityOption.addEventListener('change', () => {
         dateInput.style.display = 'none';
     } else {
         periodicityInput.style.display = 'none';
+        periodicityInput.value = null;
         periodicityPreview.style.display = 'none';
         datePreview.style.display = 'block';
         dateInput.style.display = 'flex';
