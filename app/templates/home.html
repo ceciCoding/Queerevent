@@ -3,47 +3,28 @@
 
 
 {% block events %}
-<!-- {% for n in range(12) %}
-<a href="{{ url_for('event') }}">
-    <div class="event-container base-card">
-         Done this way to enable CSS properties for background images 
-         <div class="img-container" style="background-image: url(../static/assets/unnamed.jpg);"></div>
-        <div class="info-container">
-            <div class="card-text">
-                <h3>Event Name</h3>
-                <h5>16 November 2020</h5>
-                <h5>From 4pm to 8pm</h5>
-            </div>
-            <div class="card-buttons">
-                <ion-icon name="arrow-redo" class="share-arrow" data-modal-target="#modal"></ion-icon>
-                <ion-icon name="heart-outline"></ion-icon>
-            </div>
-        </div>
-    </div>
-</a> -->
-<!-- {% endfor %} --> 
 {% for event in events %}
-<a href="{{ url_for('event') }}">
-    <div class="event-container base-card">
-        <!-- Done this way to enable CSS properties for background images -->
-        {% if event.img %}
-            <div class="img-container"><img src="data:;base64,{{ event.img }}" alt="event image"></div>
-        {% else %}
-            <div class="img-container" style="background-image: url(../static/assets/unnamed.jpg);"></div>
-        {% endif %}
-        <div class="info-container">
-            <div class="card-text">
-                <h3>{{ event.name }}</h3>
-                <h5 class="event-date">{{ event.date }}</h5>
-                <h5>At {{ event.starting_time }}</h5>
+<li class="event-container base-card">
+        <a href="{{ url_for('event', id=event.id)}}">
+            {% if event.img %}
+                <div class="img-container"><img src="data:;base64,{{ event.img }}" alt="event image"></div>
+            {% else %}
+                <div class="img-container" style="background-image: url(../static/assets/unnamed.jpg);"></div>
+            {% endif %}
+            <div class="info-container">
+                <div class="card-text">
+                    <h3>{{ event.name }}</h3>
+                    <h5 class="event-date">{{ event.date }}</h5>
+                    <h5>At {{ event.starting_time }}</h5>
+                </div>
+                <div class="card-buttons">
+                    <ion-icon name="arrow-redo" class="share-arrow" data-modal-target="#modal"></ion-icon>
+                    <ion-icon class="heart" name="heart-outline"></ion-icon>
+                </div>
             </div>
-            <div class="card-buttons">
-                <ion-icon name="arrow-redo" class="share-arrow" data-modal-target="#modal"></ion-icon>
-                <ion-icon name="heart-outline"></ion-icon>
-            </div>
-        </div>
-    </div>
-</a>
+        </a>
+</li>
+<script src="../static/favorites.js"></script>
 {% endfor %}
 {{ popup('Share this event', 'Copy Link', '../static/assets/sitting-boy.svg', 'https://queerevent.com/event/e34', 'copy') }}
 {% endblock %}

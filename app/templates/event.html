@@ -1,6 +1,5 @@
 {% extends 'layout.html' %}
 {% from "macros.html" import popup %}
-
 {% block main%}
     <section class="four-grid">
         <div class="preview-img">
@@ -8,26 +7,24 @@
         </div>
         <div class="preview-info">
             <header>
-                <h2>Event Name</h2>
-                <ion-icon style="font-size: 2.2rem;" name="heart-outline"></ion-icon>
+                <h2>{{ event.name }}</h2>
+                <ion-icon class="heart" style="font-size: 2.2rem;" name="heart-outline"></ion-icon>
             </header>
             <div>
                 <ul>
-                    <li class="triangle">Tue 13 Oct 2020</li>
-                    <li class="triangle">From 4:00 PM to 8:00 PM</li>
-                    <li class="triangle">Somewhere</li>
-                    <li class="triangle">Link</li>
+                    <li class="triangle">{{ event.date }}</li>
+                    <li class="triangle">At {{event.starting_time }}</li>
+                    <li class="triangle">{{ event.location }}</li>
+                    <li class="triangle"><a href="{{ event.link }}"></a>{{ event.link }}</li>
                 </ul>
             </div>
             <div>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque, sit. Rem dignissimos quos inventore consequatur. Pariatur, ducimus soluta? Repellat, eius iusto animi repellendus illum in provident enim deleniti ducimus doloribus?
-                Explicabo eius culpa harum neque one sed culpa tenetur laborum ipsam delectus eius fugit beatae eaque debitis! Maxime cumque dolorem maiores? Maiores accusamus mollitia ut unde!
-                Soluta odit, non placeat recusandae rem asperiores consequatur nam provident in beatae est sapiente maxime autem quas cupiditate deserunt unde! Blanditiis ut quis iste? Quis repudiandae eaque harum accusamus fugiat.</p>
+                <p>{{ event.description}}</p>
             </div>
             <br>
             <h3>Organized By</h3>
-            <h5>Organizer</h5>
-            <h5>Organizer's website</h5>
+            <h5>{{ event.organizer }}</h5>
+            <h5>{{ event.organizer_web }}</h5>
         </div>
         <div class="map">
 
@@ -40,4 +37,6 @@
         {{ popup('This event was added to your calendar', 'Ok!', '../static/assets/popup-person.svg') }}  
     </section>
     <script src="../static/event-details.js"></script>    
+    <script src="../static/events.js"></script>
+    <script src="../static/favorites.js"></script>
 {% endblock %}

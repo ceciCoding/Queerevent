@@ -244,6 +244,11 @@ h1 {
     overflow: hidden;
 }
 
+.heart.active {
+    color: var(--app-red);
+    fill: var(--app-red)
+}
+
 .events-menu {
     width: 30%;
 }

@@ -10,7 +10,6 @@ if (modalLink.value === '') {
 }
 
 trigger.addEventListener('click', (e) => {
-    console.log(e)
     if (e.target.type != 'file') {
         e.preventDefault();
     }
@@ -23,7 +22,6 @@ trigger.addEventListener('click', (e) => {
 
     //copy link text in share modal
     if (e.target.id === 'copy') {
-        console.log(e.target);
         modalLink.select();
         modalLink.setSelectionRange(0, 99999);
         document.execCommand('copy');
@@ -40,7 +38,6 @@ function openModal(modal, overlay) {
     if (modal === null) return;
     modal.classList.add('active');
     overlay.classList.add('active');
-    console.log("function");
 }
 
 function closeModal(modal, overlay) {

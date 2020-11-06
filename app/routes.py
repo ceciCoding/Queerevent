@@ -30,6 +30,8 @@ def home():
 @app.route("/index", methods=['GET', 'POST'])
 def index():
     events = Event.query.all()
+    for event in events:
+        event.img = base64.b64encode(event.img).decode('ascii')
     return render_template("home.html", title="Find Events", events=events)
 
 
@@ -85,7 +87,6 @@ def new_event():
         location = r.get("location")
         date = r.get("date")
         starting_time = r.get("starting")
-
         link = r.get("link")
         organizer = r.get("organizer")
         organizer_web = r.get("web")
@@ -110,6 +111,13 @@ def new_event():
         return 'saved to database'
 
 
+@app.route("/event-identifier/<id>")
+def event(id):
+    # event_id = request.args.get("id")
+    event = Event.query.filter_by(id=id).first()
+    return render_template("event.html", event=event)
+
+
 @app.route("/account")
 def account():
     return render_template("account.html")
@@ -131,9 +139,6 @@ def calendar():
     return render_template("calendar.html")
 
 
-@app.route("/event")
-def event():
-    return render_template("event.html")
 
 @app.errorhandler(404)
 def page_not_found(e):
