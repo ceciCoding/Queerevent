@@ -207,6 +207,12 @@ h1 {
     overflow: hidden;
 }
 
+.event-container img {
+    max-width: 100%;
+    display: block;
+    margin: 0 auto;
+}
+
 
 .info-container {
     padding: 1rem;
@@ -238,8 +244,6 @@ h1 {
     height: 60%;
     width: 100%;
     overflow: hidden;
-    background-repeat: no-repeat;
-    background-size: cover;
 }
 
 .events-menu {
