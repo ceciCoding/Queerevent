@@ -4,10 +4,10 @@
 {% block main %}
 <h1 class="form-h1">New Event</h1>
 <section class="new-event-grid">
-    <form action="" class="form">
+    <form action="" class="form" method="POST" enctype="multipart/form-data">
         <div>
-            <label for="file">Upload event image</label>
-            <input type="file" name="file" id="img-upload" accept=".jpg, .jpeg, .png, .svg, .webp"> 
+            <label for="img">Upload event image</label>
+            <input type="file" name="img" id="img-upload" accept=".jpg, .jpeg, .png, .svg, .webp"> 
         </div>
         <div class="form-control">
             <label for="name">Event Name</label>
@@ -21,8 +21,8 @@
             </select> 
         </div>
         <div class="form-control option">
-            <label for="type">Periodicity</label>
-            <select name="type" class="inpt select-period">
+            <label for="periodicity">Periodicity</label>
+            <select name="periodicity" class="inpt select-period">
                 <option value="One time">One time</option>
                 <option value="Recurring">Recurring</option>
             </select>
@@ -40,12 +40,12 @@
             <input type="date" class="inpt" name="date" data-bind="value: date">
         </div>
         <div class="form-control">
-            <label for="time">Starting time</label>
-            <input type="time" class="inpt" data-bind="value: startingHour">
+            <label for="starting">Starting time</label>
+            <input type="text" name="starting" class="inpt" data-bind="value: startingHour">
         </div>
         <div class="form-control">
-            <label for="time">Ending Time</label>
-            <input type="time" class="inpt" data-bind="value: endingHour">
+            <label for="ending">Ending Time</label>
+            <input name="ending" type="text" class="inpt" data-bind="value: endingHour">
         </div>
         <div class="form-control">
             <label for="link">Link to the event</label>
@@ -56,8 +56,8 @@
             <input type="text" class="inpt" name="organizer" data-bind="value: organizer" required>
         </div>
         <div class="form-control">
-            <label for="organizer">Organizer's website</label>
-            <input type="text" class="inpt" name="organizer" data-bind="value: website">
+            <label for="web">Organizer's website</label>
+            <input type="text" class="inpt" name="web" data-bind="value: website">
         </div>
         <div class="form-control">
             <label for="description">Description</label>
@@ -94,7 +94,6 @@
             </div>
         </div>
     </div>
-    {{ popup('Your event is published', 'See it', '../static/assets/standing-boy.svg') }} 
 </section>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 <script src="../static/preview-img.js"></script>

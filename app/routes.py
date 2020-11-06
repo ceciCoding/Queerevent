@@ -2,12 +2,13 @@ import os
 from app import app, db
 from flask import Flask, render_template, request, session, url_for, redirect, flash, get_flashed_messages
 from flask_mail import Mail, Message
-from app.models import User, Event, UserImage, EventImage, user_favorites
+from app.models import User, Event, user_favorites
 from tempfile import mkdtemp
 from flask_login import LoginManager, current_user, login_user, logout_user, login_required, UserMixin
 from flask_sqlalchemy import SQLAlchemy
 from app.forms import LoginForm, RegistrationForm
 from werkzeug.urls import url_parse
+from datetime import datetime
 
 # os.environ["APP_SETTINGS"] = "./config.cfg"
 # mail = Mail(app)
@@ -63,10 +64,44 @@ def logout():
 
 
 @app.route("/new", methods=["GET", "POST"])
+@login_required
 def new_event():
     if request.method == 'GET':
         return render_template("new.html")
-    
+    else:
+        #done this way and not with wtforms to preserve data binding in JS
+        r = request.form
+        img = request.files['img']
+        name = r.get("name")
+        event_type = r.get("type")
+        periodicity = r.get("periodicity")
+        period = r.get("period")
+        location = r.get("location")
+        date = r.get("date")
+        starting_time = r.get("starting")
+        ending_time = r.get("ending")
+        link = r.get("link")
+        organizer = r.get("organizer")
+        organizer_web = r.get("web")
+        description = r.get("description")
+        #commit to the database
+        event = Event(
+            name=name,
+            event_type=event_type,
+            recurrence=periodicity,
+            periodicity=period,
+            date=datetime.strptime(date, '%Y-%m-%d'),
+            starting_time=datetime.strptime(starting_time, '%I:%M'),
+            ending_time=datetime.strptime(ending_time, '%I:%M'),
+            link=link,
+            organizer=organizer,
+            organizer_web=organizer_web,
+            description=description,
+            img=img.read(),
+            user_id=current_user.get_id())
+        db.session.add(event)
+        db.session.commit()
+        return 'saved to database'
 
 
 @app.route("/account")

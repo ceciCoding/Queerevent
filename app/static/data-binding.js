@@ -169,9 +169,12 @@ dateInput.addEventListener('change', () => {
 document.querySelector('.form').addEventListener('click', (e) => {
     if (e.target.type === 'text') {
           e.preventDefault();
-     }
-    if (e.target.className === 'inpt') {
-        e.target.style.color = 'black';
-        e.target.value = '';
     }
+    
+    if (e.target.className === 'inpt' && e.target.style.color != 'black') {
+        console.log(e.target)
+         e.target.value = '';
+         e.target.style.color = 'black';
+    }
+
 })

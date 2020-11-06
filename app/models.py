@@ -9,8 +9,7 @@ class User(db.Model, UserMixin):
     name = db.Column(db.String(50), nullable=False)
     email = db.Column(db.String(50), nullable=False, unique=True)
     pswd_hash = db.Column(db.String(300), nullable=False)
-
-    img = db.relationship('UserImage', backref='user', uselist=False)
+    img = db.Column(db.LargeBinary)
     events = db.relationship('Event', backref='user')
 
     def set_password(self, password):
@@ -35,27 +34,14 @@ class Event(db.Model):
     periodicity = db.Column(db.String(50))
     date = db.Column(db.DateTime)
     location = db.Column(db.String(150))
-    starting_time = db.Column(db.DateTime)
-    ending_time = db.Column(db.DateTime)
+    starting_time = db.Column(db.String)
+    ending_time = db.Column(db.String)
     organizer = db.Column(db.String(50))
     organizer_web = db.Column(db.String(150))
     link = db.Column(db.String(150))
     description = db.Column(db.Text, nullable=False)
-
+    img = db.Column(db.LargeBinary)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
-    img = db.relationship('EventImage', backref="Event", uselist=False)
-
-
-class UserImage(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    img = db.Column(db.LargeBinary)
-    user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
-
-
-class EventImage(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    img = db.Column(db.LargeBinary)
-    event_id = db.Column(db.Integer, db.ForeignKey('event.id'))
 
 
 @login_manager.user_loader
