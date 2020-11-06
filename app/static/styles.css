@@ -203,7 +203,6 @@ h1 {
 
 .event-container {
     width: 100%;
-    height: 350px;
     overflow: hidden;
 }
 
@@ -214,7 +213,7 @@ h1 {
 }
 
 .info-container {
-    padding: 1rem;
+    padding: 1.2rem;
     display: flex;
     justify-content: space-between;
 }
