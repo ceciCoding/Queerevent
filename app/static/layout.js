@@ -7,6 +7,6 @@ menu.addEventListener('click', (e) => {
     console.log(e.target)
     if (e.target === userImage) {
         logoutMenu.classList.toggle('active');
-        console.log(logoutMenu)
+        console.log(logoutMenu);
     }
 })

@@ -1,3 +1,5 @@
+@import 'normalize.css';
+
 * {
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
@@ -92,21 +94,18 @@ h1 {
 .logout {
     position: relative;
     top: 1rem;
-    right: 1.5rem;
     padding: .5rem;
     width: auto;
     height: auto;
     background-color: #fff;
     border: 1px solid black;
     border-radius: 5px;
+    display: inline-block;
+    right: -10000px;
 }
 
 .logout.active {
-    display: inline-block;
-}
-
-.logout {
-    display: none;
+    right: 1.5rem;
 }
 
 
@@ -204,6 +203,7 @@ h1 {
 .event-container {
     width: 100%;
     overflow: hidden;
+    list-style: none;
 }
 
 .event-container img {
