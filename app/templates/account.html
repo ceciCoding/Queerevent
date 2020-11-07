@@ -9,12 +9,12 @@
         </div>
         <div>
             <label for="">Name</label>
-            <p>User's name</p>
+            <p>{{ current_user.name }}</p>
         </div>
         <br>
         <div>
             <label for="">Email</label>
-            <p>User's email</p>
+            <p>{{ current_user.email }}</p>
         </div>
         <br>
         <a href="{{ url_for('edit') }}"><span id="edit">Edit <ion-icon name="create-outline" style="color: inherit"></ion-icon></span></a>

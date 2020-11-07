@@ -11,13 +11,13 @@
 <body>
     <nav class="mobile-user">
         <div class="user-menu">
-            <img class="profile-img" src="../static/assets/user.png" alt="user's photo">
-            <div class="logout">
+            <a href="{{ url_for('account') }}"><img class="profile-img" src="../static/assets/user.png" alt="user's photo"></a>
+            <!-- <div class="logout">
                 <ul>
                     <li><a href="{{ url_for('account') }}">Profile</a></li>
                     <li><a href="{{ url_for('logout') }}">Logout</a></li>
                 </ul>
-            </div>
+            </div> -->
         </div>
     </nav>
     <nav class="mobile-nav">
@@ -51,15 +51,15 @@
                 <li><a href="/my-events">My Events</a></li>
                 <li><a href="/calendar">Calendar</a></li>
                 <li><a href="/new">New Event</a></li>
-                <li class="user-menu">
+                <li class="user-menu"><a href="{{ url_for('account') }}">
                     <img class="profile-img" id="user-img" src="../static/assets/user.png" alt="user's image">
-                    <div class="logout">
+                    <!-- <div class="logout">
                         <ul>
                             <li><a href="{{ url_for('account') }}">Profile</a></li>
                             <li><a href="{{ url_for('logout') }}">Logout</a></li>
                         </ul>
-                    </div>
-                </li>
+                    </div> -->
+                </a></li>
             </ul>
             {% else %}
             <ul>
