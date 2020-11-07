@@ -2,6 +2,7 @@ from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, BooleanField, SubmitField, SelectField, TimeField, DateField, TextAreaField
 from wtforms.validators import ValidationError, DataRequired, Email, EqualTo, Length
 from app.models import User, Event, user_favorites
+from flask_login import current_user
 
 class LoginForm(FlaskForm):
     email = StringField('Email', validators=[DataRequired()])
@@ -27,17 +28,11 @@ class RegistrationForm(FlaskForm):
         if user is not None:
             raise ValidationError('This email is already in use')
 
-#erase if not used
-class EventForm(FlaskForm):
-    name = StringField('Event Name', validators=[DataRequired(), Length(max=100)])
-    event_type = SelectField('Type of Event', validators=[DataRequired()], choices=[('Online', 'Online'), ('Physical', 'Physical')])
-    recurrence = SelectField('Periodicity', validators=[DataRequired()], choices=[('One time', 'One Time'), ('Recurring', 'Recurring')])
-    periodicity = StringField('Periodicity', validators=[Length(max=50)])
-    date = DateField('Date')
-    location = StringField('Location', validators=[Length(max=150)])
-    starting_time = TimeField('Starting Time')
-    ending_time = TimeField('Ending Time')
-    organizer = StringField('Organizer', validators=[Length(max=50)])
-    organizer_web = StringField('Organizer\'s Website', validators=[Length(max=150)])
-    link = StringField('Link to the Event', validators=[Length(max=150)])
-    description = TextAreaField('Description', validators=[DataRequired()])
+
+class EditForm(FlaskForm):
+    name = StringField('Name')
+    old_password = PasswordField('Old Password', validators=[Length(min=8)])
+    new_password = PasswordField('New Password', validators=[Length(min=8)])
+    confirm = PasswordField('Confirm New Password', validators=[Length(min=8), EqualTo('new_password')])
+    submit = SubmitField('Save')
+

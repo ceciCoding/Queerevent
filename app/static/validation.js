@@ -1,17 +1,6 @@
 'use strict';
 const form = document.querySelector('.form');
-
-// function validateEmail() {
-//     const email = document.querySelector('#email').value;
-//     const alert = document.querySelector('#alert');
-//     const pattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
-
-//     if (!email.match(pattern)) {
-//         alert.style.display = 'block';
-//     } else {
-//         alert.style.display = 'none';
-//     }
-// }
+const inptFile = document.querySelector('#img-upload')
 
 form.addEventListener('click', (e) => {
     // e.preventDefault();
@@ -19,3 +8,13 @@ form.addEventListener('click', (e) => {
         e.target.style.color = 'black';
     }
 })
+
+inptFile.addEventListener('change', () => {
+    for (const file of inptFile.files) {
+        if (file.size > 200000) {
+            alert(`${file.name} is too big. Max is 200kb.`)
+            inptFile.files === null;
+        }
+    }
+})
+

@@ -6,7 +6,7 @@ from app.models import User, Event, user_favorites
 from tempfile import mkdtemp
 from flask_login import LoginManager, current_user, login_user, logout_user, login_required, UserMixin
 from flask_sqlalchemy import SQLAlchemy
-from app.forms import LoginForm, RegistrationForm
+from app.forms import LoginForm, RegistrationForm, EditForm
 from werkzeug.urls import url_parse
 from datetime import datetime
 import base64
@@ -32,7 +32,8 @@ def home():
 def index():
     events = Event.query.all()
     for event in events:
-        event.img = base64.b64encode(event.img).decode('ascii')
+         if event.img:
+             event.img = base64.b64encode(event.img).decode('ascii')
     return render_template("home.html", title="Find Events", events=events)
 
 
@@ -78,7 +79,7 @@ def new_event():
     if request.method == 'GET':
         return render_template("new.html")
     else:
-        #done this way and not with wtforms to preserve data binding in JS
+        #done this way and not with wtforms to preserve cool data binding in JS
         r = request.form
         img = request.files['img']
         name = r.get("name")
@@ -114,32 +115,60 @@ def new_event():
 
 @app.route("/event/<id>")
 def event(id):
-    # event_id = request.args.get("id")
     event = Event.query.filter_by(id=id).first()
     img = base64.b64encode(event.img).decode('ascii')
     return render_template("event.html", event=event, img=img)
 
 
 @app.route("/account")
+@login_required
 def account():
-    return render_template("account.html")
+    if current_user.img:
+        img = base64.b64encode(current_user.img).decode('ascii')
+        return render_template("account.html", img=img)
+    else:
+        return render_template("account.html")
 
-@app.route("/edit")
+
+@app.route("/edit", methods=["GET", "POST"])
+@login_required
 def edit():
-    return render_template("edit.html")
+    form = EditForm()
+    if request.method == "GET":
+        if current_user.img:
+            img = base64.b64encode(current_user.img).decode('ascii')
+        return render_template("edit.html", form=form, img=img)
+    else:
+        img = request.files["change"]
+        if form.validate_on_submit():
+            if form.name.data:
+                current_user.name = form.name.data
+            if form.new_password.data:
+                if current_user.check_password(form.old_password.data):
+                    current_user.set_password(form.new_password.data)
+            if img:
+                current_user.img = img.read()
+            db.session.commit()
+            return redirect(url_for("account"))
+        if img:
+            current_user.img = img.read()
+            db.session.commit()
+            return redirect(url_for("account"))
 
 @app.route("/favorites")
+@login_required
 def favorites():
     return render_template("favorites.html", title="Favorite Events")
 
 @app.route("/my-events")
+@login_required
 def my_events():
     return render_template("my-events.html", title="My Events") 
 
 @app.route("/calendar")
+@login_required
 def calendar():
     return render_template("calendar.html")
-
 
 
 @app.errorhandler(404)

@@ -5,7 +5,11 @@
 <section id="user-info">
     <div class="information">
         <div class="user-menu">
-            <img src="../static/assets/user.png" id="prv-img" alt="user photo">
+            {% if img %}
+                <img src="data:;base64,{{ img }}" id="prv-img" alt="user photo">
+            {% else %}
+                <img src="../static/assets/user.png" id="prv-img" alt="user photo">
+            {% endif %}
         </div>
         <div>
             <label for="">Name</label>
@@ -17,7 +21,10 @@
             <p>{{ current_user.email }}</p>
         </div>
         <br>
-        <a href="{{ url_for('edit') }}"><span id="edit">Edit <ion-icon name="create-outline" style="color: inherit"></ion-icon></span></a>
+        <a href="{{ url_for('edit') }}"><span class="edit">Edit <ion-icon name="create-outline" style="color: inherit"></ion-icon></span></a>
+        <br>
+        <br>
+        <a href="{{ url_for('logout') }}"><span class="edit">Logout <ion-icon name="exit-outline" style="color: inherit"></ion-icon></span></a>
     </div>
     <div class="right-img">
         <img src="../static/assets/sitting-human.svg" alt="drawing of a person sitting on their knees">

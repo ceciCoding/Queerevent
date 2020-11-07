@@ -468,7 +468,9 @@ label {
     flex-flow: column nowrap;
 }
 
-.form-control input, 
+.form-control [type="text"], 
+.form-control [type="password"],
+.form-control [type="date"],
 .form-control select,
 .form-control textarea {
     background-color: var(--app-white);
@@ -676,7 +678,7 @@ label {
 }
 
 #user-info .form {
-    width: 70%;
+    /* width: 70%; */
     margin-top: 2rem;
 }
 
@@ -696,12 +698,14 @@ label {
     margin-top: 2rem;
 }
 
-#edit {
+.edit {
     grid-column: 1/2;
     margin-top: 2rem;
     color: #4146CB;
     cursor: pointer;
     text-decoration: underline;
+    display: block;
+    /* margin-bottom: 1rem; */
 }
 
 /***********ERROR STYLES*************/
