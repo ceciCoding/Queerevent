@@ -5,14 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="../static/favicon.ico">
     <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,400;0,700;0,900;1,400;1,700&display=swap" rel="stylesheet"> 
-    <link rel="stylesheet" href="../static/styles.css?v=2.232234">
+    <link rel="stylesheet" href="../static/styles.css?v=2.2323234">
     <title>Queerevent</title>
 </head>
 <body>
     <nav class="mobile-user">
         <div class="user-menu">
             <img class="profile-img" src="../static/assets/user.png" alt="user's photo">
-            <div id="logout" class="logout">
+            <div class="logout">
                 <ul>
                     <li><a href="{{ url_for('account') }}">Profile</a></li>
                     <li><a href="{{ url_for('logout') }}">Logout</a></li>
@@ -53,7 +53,7 @@
                 <li><a href="/new">New Event</a></li>
                 <li class="user-menu">
                     <img class="profile-img" id="user-img" src="../static/assets/user.png" alt="user's image">
-                    <div id="logout" class="logout">
+                    <div class="logout">
                         <ul>
                             <li><a href="{{ url_for('account') }}">Profile</a></li>
                             <li><a href="{{ url_for('logout') }}">Logout</a></li>

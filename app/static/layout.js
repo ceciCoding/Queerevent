@@ -1,5 +1,5 @@
 'use strict'
-const menu = document.querySelector('.desktop-nav') || document.querySelector('.mobile-user')
+const menu = document.querySelector('.nav-container ul') || document.querySelector('.mobile-user')
 
 menu.addEventListener('click', (e) => {
     const userImage = document.querySelector('#user-img')

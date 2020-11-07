@@ -89,7 +89,7 @@ h1 {
     height: 1.5rem; 
 }
 
-#logout {
+.logout {
     position: relative;
     top: 1rem;
     right: 1.5rem;
@@ -110,7 +110,7 @@ h1 {
 }
 
 
-#logout::before {
+.logout::before {
     content: '▲';
     position: absolute;
     top: -25%;
@@ -118,14 +118,14 @@ h1 {
     transform: translate(-50%);
 }
 
-#logout ul {
+.logout ul {
     display: flex;
     flex-flow: column nowrap;
     justify-content: center;
     gap: .5rem;
 }
 
-#logout li {
+.user-menu .logout li {
     margin-left: 0;
 }
 
@@ -250,7 +250,7 @@ h1 {
 }
 
 .events-menu {
-    width: 30%;
+    width: 35%;
 }
 
 .events-menu ul {
@@ -782,7 +782,7 @@ footer {
     background-color: var(--app-white);
   }
 
-  #logout ul {
+  .logout ul {
       list-style: none;
       margin: 0;
   }

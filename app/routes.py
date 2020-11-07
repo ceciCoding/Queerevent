@@ -111,7 +111,7 @@ def new_event():
         return 'saved to database'
 
 
-@app.route("/event-identifier/<id>")
+@app.route("/event/<id>")
 def event(id):
     # event_id = request.args.get("id")
     event = Event.query.filter_by(id=id).first()
