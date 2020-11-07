@@ -22,7 +22,8 @@ def home():
     else:
         events = Event.query.all()
         for event in events:
-            event.img = base64.b64encode(event.img).decode('ascii')
+            if event.img:
+                event.img = base64.b64encode(event.img).decode('ascii')
         return render_template("home.html", title="Find Events", events=events)
 
 
@@ -115,7 +116,8 @@ def new_event():
 def event(id):
     # event_id = request.args.get("id")
     event = Event.query.filter_by(id=id).first()
-    return render_template("event.html", event=event)
+    img = base64.b64encode(event.img).decode('ascii')
+    return render_template("event.html", event=event, img=img)
 
 
 @app.route("/account")

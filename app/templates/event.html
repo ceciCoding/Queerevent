@@ -3,7 +3,11 @@
 {% block main%}
     <section class="four-grid">
         <div class="preview-img">
-            <img src="../static/assets/pride.jpg" alt="event image">
+            {% if not event.img %}
+                <img src="../static/assets/pride.jpg" alt="event image">               
+            {% else %}
+                <img src="data:;base64,{{ img }}" alt="event image">
+            {% endif %}
         </div>
         <div class="preview-info">
             <header>
@@ -12,22 +16,35 @@
             </header>
             <div>
                 <ul>
-                    <li class="triangle">{{ event.date }}</li>
-                    <li class="triangle">At {{event.starting_time }}</li>
-                    <li class="triangle">{{ event.location }}</li>
-                    <li class="triangle"><a href="{{ event.link }}"></a>{{ event.link }}</li>
+                    {% if event.recurrence == 'Recurring' %}
+                        <li class="triangle">{{ event.periodicity }}</li>
+                    {% else %}
+                        <li class="triangle event-date">{{ event.date }}</li>
+                    {% endif %}
+                    {% if event.starting_time %}
+                        <li class="triangle">At {{event.starting_time }}</li>
+                    {% endif %}
+                    {% if event.location %}
+                        <li class="triangle">{{ event.location }}</li>
+                    {% endif %}
+                    {% if event.link %}
+                        <li class="triangle"><a href="{{ event.link }}" target="_blank">{{ event.link }}</a></li>
+                    {% endif %}
                 </ul>
             </div>
-            <div>
-                <p>{{ event.description}}</p>
+            <div class="event-description">
+                <p>{{ event.description }}</p>
             </div>
             <br>
-            <h3>Organized By</h3>
-            <h5>{{ event.organizer }}</h5>
-            <h5>{{ event.organizer_web }}</h5>
+            {% if event.organizer or event.organizer_web %}
+                <h3>Organized By</h3>
+                <h5>{{ event.organizer }}</h5>
+                {% if event.organizer_web%}
+                    <h5><a href="{{ event.organizer_web }}" target="_blank">{{ event.organizer_web }}</a></h5>
+                {% endif %}
+            {% endif %}
         </div>
         <div class="map">
-
         </div>
         <div class="cta">
             <p><strong>Do you like this event?</strong></p>
