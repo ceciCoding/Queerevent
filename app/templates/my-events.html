@@ -1,1 +1,8 @@
-{% extends 'base-hero.html' %}
+{% extends "base-hero.html" %}
+{% from "macros/macro-popup.html" import popup %}
+{% from "macros/macro-events.html" import events_macro with context %}
+
+
+{% block events %}
+{{ events_macro() }}
+{% endblock %}

@@ -168,7 +168,11 @@ def favorites():
 @app.route("/my-events")
 @login_required
 def my_events():
-    return render_template("my-events.html", title="My Events") 
+    events = Event.query.filter_by(user_id=current_user.id).all()
+    for event in events:
+        if event.img:
+            event.img = base64.b64encode(event.img).decode('ascii')
+    return render_template("my-events.html", title="My Events", events=events) 
 
 @app.route("/calendar")
 @login_required

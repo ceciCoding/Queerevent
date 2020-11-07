@@ -1,5 +1,6 @@
 @import 'normalize.css';
 
+/* tags basic config*/
 * {
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
@@ -32,6 +33,10 @@ a {
 
 p {
     line-height: 1.8rem; 
+}
+
+ul {
+    list-style: none;
 }
 
 main {
@@ -77,7 +82,6 @@ h1 {
 
 .desktop-nav ul {
     display: flex;
-    list-style: none;
     align-items: center;
 }
 
@@ -142,7 +146,6 @@ h1 {
 }
 
 .mobile-user ul {
-    list-style: none;
     font-weight: bold;
 }
 
@@ -208,7 +211,6 @@ h1 {
 .event-container {
     width: 100%;
     overflow: hidden;
-    list-style: none;
 }
 
 .event-container img {
@@ -259,7 +261,6 @@ h1 {
 }
 
 .events-menu ul {
-    list-style: none;
     width: 100%;
     display: flex;
     justify-content: space-between;
@@ -542,7 +543,6 @@ label {
 }
 
 .triangle {
-    list-style: none;
     margin-bottom: .8rem;
 }
 
@@ -797,7 +797,6 @@ footer {
   }
 
   .logout ul {
-      list-style: none;
       margin: 0;
   }
 

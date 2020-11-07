@@ -1,0 +1,30 @@
+{% extends "base-hero.html" %}
+{% from "macros/macro-popup.html" import popup%}
+
+
+{% macro events_macro() %}
+{% for event in events %}
+<li class="event-container base-card">
+        <a href="{{ url_for('event', id=event.id)}}">
+            {% if event.img %}
+                <div class="img-container"><img src="data:;base64,{{ event.img }}" alt="event real image"></div>
+            {% else %}
+                <div class="img-container" style="background-image: url(../static/assets/unnamed.jpg);"></div>
+            {% endif %}
+         </a>
+        <div class="info-container">
+            <div class="card-text">
+                <h3>{{ event.name }}</h3>
+                <h5 class="event-date">{{ event.date }}</h5>
+                <h5>At {{ event.starting_time }}</h5>
+            </div>
+            <div class="card-buttons">
+                <ion-icon name="arrow-redo" class="share-arrow" data-modal-target="#modal" data-event-id={{ event.id }}></ion-icon>
+                <ion-icon class="heart" name="heart-outline"></ion-icon>
+            </div>
+        </div>
+</li>
+<script src="../static/favorites.js"></script>
+{% endfor %}
+{{ popup('Share this event', 'Copy Link', '../static/assets/sitting-boy.svg', 'https://queerevent.net/event/', 'copy') }}
+{% endmacro %}
