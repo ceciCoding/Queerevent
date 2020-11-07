@@ -85,9 +85,12 @@ def new_event():
         name = r.get("name")
         event_type = r.get("type")
         periodicity = r.get("periodicity")
+        if periodicity != 'Recurring':
+            date = r.get("date").datetime.strptime(date, '%Y-%m-%d')
+        else:
+            date = None
         period = r.get("period")
         location = r.get("location")
-        date = r.get("date")
         starting_time = r.get("starting")
         link = r.get("link")
         organizer = r.get("organizer")
@@ -100,7 +103,6 @@ def new_event():
             recurrence=periodicity,
             periodicity=period,
             location=location,
-            date=datetime.strptime(date, '%Y-%m-%d'),
             starting_time=starting_time,
             link=link,
             organizer=organizer,
@@ -108,9 +110,11 @@ def new_event():
             description=description,
             img=img.read(),
             user_id=current_user.get_id())
+        if date:
+            event.date = date
         db.session.add(event)
         db.session.commit()
-        return 'saved to database'
+        return redirect(url_for('event', id=event.id))
 
 
 @app.route("/event/<id>")

@@ -7,7 +7,7 @@
 <li class="event-container base-card">
         <a href="{{ url_for('event', id=event.id)}}">
             {% if event.img %}
-                <div class="img-container"><img src="data:;base64,{{ event.img }}" alt="event image"></div>
+                <div class="img-container"><img src="data:;base64,{{ event.img }}" alt="event real image"></div>
             {% else %}
                 <div class="img-container" style="background-image: url(../static/assets/unnamed.jpg);"></div>
             {% endif %}

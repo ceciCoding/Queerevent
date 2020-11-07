@@ -468,6 +468,7 @@ label {
     flex-flow: column nowrap;
 }
 
+/* would love :not would have more browser support now https://caniuse.com/?search=%3Anot */
 .form-control [type="text"], 
 .form-control [type="password"],
 .form-control [type="date"],
