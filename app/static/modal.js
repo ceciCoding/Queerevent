@@ -14,10 +14,16 @@ trigger.addEventListener('click', (e) => {
         e.preventDefault();
     }
     if (e.target.className.includes('share-arrow') || e.target.className.includes('open-m')) {
+        if (modalLink.style.display != 'none') {
+            modalLink.value = modalLink.value.concat(e.target.getAttribute("data-event-id"))
+        }
         openModal(modal, overlay);
     }
     if (e.target.className.includes('close-button')) {
         closeModal(modal, overlay);
+        if (modalLink.style.display != 'none') {
+            modalLink.value = modalLink.value.slice(0, 29);
+        }
     }
 
     //copy link text in share modal

@@ -19,12 +19,12 @@
                 <h5>At {{ event.starting_time }}</h5>
             </div>
             <div class="card-buttons">
-                <ion-icon name="arrow-redo" class="share-arrow" data-modal-target="#modal"></ion-icon>
+                <ion-icon name="arrow-redo" class="share-arrow" data-modal-target="#modal" data-event-id={{ event.id }}></ion-icon>
                 <ion-icon class="heart" name="heart-outline"></ion-icon>
             </div>
         </div>
 </li>
 <script src="../static/favorites.js"></script>
 {% endfor %}
-{{ popup('Share this event', 'Copy Link', '../static/assets/sitting-boy.svg', 'https://queerevent.com/event/e34', 'copy') }}
+{{ popup('Share this event', 'Copy Link', '../static/assets/sitting-boy.svg', 'https://queerevent.net/event/', 'copy') }}
 {% endblock %}
