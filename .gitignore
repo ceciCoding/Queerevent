@@ -1,6 +1,6 @@
 design-stuff
 /assets
-event.js
+event-details.js
 *.db
 *.ico
 *.pyc
