@@ -141,6 +141,11 @@ h1 {
     display: none;
 }
 
+.mobile-user ul {
+    list-style: none;
+    font-weight: bold;
+}
+
 /***********SEARCH BAR STYLES*************/
 .search-bar {
     position: relative;
@@ -761,7 +766,7 @@ footer {
     main {
         margin: 1.5rem;
         margin-bottom: 8rem;
-        margin-top: 4rem;
+        margin-top: 6rem;
     }
 
     main > section {

@@ -158,6 +158,7 @@ def edit():
             current_user.img = img.read()
             db.session.commit()
             return redirect(url_for("account"))
+        return redirect(url_for('account'))
 
 @app.route("/favorites")
 @login_required
