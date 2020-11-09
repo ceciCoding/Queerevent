@@ -22,6 +22,10 @@ def home():
     else:
         events = Event.query.all()
         for event in events:
+            user_is_fan = User.query.join(user_favorites).join(Event).filter(
+                (user_favorites.c.user_id == current_user.id) & (user_favorites.c.event_id == event.id)).all()
+            if user_is_fan:
+                event.fan = True
             if event.img:
                 event.img = base64.b64encode(event.img).decode('ascii')
         return render_template("home.html", title="Find Events", events=events)
@@ -32,8 +36,10 @@ def home():
 def index():
     events = Event.query.all()
     for event in events:
-         if event.img:
-             event.img = base64.b64encode(event.img).decode('ascii')
+        user_is_fan = User.query.join(user_favorites).join(Event).filter(
+            (user_favorites.c.user_id == current_user.id) & (user_favorites.c.event_id == event.id)).all()
+        if event.img:
+            event.img = base64.b64encode(event.img).decode('ascii')
     return render_template("home.html", title="Find Events", events=events)
 
 
@@ -184,19 +190,21 @@ def calendar():
     return render_template("calendar.html")
 
 
-@app.route("/add-favorite", methods=["POST"])
+@app.route("/toggle-favorite", methods=["POST"])
 @login_required
-def add_favorite():
+def toggle_favorite():
     req = request.get_json()
     event = Event.query.filter_by(id=req["event"]).first()
     user_is_fan = User.query.join(user_favorites).join(Event).filter(
         (user_favorites.c.user_id == current_user.id) & (user_favorites.c.event_id == event.id)).all()
     if user_is_fan:
+        event.fan = False
         event.fans.remove(current_user)
     else:
+        event.fan = True
         event.fans.append(current_user)
     db.session.commit()
-    res = make_response(jsonify(req), 200)
+    res = make_response(jsonify(event.fan), 200)
     return res
 
 
