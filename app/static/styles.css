@@ -35,6 +35,10 @@ p {
     line-height: 1.8rem; 
 }
 
+h1, h2, h3 {
+    line-height: 2.2rem;
+}
+
 ul {
     list-style: none;
 }
@@ -546,7 +550,7 @@ label {
 
 
 .event-description {
-    margin-top: 1.5rem;
+    margin-top: 2.5rem;
 }
 
 .map {
