@@ -121,8 +121,10 @@ def new_event():
 @app.route("/event/<id>")
 def event(id):
     event = Event.query.filter_by(id=id).first()
+    user_is_fan = User.query.join(user_favorites).join(Event).filter(
+        (user_favorites.c.user_id == current_user.id) & (user_favorites.c.event_id == event.id)).all()
     img = base64.b64encode(event.img).decode('ascii')
-    return render_template("event.html", event=event, img=img)
+    return render_template("event.html", event=event, img=img, user_is_fan=user_is_fan)
 
 
 @app.route("/account")
@@ -187,7 +189,12 @@ def calendar():
 def add_favorite():
     req = request.get_json()
     event = Event.query.filter_by(id=req["event"]).first()
-    event.fans.append(current_user)
+    user_is_fan = User.query.join(user_favorites).join(Event).filter(
+        (user_favorites.c.user_id == current_user.id) & (user_favorites.c.event_id == event.id)).all()
+    if user_is_fan:
+        event.fans.remove(current_user)
+    else:
+        event.fans.append(current_user)
     db.session.commit()
     res = make_response(jsonify(req), 200)
     return res

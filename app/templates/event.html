@@ -12,7 +12,11 @@
         <div class="preview-info">
             <header>
                 <h2>{{ event.name }}</h2>
-                <ion-icon class="heart" style="font-size: 2.2rem;" name="heart-outline" onclick="toggleFavorite()" data-event="{{ event.id }}" data-user-id={{ current_user.id }}></ion-icon>
+                {% if user_is_fan %}
+                    <ion-icon class="heart active" style="font-size: 2.2rem;" name="heart" onclick="toggleFavorite()" data-event="{{ event.id }}" data-user-id={{ current_user.id }}></ion-icon>
+                {% else %}
+                    <ion-icon class="heart" style="font-size: 2.2rem;" name="heart-outline" onclick="toggleFavorite()" data-event="{{ event.id }}" data-user-id={{ current_user.id }}></ion-icon>
+                {% endif %}
             </header>
             <div>
                 <ul>
@@ -29,6 +33,9 @@
                     {% endif %}
                     {% if event.link %}
                         <li class="triangle"><a href="{{ event.link }}" target="_blank">{{ event.link }}</a></li>
+                    {% endif %}
+                    {% if user_is_fan %}
+                        <li class="triangle">user is fan</li>
                     {% endif %}
                 </ul>
             </div>
