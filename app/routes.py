@@ -1,4 +1,4 @@
-import os, base64, geocoder
+import os
 from app import app, db
 from flask import Flask, render_template, request, session, url_for, redirect, flash, get_flashed_messages, jsonify, make_response
 from flask_mail import Mail, Message
@@ -9,7 +9,8 @@ from flask_sqlalchemy import SQLAlchemy
 from app.forms import LoginForm, RegistrationForm, EditForm
 from werkzeug.urls import url_parse
 from datetime import datetime
-# import geocoder
+import geocoder
+import base64
 
 # os.environ["APP_SETTINGS"] = "./config.cfg"
 # mail = Mail(app)
@@ -27,7 +28,7 @@ def home():
             if user_is_fan:
                 event.fan = True
             if event.img:
-                event.img = base64.b64encode(event.img).decode('ascii')
+                event.image = base64.b64encode(event.img).decode('ascii')
         return render_template("home.html", title="Find Events", events=events)
 
 
@@ -39,7 +40,7 @@ def index():
         if current_user.is_authenticated:
             user_is_fan = User.query.join(user_favorites).join(Event).filter(
                 (user_favorites.c.user_id == current_user.id) & (user_favorites.c.event_id == event.id)).all()
-        if event.img:
+        if event.image:
             event.img = base64.b64encode(event.img).decode('ascii')
     return render_template("home.html", title="Find Events", events=events)
 
@@ -142,8 +143,8 @@ def event(id):
             print(coordinates)
         return render_template("event.html", event=event, img=img, user_is_fan=user_is_fan, coordinates=coordinates)
     else:
-        event.delete()
-        db.session.commi()
+        db.session.delete(event)
+        db.session.commit()
         return redirect(url_for("home"))
 
 
