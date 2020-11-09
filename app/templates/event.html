@@ -12,10 +12,12 @@
         <div class="preview-info">
             <header>
                 <h2>{{ event.name }}</h2>
-                {% if user_is_fan %}
-                    <ion-icon class="heart active" style="font-size: 2.2rem;" name="heart" data-event="{{ event.id }}"></ion-icon>
-                {% else %}
-                    <ion-icon class="heart" style="font-size: 2.2rem;" name="heart-outline" data-event="{{ event.id }}"></ion-icon>
+                {% if not current_user.is_anonymous %}
+                    {% if user_is_fan %}
+                        <ion-icon class="heart active" style="font-size: 2.2rem;" name="heart" data-event="{{ event.id }}"></ion-icon>
+                    {% else %}
+                        <ion-icon class="heart" style="font-size: 2.2rem;" name="heart-outline" data-event="{{ event.id }}"></ion-icon>
+                    {% endif %}
                 {% endif %}
             </header>
             <div>
@@ -54,12 +56,7 @@
         <div class="map">
         </div>
         <div class="cta">
-            <p><strong>Do you like this event?</strong></p>
-            <p>Make sure you don't miss it!</p>
-            <button class="btn open-m">Add to Calendar</button>
-            {% if event.user_id == current_user.id %}
-                <button class="btn">Delete Event</button>
-            {% endif %}
+            <img src="../static/assets/sitting-boy.svg" alt="">
         </div>
         {{ popup('This event was added to your calendar', 'Ok!', '../static/assets/popup-person.svg') }}  
     </section>

@@ -36,8 +36,9 @@ def home():
 def index():
     events = Event.query.all()
     for event in events:
-        user_is_fan = User.query.join(user_favorites).join(Event).filter(
-            (user_favorites.c.user_id == current_user.id) & (user_favorites.c.event_id == event.id)).all()
+        if current_user.is_authenticated:
+            user_is_fan = User.query.join(user_favorites).join(Event).filter(
+                (user_favorites.c.user_id == current_user.id) & (user_favorites.c.event_id == event.id)).all()
         if event.img:
             event.img = base64.b64encode(event.img).decode('ascii')
     return render_template("home.html", title="Find Events", events=events)
@@ -127,8 +128,11 @@ def new_event():
 @app.route("/event/<id>")
 def event(id):
     event = Event.query.filter_by(id=id).first()
-    user_is_fan = User.query.join(user_favorites).join(Event).filter(
-        (user_favorites.c.user_id == current_user.id) & (user_favorites.c.event_id == event.id)).all()
+    if current_user.is_authenticated:
+        user_is_fan = User.query.join(user_favorites).join(Event).filter(
+            (user_favorites.c.user_id == current_user.id) & (user_favorites.c.event_id == event.id)).all()
+    else:
+        user_is_fan = False
     img = base64.b64encode(event.img).decode('ascii')
     return render_template("event.html", event=event, img=img, user_is_fan=user_is_fan)
 
@@ -150,6 +154,8 @@ def edit():
     if request.method == "GET":
         if current_user.img:
             img = base64.b64encode(current_user.img).decode('ascii')
+        else:
+            img = None
         return render_template("edit.html", form=form, img=img)
     else:
         img = request.files["change"]

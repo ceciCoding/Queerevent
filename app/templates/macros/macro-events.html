@@ -20,10 +20,12 @@
             </div>
             <div class="card-buttons">
                 <ion-icon name="arrow-redo" class="share-arrow" data-modal-target="#modal" data-event-id={{ event.id }}></ion-icon>
-                {% if event.fan %}
-                    <ion-icon class="heart active" name="heart" data-event={{ event.id }}></ion-icon>
-                {% else %}
-                    <ion-icon class="heart" name="heart-outline" data-event={{ event.id }}></ion-icon>
+                 {% if not current_user.is_anonymous %}
+                    {% if event.fan %}
+                        <ion-icon class="heart active" name="heart" data-event={{ event.id }}></ion-icon>
+                    {% else %}
+                        <ion-icon class="heart" name="heart-outline" data-event={{ event.id }}></ion-icon>
+                    {% endif %}
                 {% endif %}
             </div>
         </div>

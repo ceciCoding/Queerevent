@@ -91,7 +91,7 @@ h1 {
 }
 
 .user-menu {
-    width: 1.5rem;
+    /* width: 1.5rem; */
     height: 1.5rem; 
 }
 
@@ -541,7 +541,9 @@ label {
     align-self: center;
     justify-self: center;
     text-align: center;
+    /* background-image: url(../static/assets/popup-person.png); */
 }
+
 
 .event-description {
     margin-top: 1.5rem;
@@ -880,7 +882,7 @@ footer {
   }
 
   .preview-img {
-      height: 250px;
+      /* height: 250px; */
       width: 100%;
       overflow: hidden;
   }
@@ -893,6 +895,12 @@ footer {
 /***********MOBILE EVENT DETAIL STYLES*************/
   .four-grid .cta {
       display: none;
+  }
+
+  .four-grid .preview-info header {
+      flex-flow: column nowrap;
+      align-items: flex-start;
+      gap: .6rem;
   }
 
 /***********MOBILE LANDING PAGE AND LOGIN STYLES*************/
