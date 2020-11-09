@@ -4,6 +4,12 @@ from flask_login import UserMixin
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime, timedelta
 
+#association table for favorite events
+user_favorites = db.Table('user_favorites',
+    db.Column('event_id', db.Integer, db.ForeignKey('event.id')),
+    db.Column('user_id', db.Integer, db.ForeignKey('user.id'))
+                          )
+
 class User(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(50), nullable=False)
@@ -11,6 +17,7 @@ class User(db.Model, UserMixin):
     pswd_hash = db.Column(db.String(300), nullable=False)
     img = db.Column(db.LargeBinary)
     events = db.relationship('Event', backref='user')
+    favorites = db.relationship('Event', secondary=user_favorites, backref=db.backref('fans', lazy='dynamic'))
 
     def set_password(self, password):
         self.pswd_hash = generate_password_hash(password)
@@ -18,12 +25,6 @@ class User(db.Model, UserMixin):
     def check_password(self, password):
         return check_password_hash(self.pswd_hash, password)
 
-
-#association table for favorite events
-user_favorites = db.Table('user_favorites',
-    db.Column('event_id', db.Integer, db.ForeignKey('event.id'), primary_key=True),
-    db.Column('user_id', db.Integer, db.ForeignKey('user.id'), primary_key=True)
-    )
 
 
 class Event(db.Model):

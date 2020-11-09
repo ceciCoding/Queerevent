@@ -1,6 +1,6 @@
 import os
 from app import app, db
-from flask import Flask, render_template, request, session, url_for, redirect, flash, get_flashed_messages
+from flask import Flask, render_template, request, session, url_for, redirect, flash, get_flashed_messages, jsonify, make_response
 from flask_mail import Mail, Message
 from app.models import User, Event, user_favorites
 from tempfile import mkdtemp
@@ -86,7 +86,8 @@ def new_event():
         event_type = r.get("type")
         periodicity = r.get("periodicity")
         if periodicity != 'Recurring':
-            date = r.get("date").datetime.strptime(date, '%Y-%m-%d')
+            date = r.get("date")
+            date = datetime.strptime(date, '%Y-%m-%d')
         else:
             date = None
         period = r.get("period")
@@ -174,10 +175,22 @@ def my_events():
             event.img = base64.b64encode(event.img).decode('ascii')
     return render_template("my-events.html", title="My Events", events=events) 
 
+ 
 @app.route("/calendar")
 @login_required
 def calendar():
     return render_template("calendar.html")
+
+
+@app.route("/add-favorite", methods=["POST"])
+@login_required
+def add_favorite():
+    req = request.get_json()
+    event = Event.query.filter_by(id=req["event"]).first()
+    event.fans.append(current_user)
+    db.session.commit()
+    res = make_response(jsonify(req), 200)
+    return res
 
 
 @app.errorhandler(404)

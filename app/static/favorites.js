@@ -14,3 +14,33 @@ container.addEventListener('click', (e) => {
         }
     }
 });
+
+//add to favorites
+function toggleFavorite() {
+    const heart = document.querySelector('.heart');
+    const eventData = {
+        event: heart.getAttribute(['data-event'])
+    }
+    
+    fetch(`${window.origin}/add-favorite`, {
+        method: 'POST',
+        credentials: 'include',
+        body: JSON.stringify(eventData), 
+        cache: "no-cache",
+        headers: new Headers({
+            'content-type': 'application/json'
+        })
+    })
+        .then(response => {
+            if (response.status !== 200) {
+                console.log(`Looks like there was a problem. Status Code: ${response.status}`);
+                return
+            }
+            response.json().then(data => {
+                console.log(data);
+            });
+        })
+        .catch(error => {
+            console.log(`Fetch error ${error}`)
+        })
+}

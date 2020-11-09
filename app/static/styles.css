@@ -95,43 +95,6 @@ h1 {
     height: 1.5rem; 
 }
 
-.logout {
-    position: relative;
-    top: 1rem;
-    padding: .5rem;
-    width: auto;
-    height: auto;
-    background-color: #fff;
-    border: 1px solid black;
-    border-radius: 5px;
-    display: inline-block;
-    right: -10000px;
-}
-
-.logout.active {
-    right: 1.5rem;
-}
-
-
-.logout::before {
-    content: '▲';
-    position: absolute;
-    top: -25%;
-    left: 50%;
-    transform: translate(-50%);
-}
-
-.logout ul {
-    display: flex;
-    flex-flow: column nowrap;
-    justify-content: center;
-    gap: .5rem;
-}
-
-.user-menu .logout li {
-    margin-left: 0;
-}
-
 .user-menu img {
     max-width: 100%;
     max-height: 100%;
@@ -794,10 +757,6 @@ footer {
     position: fixed;
     top: 0;
     background-color: var(--app-white);
-  }
-
-  .logout ul {
-      margin: 0;
   }
 
   .mobile-nav {
