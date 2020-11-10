@@ -525,9 +525,9 @@ label {
 
 .four-grid .preview-info header {
     display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
-    margin-bottom: 2rem;
+    flex-flow: column nowrap;
+    align-items: flex-start;
+    gap: .6rem;
 }
 .four-grid .preview-info header h2 {
     margin: 0;
@@ -539,13 +539,18 @@ label {
     width: 100%;
 }
 
-.four-grid .cta {
+.four-grid .delete {
     grid-column: 9/13;
     grid-row: 2/3;
     align-self: center;
     justify-self: center;
     text-align: center;
     /* background-image: url(../static/assets/popup-person.png); */
+}
+
+.delete.centered {
+    grid-column: 1/13;
+    margin-top: 6rem;
 }
 
 
@@ -897,14 +902,8 @@ footer {
   }
 
 /***********MOBILE EVENT DETAIL STYLES*************/
-  .four-grid .cta {
+  .four-grid .delete {
       display: none;
-  }
-
-  .four-grid .preview-info header {
-      flex-flow: column nowrap;
-      align-items: flex-start;
-      gap: .6rem;
   }
 
 /***********MOBILE LANDING PAGE AND LOGIN STYLES*************/

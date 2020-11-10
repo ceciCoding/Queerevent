@@ -15,7 +15,7 @@ import base64
 # os.environ["APP_SETTINGS"] = "./config.cfg"
 # mail = Mail(app)
 EVENT_TYPES = ["Physical", "Online"]
-PERIODICITIES = ["One-time", "Recurring"]
+PERIODICITIES = ["One time", "Recurring"]
 
 #routes
 @app.route("/", methods=['GET', 'POST'])
@@ -92,6 +92,7 @@ def create():
 
 
 @app.route("/logout")
+@login_required
 def logout():
     logout_user();
     return redirect(url_for('index'))
@@ -156,14 +157,14 @@ def event(id):
             user_is_fan = False
         img = base64.b64encode(event.img).decode('ascii')
         if event.location:
-            address = geocoder.google(
-                event.location)
+            address = geocoder.google(event.location)
             coordinates = address.latlng
-            print(coordinates)
+        else:
+            coordinates = None
         return render_template("event.html", event=event, img=img, user_is_fan=user_is_fan, coordinates=coordinates)
     else:
         db.session.delete(event)
-        db.session.commit()
+        db.session.commit() 
         return redirect(url_for("home"))
 
 

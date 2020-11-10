@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="../static/favicon.ico">
     <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,400;0,700;0,900;1,400;1,700&display=swap" rel="stylesheet"> 
-    <link rel="stylesheet" href="../static/styles.css?v=4.534">
+    <link rel="stylesheet" href="../static/styles.css?v=4.5124">
     <title>Queerevent</title>
 </head>
 <body>
@@ -32,14 +32,14 @@
                     <a href="/my-events"><ion-icon name="person-outline"></ion-icon></a>
                 </li>
                 <li class="mobile-menu-item">
-                    <a href="/new"><ion-icon style="font-size: 2.2rem;" name="add-circle-outline"></ion-icon></a>
-                </li>
-                <li class="mobile-menu-item">
                     <a href="/favorites"><ion-icon style="font-size: 2.2rem;" name="heart-outline"></ion-icon></a>
                 </li>
                 <li class="mobile-menu-item">
-                    <a href="/calendar"><ion-icon name="calendar-outline"></ion-icon></a>
+                    <a href="/new"><ion-icon style="font-size: 2.2rem;" name="add-circle-outline"></ion-icon></a>
                 </li>
+                <!-- <li class="mobile-menu-item">
+                    <a href="/calendar"><ion-icon name="calendar-outline"></ion-icon></a>
+                </li> -->
             </ul>
         </nav>
     {% endif %}
@@ -53,7 +53,7 @@
                     <li><a href="/">Home</a></li>
                     <li><a href="/favorites">Favorites</a></li>
                     <li><a href="/my-events">My Events</a></li>
-                    <li><a href="/calendar">Calendar</a></li>
+                    <!-- <li><a href="/calendar">Calendar</a></li> -->
                     <li><a href="/new">New Event</a></li>
                     <li class="user-menu">
                         <a href="{{ url_for('account') }}">

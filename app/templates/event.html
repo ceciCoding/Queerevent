@@ -28,7 +28,7 @@
                         <li class="triangle event-date">{{ event.date }}</li>
                     {% endif %}
                     {% if event.starting_time %}
-                        <li class="triangle">At {{event.starting_time }}</li>
+                        <li class="triangle">{{event.starting_time }}</li>
                     {% endif %}
                     {% if event.location %}
                         <li class="triangle location" data-lat="{{ coordinates[0] }}" data-lng="{{ coordinates[1] }}">{{ event.location }}</li>
@@ -55,7 +55,7 @@
             </div>
         {% endif %}
         {% if event.user_id == current_user.id %}
-            <form class="cta" action="" method="POST">
+            <form class="delete" action="" method="POST">
                 <p>This event was published by you.</p>
                 <p>Do you want to delete it?</p>
                 <input type="submit" class="btn" value="Delete event">
