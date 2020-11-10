@@ -14,6 +14,8 @@ import base64
 
 # os.environ["APP_SETTINGS"] = "./config.cfg"
 # mail = Mail(app)
+EVENT_TYPES = ["Physical", "Online"]
+PERIODICITIES = ["One-time", "Recurring"]
 
 #routes
 @app.route("/", methods=['GET', 'POST'])
@@ -120,8 +122,6 @@ def new_event():
         organizer_web = r.get("web")
         description = r.get("description")
         #check for errors in the selects
-        EVENT_TYPES = ["Physical", "Online"]
-        PERIODICITIES = ["One time", "Recurring"]
         if event_type not in EVENT_TYPES or periodicity not in PERIODICITIES:
             return render_template("new.html")
         #commit to the database

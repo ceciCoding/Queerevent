@@ -12,6 +12,19 @@ const eventsMenu = document.querySelector('.events-menu');
 
 eventsMenu.addEventListener('click', (e) => {
     const eventFilters = document.querySelectorAll('.events-menu-item');
+    const events = document.querySelectorAll('.event-container');
+
     eventFilters.forEach(filter => filter.classList.remove('active'))
     e.target.classList.add('active');
+
+    events.forEach(event => {
+        if (e.target.innerHTML === 'All') {
+            event.style.display = 'list-item';
+        }
+        else if (event.getAttribute(['data-recurrence']) === e.target.innerHTML || event.getAttribute(['data-event-type']) === e.target.innerHTML) {
+            event.style.display = 'list-item';
+        } else {
+            event.style.display = 'none';
+        }
+    })
 })
