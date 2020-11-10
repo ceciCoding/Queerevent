@@ -176,6 +176,7 @@ h1 {
 }
 
 .event-container {
+    height: 350px;
     width: 100%;
     overflow: hidden;
 }
@@ -184,6 +185,11 @@ h1 {
     max-width: 100%;
     display: block;
     margin: 0 auto;
+    overflow: hidden;
+}
+
+.event-container > a {
+    overflow: hidden;
 }
 
 .info-container {
@@ -216,6 +222,8 @@ h1 {
     height: 60%;
     width: 100%;
     overflow: hidden;
+    background-position: center;
+    background-size: cover;
 }
 
 .heart.active {
