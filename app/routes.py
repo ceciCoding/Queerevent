@@ -40,8 +40,8 @@ def index():
         if current_user.is_authenticated:
             user_is_fan = User.query.join(user_favorites).join(Event).filter(
                 (user_favorites.c.user_id == current_user.id) & (user_favorites.c.event_id == event.id)).all()
-        if event.image:
-            event.img = base64.b64encode(event.img).decode('ascii')
+        if event.img:
+            event.image = base64.b64encode(event.img).decode('ascii')
     return render_template("home.html", title="Find Events", events=events)
 
 
@@ -189,7 +189,14 @@ def edit():
 @app.route("/favorites")
 @login_required
 def favorites():
-    return render_template("favorites.html", title="Favorite Events")
+    events = Event.query.join(user_favorites).join(User).filter(
+            (user_favorites.c.user_id == current_user.id)).all()
+    print(events)
+    for event in events:
+        if event.img:
+            event.image = base64.b64encode(event.img).decode('ascii')
+        event.fan = True
+    return render_template("favorites.html", title="Favorite Events", events=events)
 
 @app.route("/my-events")
 @login_required
@@ -197,7 +204,11 @@ def my_events():
     events = Event.query.filter_by(user_id=current_user.id).all()
     for event in events:
         if event.img:
-            event.img = base64.b64encode(event.img).decode('ascii')
+            event.image = base64.b64encode(event.img).decode('ascii')
+        user_is_fan = Event.query.join(user_favorites).join(User).filter(
+            (user_favorites.c.user_id == current_user.id) & (user_favorites.c.event_id == event.id)).first()
+        if user_is_fan:
+            event.fan = True
     return render_template("my-events.html", title="My Events", events=events) 
 
  

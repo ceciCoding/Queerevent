@@ -3,34 +3,38 @@
 
 
 {% macro events_macro() %}
-{% for event in events %}
-<li class="event-container base-card">
-        <a href="{{ url_for('event', id=event.id)}}">
-            {% if event.img %}
-                <div class="img-container"><img src="data:;base64,{{ event.image }}" alt="event real image"></div>
-            {% else %}
-                <div class="img-container" style="background-image: url(../static/assets/unnamed.jpg);"></div>
-            {% endif %}
-         </a>
-        <div class="info-container">
-            <div class="card-text">
-                <h3>{{ event.name }}</h3>
-                <h5 class="event-date">{{ event.date }}</h5>
-                <h5>At {{ event.starting_time }}</h5>
-            </div>
-            <div class="card-buttons">
-                <ion-icon name="arrow-redo" class="share-arrow" data-modal-target="#modal" data-event-id={{ event.id }}></ion-icon>
-                 {% if not current_user.is_anonymous %}
-                    {% if event.fan %}
-                        <ion-icon class="heart active" name="heart" data-event={{ event.id }}></ion-icon>
-                    {% else %}
-                        <ion-icon class="heart" name="heart-outline" data-event={{ event.id }}></ion-icon>
-                    {% endif %}
+{% if events %}
+    {% for event in events %}
+    <li class="event-container base-card">
+            <a href="{{ url_for('event', id=event.id)}}">
+                {% if event.img %}
+                    <div class="img-container"><img src="data:;base64,{{ event.image }}" alt="event real image"></div>
+                {% else %}
+                    <div class="img-container" style="background-image: url(../static/assets/unnamed.jpg);"></div>
                 {% endif %}
+             </a>
+            <div class="info-container">
+                <div class="card-text">
+                    <h3>{{ event.name }}</h3>
+                    <h5 class="event-date">{{ event.date }}</h5>
+                    <h5>At {{ event.starting_time }}</h5>
+                </div>
+                <div class="card-buttons">
+                    <ion-icon name="arrow-redo" class="share-arrow" data-modal-target="#modal" data-event-id={{ event.id }}></ion-icon>
+                     {% if not current_user.is_anonymous %}
+                        {% if event.fan %}
+                            <ion-icon class="heart active" name="heart" data-event={{ event.id }}></ion-icon>
+                        {% else %}
+                            <ion-icon class="heart" name="heart-outline" data-event={{ event.id }}></ion-icon>
+                        {% endif %}
+                    {% endif %}
+                </div>
             </div>
-        </div>
-</li>
+    </li>
+    {% endfor %}
+{% else %}
+    <p>No events to see here...</p>
+{% endif %}
 <script src="../static/favorites.js"></script>
-{% endfor %}
 {{ popup('Share this event', 'Copy Link', '../static/assets/sitting-boy.svg', 'https://queerevent.net/event/', 'copy') }}
 {% endmacro %}
