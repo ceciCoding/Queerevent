@@ -10,7 +10,7 @@ if (modalLink.value === '') {
 }
 
 trigger.addEventListener('click', (e) => {
-    if (e.target.type === 'text' || e.target.type === 'select') {
+    if ((e.target.type === 'text' || e.target.type === 'select') && e.target.id != 'search') {
         e.preventDefault();
     }
     if (e.target.className.includes('share-arrow') || e.target.className.includes('open-m')) {

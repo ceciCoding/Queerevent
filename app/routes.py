@@ -21,15 +21,29 @@ def home():
     if current_user.is_anonymous:
         return render_template("landing.html")
     else:
-        events = Event.query.all()
-        for event in events:
-            user_is_fan = User.query.join(user_favorites).join(Event).filter(
-                (user_favorites.c.user_id == current_user.id) & (user_favorites.c.event_id == event.id)).all()
-            if user_is_fan:
-                event.fan = True
-            if event.img:
-                event.image = base64.b64encode(event.img).decode('ascii')
-        return render_template("home.html", title="Find Events", events=events)
+        #search bar logic
+        q = request.args.get("q")
+        if q:
+            events = Event.query.filter((Event.name.contains(q)))
+            print(events)
+            for event in events:
+                user_is_fan = User.query.join(user_favorites).join(Event).filter(
+                    (user_favorites.c.user_id == current_user.id) & (user_favorites.c.event_id == event.id)).all()
+                if user_is_fan:
+                    event.fan = True
+                if event.img:
+                    event.image = base64.b64encode(event.img).decode('ascii')
+            return render_template("home.html", title="Find Events", events=events)
+        else:
+            events = Event.query.all()
+            for event in events:
+                user_is_fan = User.query.join(user_favorites).join(Event).filter(
+                    (user_favorites.c.user_id == current_user.id) & (user_favorites.c.event_id == event.id)).all()
+                if user_is_fan:
+                    event.fan = True
+                if event.img:
+                    event.image = base64.b64encode(event.img).decode('ascii')
+            return render_template("home.html", title="Find Events", events=events)
 
 
 #this one is just to handle not falling into the landing page over and over
