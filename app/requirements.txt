@@ -1,0 +1,8 @@
+Flask
+flask_mail
+flask_wtf
+flask_sqlalchemy
+flask_migrate
+flask_login
+werkzeug.urls
+geocoder
