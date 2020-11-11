@@ -123,7 +123,8 @@ h1 {
 }
 
 .search-area {
-    grid-row: 1/5;
+    grid-row: 1/2;
+    grid-column: 1/5;
     align-self: center;
 }
 
@@ -147,7 +148,7 @@ h1 {
 
 .hero {
     width: 60%;
-    grid-column: 6/13;
+    grid-column: 7/13;
     justify-self: center;
     font-size: 1.2rem;
     text-align: center;
@@ -233,6 +234,7 @@ h1 {
 
 .events-menu {
     width: 35%;
+    margin-top: 3rem;
 }
 
 .events-menu ul {
@@ -626,6 +628,7 @@ label {
 .landing-info {
     grid-column: 7/11;
     grid-row: 2/3;
+    margin-top: 3rem;
 }
 
 .landing-info .triangle {

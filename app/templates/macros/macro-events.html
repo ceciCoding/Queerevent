@@ -17,7 +17,7 @@
                 <div class="card-text">
                     <h3>{{ event.name }}</h3>
                     <h5 class="event-date">{{ event.date }}</h5>
-                    <h5>At {{ event.starting_time }}</h5>
+                    <h5>{{ event.starting_time }}</h5>
                 </div>
                 <div class="card-buttons">
                     <ion-icon name="arrow-redo" class="share-arrow" data-modal-target="#modal" data-event-id={{ event.id }}></ion-icon>
@@ -35,6 +35,5 @@
 {% else %}
     <p>No events to see here...</p>
 {% endif %}
-<script src="../static/favorites.js"></script>
 {{ popup('Share this event', 'Copy Link', '../static/assets/sitting-boy.svg', 'https://queerevent.net/event/', 'copy') }}
 {% endmacro %}
