@@ -8,3 +8,10 @@ def decodeImage(img):
 def checkFavorites(event):
     return User.query.join(user_favorites).join(Event).filter(
         (user_favorites.c.user_id == current_user.id) & (user_favorites.c.event_id == event.id)).all()
+
+def setEvents(events):
+    for event in events:
+        if checkFavorites(event):
+            event.fan = True
+        if event.img:
+            event.image = decodeImage(event.img)

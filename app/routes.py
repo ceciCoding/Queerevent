@@ -10,12 +10,11 @@ from app.forms import LoginForm, RegistrationForm, EditForm
 from werkzeug.urls import url_parse
 from datetime import datetime
 import geocoder
-from app.helpers import decodeImage, checkFavorites
+from app.helpers import decodeImage, checkFavorites, setEvents
 
-# os.environ["APP_SETTINGS"] = "./config.cfg"
-# mail = Mail(app)
 EVENT_TYPES = ["Physical", "Online"]
 PERIODICITIES = ["One time", "Recurring"]
+
 
 #routes
 @app.route("/", methods=['GET', 'POST'])
@@ -29,11 +28,7 @@ def home():
             events = Event.query.filter((Event.name.contains(q)))
         else:
             events = Event.query.all()
-        for event in events:
-            if checkFavorites(event):
-                event.fan = True
-            if event.img:
-                event.image = decodeImage(event.img)
+        setEvents(events)
         return render_template("home.html", title="Find Events", events=events, search=q)
 
 
@@ -41,12 +36,7 @@ def home():
 @app.route("/index", methods=['GET', 'POST'])
 def index():
     events = Event.query.all()
-    for event in events:
-        if current_user.is_authenticated:
-            if checkFavorites(event):
-                event.fan = True
-        if event.img:
-            event.image = decodeImage(event.img)
+    setEvents(events)
     return render_template("home.html", title="Find Events", events=events)
 
 
