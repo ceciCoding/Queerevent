@@ -1,14 +1,14 @@
 design-stuff
 /assets
-event-details.js
 *.db
 *.ico
 *.pyc
 *cfg
+config.js
 config.pyc
+config.py
 config.cfg
 __pycache__
 venv
 .vscode
 .flaskenv
-config.py
