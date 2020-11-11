@@ -549,20 +549,14 @@ label {
     width: 100%;
 }
 
-.four-grid .delete {
-    grid-column: 9/13;
-    grid-row: 2/3;
-    align-self: center;
-    justify-self: center;
-    text-align: center;
-    /* background-image: url(../static/assets/popup-person.png); */
-}
-
-.delete.centered {
+.delete {
     grid-column: 1/13;
     margin-top: 6rem;
+    align-self: center;
+    grid-row: 3/4;
+    justify-self: center;
+    text-align: center;
 }
-
 
 .event-description {
     margin-top: 2.5rem;
@@ -573,6 +567,18 @@ label {
     grid-row: 2/3;
     width: 100%;
     margin-top: 3rem;
+}
+
+.map-img {
+    grid-column: 9/13;
+    grid-row: 2/3;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+}
+
+.map-img img {
+    height: 350px;
 }
 
 /***********LANDING PAGE AND LOGIN STYLES*************/

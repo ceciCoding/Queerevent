@@ -4,7 +4,7 @@
     <section class="four-grid">
         <div class="preview-img">
             {% if not event.img %}
-                <img src="../static/assets/pride.jpg" alt="event image">               
+                <img src="../static/assets/flag.jpg" alt="event image">               
             {% else %}
                 <img src="data:;base64,{{ img }}" alt="event image">
             {% endif %}
@@ -53,6 +53,9 @@
         {% if event.location %}
             <div class="map">
             </div>
+            <div class="map-img">
+                <img src="../static/assets/popup-person.svg" alt="drawing of a person pointing at the map">
+            </div> 
         {% endif %}
         {% if event.user_id == current_user.id %}
             <form class="delete" action="" method="POST">
@@ -60,10 +63,6 @@
                 <p>Do you want to delete it?</p>
                 <input type="submit" class="btn" value="Delete event">
             </form>
-        {% else %}
-            <div class="cta">
-                <img src="../static/assets/popup-person.svg" alt="drawing of a person pointing at the map">
-            </div>
         {% endif %}
         {{ popup('This event was added to your calendar', 'Ok!', '../static/assets/popup-person.svg') }}  
     </section>

@@ -11,11 +11,7 @@ script.defer = true;
 const mapContainer = document.querySelector('.map') || null;
 if (mapContainer) {
     mapContainer.style.height = `${mapContainer.offsetWidth * 0.7}px`;
-} else {
-    const deleteContainer = document.querySelector('.delete');
-    deleteContainer.classList.toggle('centered')
-}
-
+} 
 
 // Attach your callback function to the `window` object
 window.initMap = function () {

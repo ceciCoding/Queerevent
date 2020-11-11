@@ -35,7 +35,9 @@ def home():
 @app.route("/index", methods=['GET', 'POST'])
 def index():
     events = Event.query.all()
-    set_events(events)
+    for event in events:
+        if event.img:
+            event.image = decode_image(event.img)
     return render_template("home.html", title="Find Events", events=events)
 
 
