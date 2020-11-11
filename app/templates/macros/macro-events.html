@@ -3,6 +3,9 @@
 
 
 {% macro events_macro() %}
+{% if search %}
+    <p>Showing results for '{{ search }}'</p>
+{% endif %}
 {% if events %}
     {% for event in events %}
     <li class="event-container base-card" data-recurrence="{{ event.recurrence }}" data-event-type="{{ event.event_type }}">

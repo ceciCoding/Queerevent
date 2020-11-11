@@ -10,7 +10,7 @@ from app.forms import LoginForm, RegistrationForm, EditForm
 from werkzeug.urls import url_parse
 from datetime import datetime
 import geocoder
-import base64
+from app.helpers import decodeImage, checkFavorites
 
 # os.environ["APP_SETTINGS"] = "./config.cfg"
 # mail = Mail(app)
@@ -27,25 +27,14 @@ def home():
         q = request.args.get("q")
         if q:
             events = Event.query.filter((Event.name.contains(q)))
-            print(events)
-            for event in events:
-                user_is_fan = User.query.join(user_favorites).join(Event).filter(
-                    (user_favorites.c.user_id == current_user.id) & (user_favorites.c.event_id == event.id)).all()
-                if user_is_fan:
-                    event.fan = True
-                if event.img:
-                    event.image = base64.b64encode(event.img).decode('ascii')
-            return render_template("home.html", title="Find Events", events=events)
         else:
             events = Event.query.all()
-            for event in events:
-                user_is_fan = User.query.join(user_favorites).join(Event).filter(
-                    (user_favorites.c.user_id == current_user.id) & (user_favorites.c.event_id == event.id)).all()
-                if user_is_fan:
-                    event.fan = True
-                if event.img:
-                    event.image = base64.b64encode(event.img).decode('ascii')
-            return render_template("home.html", title="Find Events", events=events)
+        for event in events:
+            if checkFavorites(event):
+                event.fan = True
+            if event.img:
+                event.image = decodeImage(event.img)
+        return render_template("home.html", title="Find Events", events=events, search=q)
 
 
 #this one is just to handle not falling into the landing page over and over
@@ -54,10 +43,10 @@ def index():
     events = Event.query.all()
     for event in events:
         if current_user.is_authenticated:
-            user_is_fan = User.query.join(user_favorites).join(Event).filter(
-                (user_favorites.c.user_id == current_user.id) & (user_favorites.c.event_id == event.id)).all()
+            if checkFavorites(event):
+                event.fan = True
         if event.img:
-            event.image = base64.b64encode(event.img).decode('ascii')
+            event.image = decodeImage(event.img)
     return render_template("home.html", title="Find Events", events=events)
 
 
@@ -151,11 +140,10 @@ def event(id):
     event = Event.query.filter_by(id=id).first()
     if request.method == "GET":
         if current_user.is_authenticated:
-            user_is_fan = User.query.join(user_favorites).join(Event).filter(
-                (user_favorites.c.user_id == current_user.id) & (user_favorites.c.event_id == event.id)).all()
+            user_is_fan = checkFavorites(event)
         else:
             user_is_fan = False
-        img = base64.b64encode(event.img).decode('ascii')
+        img = decodeImage(event.img)
         if event.location:
             address = geocoder.google(event.location)
             coordinates = address.latlng
@@ -172,7 +160,7 @@ def event(id):
 @login_required
 def account():
     if current_user.img:
-        img = base64.b64encode(current_user.img).decode('ascii')
+        img = decodeImage(current_user.img)
         return render_template("account.html", img=img)
     else:
         return render_template("account.html")
@@ -184,7 +172,7 @@ def edit():
     form = EditForm()
     if request.method == "GET":
         if current_user.img:
-            img = base64.b64encode(current_user.img).decode('ascii')
+            img = decodeImage(current_user.img)
         else:
             img = None
         return render_template("edit.html", form=form, img=img)
@@ -206,6 +194,7 @@ def edit():
             return redirect(url_for("account"))
         return redirect(url_for('account'))
 
+
 @app.route("/favorites")
 @login_required
 def favorites():
@@ -214,7 +203,7 @@ def favorites():
     print(events)
     for event in events:
         if event.img:
-            event.image = base64.b64encode(event.img).decode('ascii')
+            event.image = decodeImage(event.img)
         event.fan = True
     return render_template("favorites.html", title="Favorite Events", events=events)
 
@@ -224,9 +213,8 @@ def my_events():
     events = Event.query.filter_by(user_id=current_user.id).all()
     for event in events:
         if event.img:
-            event.image = base64.b64encode(event.img).decode('ascii')
-        user_is_fan = Event.query.join(user_favorites).join(User).filter(
-            (user_favorites.c.user_id == current_user.id) & (user_favorites.c.event_id == event.id)).first()
+            event.image = decodeImage(event.img)
+        user_is_fan = checkFavorites(event)
         if user_is_fan:
             event.fan = True
     return render_template("my-events.html", title="My Events", events=events) 
@@ -243,8 +231,7 @@ def calendar():
 def toggle_favorite():
     req = request.get_json()
     event = Event.query.filter_by(id=req["event"]).first()
-    user_is_fan = User.query.join(user_favorites).join(Event).filter(
-        (user_favorites.c.user_id == current_user.id) & (user_favorites.c.event_id == event.id)).all()
+    user_is_fan = checkFavorites(event)
     if user_is_fan:
         event.fan = False
         event.fans.remove(current_user)
