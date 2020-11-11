@@ -10,11 +10,10 @@ from app.forms import LoginForm, RegistrationForm, EditForm
 from werkzeug.urls import url_parse
 from datetime import datetime
 import geocoder
-from app.helpers import decodeImage, checkFavorites, setEvents
+from app.helpers import decode_image, checkFavorites, set_events
 
 EVENT_TYPES = ["Physical", "Online"]
 PERIODICITIES = ["One time", "Recurring"]
-
 
 #routes
 @app.route("/", methods=['GET', 'POST'])
@@ -28,7 +27,7 @@ def home():
             events = Event.query.filter((Event.name.contains(q)))
         else:
             events = Event.query.all()
-        setEvents(events)
+        set_events(events)
         return render_template("home.html", title="Find Events", events=events, search=q)
 
 
@@ -36,7 +35,7 @@ def home():
 @app.route("/index", methods=['GET', 'POST'])
 def index():
     events = Event.query.all()
-    setEvents(events)
+    set_events(events)
     return render_template("home.html", title="Find Events", events=events)
 
 
@@ -133,7 +132,7 @@ def event(id):
             user_is_fan = checkFavorites(event)
         else:
             user_is_fan = False
-        img = decodeImage(event.img)
+        img = decode_image(event.img)
         if event.location:
             address = geocoder.google(event.location)
             coordinates = address.latlng
@@ -150,7 +149,7 @@ def event(id):
 @login_required
 def account():
     if current_user.img:
-        img = decodeImage(current_user.img)
+        img = decode_image(current_user.img)
         return render_template("account.html", img=img)
     else:
         return render_template("account.html")
@@ -162,7 +161,7 @@ def edit():
     form = EditForm()
     if request.method == "GET":
         if current_user.img:
-            img = decodeImage(current_user.img)
+            img = decode_image(current_user.img)
         else:
             img = None
         return render_template("edit.html", form=form, img=img)
@@ -193,7 +192,7 @@ def favorites():
     print(events)
     for event in events:
         if event.img:
-            event.image = decodeImage(event.img)
+            event.image = decode_image(event.img)
         event.fan = True
     return render_template("favorites.html", title="Favorite Events", events=events)
 
@@ -203,7 +202,7 @@ def my_events():
     events = Event.query.filter_by(user_id=current_user.id).all()
     for event in events:
         if event.img:
-            event.image = decodeImage(event.img)
+            event.image = decode_image(event.img)
         user_is_fan = checkFavorites(event)
         if user_is_fan:
             event.fan = True
