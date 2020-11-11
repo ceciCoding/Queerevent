@@ -1,1 +1,1 @@
-gunicorn queerevent:app
+cgunicorn queerevent:app
