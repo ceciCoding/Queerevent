@@ -641,6 +641,10 @@ label {
     margin-bottom: 1rem;
 }
 
+.search-paragraph {
+    display: block;
+}
+
 /***********ACCOUNT STYLES*************/
 #user-info .user-menu {
     margin-bottom: 2rem;

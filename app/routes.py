@@ -27,18 +27,26 @@ def home():
             events = Event.query.filter((Event.name.contains(q)))
         else:
             events = Event.query.all()
-        set_events(events)
+        for event in events:
+            if checkFavorites(event):
+                event.fan = True
+            if event.img:
+                event.image = decode_image(event.img)
         return render_template("home.html", title="Find Events", events=events, search=q)
 
 
 #this one is just to handle not falling into the landing page over and over
 @app.route("/index", methods=['GET', 'POST'])
 def index():
-    events = Event.query.all()
+    q = request.args.get("q")
+    if q:
+        events = Event.query.filter((Event.name.contains(q)))
+    else:
+        events = Event.query.all()
     for event in events:
         if event.img:
             event.image = decode_image(event.img)
-    return render_template("home.html", title="Find Events", events=events)
+    return render_template("home.html", title="Find Events", events=events, search=q)
 
 
 @app.route("/login",  methods=["GET", "POST"])
